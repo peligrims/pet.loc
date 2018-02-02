@@ -11,6 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/','IndexController',[
+									'only' =>['index'],
+									'names' => ['index'=>'home']
+									]);
+Route::resource('information','InformationController',[
+													 
+													'information' => [
+													
+														'information' => 'alias'
+													
+													]
+													
+													]);
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::match(['get','post'],'/contacts',['uses'=>'ContactsController@index','as'=>'contacts']);	
