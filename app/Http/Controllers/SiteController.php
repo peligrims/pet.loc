@@ -4,7 +4,10 @@ namespace Corp\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Corp\Http\Requests;
+
 use Corp\Repositories\MenusRepository;
+
 use Menu;
 
 class SiteController extends Controller

@@ -24,6 +24,15 @@ Route::resource('information','InformationController',[
 													]
 													
 													]);
+Route::resource('insurance','InsuranceController',[
+ 
+'insurance' => [
+
+	'insurance' => 'alias'
+
+]
+
+]);
 
 
 Auth::routes();
