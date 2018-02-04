@@ -4,7 +4,7 @@
 		'slider_path' => 'slider-cycle',
 		'home_port_count' => 5,
 		'theme' => env('THEME','default'),
-		'home_articles_count' => 3,
+		'home_equipments_count' => 1,
 		'paginate' => 2,
 		'recent_comments' => 3,
 		'recent_portfolios' => 3,

@@ -3,13 +3,20 @@
 namespace Corp\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Corp\Http\Requests;
+use Corp\Repositories\SlidersRepository;
+use Corp\Repositories\EquipmentsRepository;
 
 class IndexController extends SiteController
 {
-     public function __construct() {
+     public function __construct(SlidersRepository $s_rep, CategoriesRepository $c_rep, EquipmentController $e_rep) {
     	
     	parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
     	
+		$this->s_rep = $s_rep;
+		$this->c_rep = $c_rep;
+		$this->e_rep = $e_rep;
+		
     	
     	$this->template = env('THEME').'.index';
 		
@@ -25,12 +32,61 @@ class IndexController extends SiteController
      */
     public function index()
     {
-        $this->keywords = 'Idettifi Pets';
-		$this->meta_desc = 'Idettifi Pets';
-		$this->title = 'Idettifi Pets';
-		return $this->renderOutput();
+        $equipments = $this->getEquipment();
+        
+        $content = view(env('THEME').'.content')->with('equipments',$equipments)->render();
+        $this->vars = array_add($this->vars,'content', $content);
+        
+        $sliderItems = $this->getSliders();
+        
+        $sliders = view(env('THEME').'.slider')->with('sliders',$sliderItems)->render();
+        $this->vars = array_add($this->vars,'sliders',$sliders);
+        
+        $this->keywords = 'Pet Page';
+		$this->meta_desc = 'Pet Page';
+		$this->title = 'Pet Page';
+		
+        
+        $categories = $this->getCategories();
+        
+       dd($categories );
+        
+        $this->contentRightBar = view(env('THEME').'.indexBar')->with('categories ',$categories )->render();
+        
+        
+        return $this->renderOutput();
     }
 
+	 protected function getEquipment() {
+    	$equipments = $this->e_rep->get(['title','created_at','img','alias']);
+    	
+    	return $equipments;
+    }	
+	protected function getCategories() {
+    	$categories = $this->c_rep->get(['title','created_at','img','alias'],Config::get('settings.home_equipments_count'));
+    	
+    	return $categories;
+    }	
+	
+	 public function getSliders() {
+    	$sliders = $this->s_rep->get();
+    	
+    	if($sliders->isEmpty()) {
+			return FALSE;
+		}
+		
+		$sliders->transform(function($item,$key) {
+			
+			$item->img = Config::get('settings.slider_path').'/'.$item->img;
+			return $item;
+			
+		});
+    	
+    	
+    	return $sliders;
+    }	
+	
+	
     /**
      * Show the form for creating a new resource.
      *

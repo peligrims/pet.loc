@@ -12,9 +12,9 @@
 */
 
 Route::resource('/','IndexController',[
-									'only' =>['index'],
-									'names' => ['index'=>'home']
-									]);
+													'only' =>['index'],
+													'names' => ['index'=>'home']
+													]);
 Route::resource('information','InformationController',[
 													 
 													'information' => [
@@ -26,13 +26,22 @@ Route::resource('information','InformationController',[
 													]);
 Route::resource('insurance','InsuranceController',[
  
-'insurance' => [
+													'insurance' => [
 
-	'insurance' => 'alias'
+														'insurance' => 'alias'
 
-]
+													]
 
-]);
+													]);
+Route::resource('equipment','EquipmentController',[
+ 
+													'equipment' => [
+
+														'equipment' => 'alias'
+
+													]
+
+													]);
 
 
 Auth::routes();
