@@ -12,16 +12,16 @@
 				    <li>
 					   <div class="slide-holder" style="background:  url('{{ asset(env('THEME')) }}/images/{{ $slider->img }}') no-repeat center center" style="height:483px;">
 					    	<div class="slide-content-holder inner" style="height:483px;">
-					    		@if($i%2 !== 0)
+					    		@if($i%2 == 0)
 					    			<div class="slide-content-holder-content" style="position: absolute; top:30px;right:650px;">
 					    		@else
 					    			<div class="slide-content-holder-content" style="position: absolute; top:80px;left:500px;">
 					    		@endif
 					    			
-					    				<div class="slide-title">
+					    				<div class="slide-title" style="color:#000">
 				                            {!! $slider->title !!}
 				                        </div>
-				                        <div class="slide-content" style="color:#fff">
+				                        <div class="slide-content" style="color:#000">
 				                            <p>{!! $slider->desc !!}</p>
 				                        </div>
 					    			

@@ -2,15 +2,15 @@
 
 namespace Corp\Repositories;
 
-use Corp\Categories;
+use Corp\Category;
 
 
 class CategoriesRepository extends Repository {
 	
 	
-	public function __construct(Categories $categories) {
-		$this->model = $categories;
+	public function __construct(Category $category) {
+		$this->model = $category;
 	}
-	
+}
 	
 ?>

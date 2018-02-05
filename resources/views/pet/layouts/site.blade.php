@@ -111,7 +111,7 @@
                         <div id="sidebar-header" class="group">
                             <div class="widget-first widget yit_text_quote">
                                 <blockquote class="text-quote-quote">&#8220;Зарегистрируйте своего любимца для жизни&#8221;</blockquote>
-                                <cite class="text-quote-author">Pets Idetity</cite>
+                                <cite class="text-quote-author">Идентификация животных</cite>
                             </div>
                         </div>
                         <div class="clearer"></div>
@@ -139,7 +139,7 @@
 					<!-- START PAGE META -->
 					<div id="page-meta">
 					    <div class="inner group">
-					        <h3>Welcome to my portfolio page</h3>
+					        <h3>Мы рады Вас видеть</h3>
 					        <h4>... i hope you enjoy my works</h4>
 					    </div>
 					</div>
@@ -150,8 +150,8 @@
 					<!-- START PAGE META -->
 						<div id="page-meta">
 						    <div class="inner group">
-						        <h3>...Say Hello! :)</h3>
-						        <h4>Get in touch with Pink Rio team</h4>
+						        <h3>Мы всегда рады Вам помочь!</h3>
+						        <h4>Напишите нам Ваши пожелания. </h4>
 						    </div>
 						</div>
 						<!-- END PAGE META -->

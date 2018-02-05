@@ -3,38 +3,45 @@
 namespace Corp\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use Corp\Http\Requests;
+
 use Corp\Repositories\SlidersRepository;
-use Corp\Repositories\EquipmentsRepository;
+use Corp\Repositories\PortfoliosRepository;
+use Corp\Repositories\ArticlesRepository;
+
+
+use Config;
 
 class IndexController extends SiteController
 {
-     public function __construct(SlidersRepository $s_rep, CategoriesRepository $c_rep, EquipmentController $e_rep) {
+    
+    public function __construct(SlidersRepository $s_rep, PortfoliosRepository $p_rep, ArticlesRepository $a_rep) {
     	
     	parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
     	
-		$this->s_rep = $s_rep;
-		$this->c_rep = $c_rep;
-		$this->e_rep = $e_rep;
-		
+    	$this->s_rep = $s_rep;
+    	$this->p_rep = $p_rep;
+    	$this->a_rep = $a_rep;
+    	
+    	$this->bar = 'right';
     	
     	$this->template = env('THEME').'.index';
 		
 	}
-	
-	
-	
-	
-	/**
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $equipments = $this->getEquipment();
+        //
         
-        $content = view(env('THEME').'.content')->with('equipments',$equipments)->render();
+        $portfolios = $this->getPortfolio();
+        
+        $content = view(env('THEME').'.content')->with('portfolios',$portfolios)->render();
         $this->vars = array_add($this->vars,'content', $content);
         
         $sliderItems = $this->getSliders();
@@ -42,33 +49,36 @@ class IndexController extends SiteController
         $sliders = view(env('THEME').'.slider')->with('sliders',$sliderItems)->render();
         $this->vars = array_add($this->vars,'sliders',$sliders);
         
-        $this->keywords = 'Pet Page';
-		$this->meta_desc = 'Pet Page';
-		$this->title = 'Pet Page';
+        $this->keywords = 'Home Page';
+		$this->meta_desc = 'Home Page';
+		$this->title = 'Home Page';
 		
         
-        $categories = $this->getCategories();
+        $articles = $this->getArticles();
         
-       dd($categories );
+       // dd($articles);
         
-        $this->contentRightBar = view(env('THEME').'.indexBar')->with('categories ',$categories )->render();
+        $this->contentRightBar = view(env('THEME').'.indexBar')->with('articles',$articles)->render();
         
         
         return $this->renderOutput();
     }
-
-	 protected function getEquipment() {
-    	$equipments = $this->e_rep->get(['title','created_at','img','alias']);
+    
+    protected function getArticles() {
+    	$articles = $this->a_rep->get(['title','created_at','img','alias'],Config::get('settings.home_articles_count'));
     	
-    	return $equipments;
+    	return $articles;
     }	
-	protected function getCategories() {
-    	$categories = $this->c_rep->get(['title','created_at','img','alias'],Config::get('settings.home_equipments_count'));
-    	
-    	return $categories;
-    }	
-	
-	 public function getSliders() {
+    
+    protected function getPortfolio() {
+		
+		$portfolio = $this->p_rep->get('*',Config::get('settings.home_port_count'));
+		
+		return $portfolio;
+		
+	}
+    
+    public function getSliders() {
     	$sliders = $this->s_rep->get();
     	
     	if($sliders->isEmpty()) {
@@ -85,8 +95,7 @@ class IndexController extends SiteController
     	
     	return $sliders;
     }	
-	
-	
+
     /**
      * Show the form for creating a new resource.
      *
