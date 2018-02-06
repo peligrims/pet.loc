@@ -51,7 +51,7 @@ Route::resource('portfolios','PortfolioController',[
 													]
 													
 													]);
-	Route::resource('articles','ArticlesController',[
+Route::resource('articles','ArticlesController',[
 
 													'parameters'=>[
 
@@ -60,6 +60,18 @@ Route::resource('portfolios','PortfolioController',[
 													]
 
 													]);	
+													
+Route::resource('сlinics','ClinicsController',[
+ 
+													'сlinics' => [
+
+														'сlinics' => 'alias'
+
+													]
+
+													]);
+													
+													
 
 
 Auth::routes();

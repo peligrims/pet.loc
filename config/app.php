@@ -165,8 +165,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 		
 		Lavary\Menu\ServiceProvider::class,
-
-        /*
+        Cornford\Googlmapper\MapperServiceProvider::class,
+        
+		/*
          * Package Service Providers...
          */
 
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 		
 		'Menu'      => Lavary\Menu\Facade::class,
+		'Mapper'         => Cornford\Googlmapper\Facades\MapperFacade::class,
 
     ],
 

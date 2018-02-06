@@ -3,48 +3,56 @@
 namespace Corp\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Corp\Http\Requests;
+use Mapper;
 
-use Corp\Repositories\InformationsRepository;
+use Corp\Repositories\ClinicsRepository;
 
-
-class InformationController extends SiteController
+class ClinicsController extends SiteController
 {
-    public function __construct(InformationsRepository $i_rep) {
+    
+	 public function __construct( ClinicsRepository $cl_rep) {
     	
     	parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
     	
-    	$this->i_rep = $i_rep;
-
-    	$this->template = env('THEME').'.informations';
+    	
+    	$this->cl_rep = $cl_rep;
+    	
+    	$this->bar = 'right';
+    	
+    	$this->template = env('THEME').'.clinics';
 		
 	}
+
+	
     public function index()
     {
-        //
-        
-        $this->title = 'Новости';
-		$this->keywords = 'Новости';
-		$this->meta_desc = 'Новости';
+        $this->title = 'Клиники';
+		$this->keywords = 'Клиники';
+		$this->meta_desc = 'Клиники';
 		
-		$informations = $this->getInformations();
+		$clinic = $this->getClinic();
 
-        $content = view(env('THEME').'.informations_content')->with('informations',$informations)->render();
+		
+		Mapper::map(55.7234037,37.4331034, ['zoom' => 10, 'markers' => ['title' => 'Государственный центр экстренной ветеринарной помощи', 'animation' => 'DROP']]);
+		//Mapper::map(55.680846,37.6322623, ['zoom' => 10, 'markers' => ['title' => 'Ветеринарная клиника "МиВ', 'animation' => 'DROP']]);
+		//Mapper::map(55.6480043,37.5993909, ['zoom' => 10, 'markers' => ['title' => 'Группа компаний "Близнецы"  ', 'animation' => 'DROP']]);
+
+		
+		
+		$content = view(env('THEME').'.clinics_content')->with('clinic',$clinic)->render();
         $this->vars = array_add($this->vars,'content',$content);
         
-        //dd($informations); 
+         
         return $this->renderOutput();
     }
-	
-	public function getInformations($take = FALSE,$paginate = TRUE) {
+	public function getClinic($take = FALSE,$paginate = TRUE) {
 		
-		$informations = $this->i_rep->get('*',$take,$paginate);
-		if($informations) {
-			$informations->load('filter');
-		}
+		$сlinic = $this->cl_rep->get('*',$take,$paginate);
 		
-		return $informations;
+		
+		
+		return $сlinic;
 	}
 
     /**
@@ -52,7 +60,8 @@ class InformationController extends SiteController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+   
+	public function create()
     {
         //
     }
@@ -74,24 +83,10 @@ class InformationController extends SiteController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($alias) {
-		
-		
-		$information = $this->i_rep->one($alias);
-		$informations= $this->getInformations(config('settings.other_informations'), FALSE);
-		
-
-		
-		$this->title = $information->title;
-		//$this->keywords = $information->keywords;
-		//$this->meta_desc = $information->meta_desc;
-		
-		$content = view(env('THEME').'.portfolio_content')->with(['information' => $information,'informations' => $informations])->render();
-		$this->vars = array_add($this->vars,'content',$content);
-
-        
-		return $this->renderOutput();
-	}
+    public function show($id)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.

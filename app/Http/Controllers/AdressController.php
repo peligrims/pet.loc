@@ -3,56 +3,25 @@
 namespace Corp\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Corp\Http\Requests;
 
-use Corp\Repositories\EquipmentsRepository;
-
-class EquipmentController extends SiteController
+class AdressController extends Controller
 {
-    
-	 public function __construct( EquipmentsRepository $e_rep) {
-    	
-    	parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
-    	
-    	
-    	$this->e_rep = $e_rep;
-    	//dd($this->e_rep);
-    	$this->bar = 'right';
-    	
-    	$this->template = env('THEME').'.equipments';
-		
-	}
-
-	
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $this->title = 'Оборудование';
-		$this->keywords = 'Оборудование';
-		$this->meta_desc = 'Оборудование';
-		
-		$equipments = $this->getEquipments();
-		//dd($equipments);
-        $content = view(env('THEME').'.equipments_content')->with('equipments',$equipments)->render();
-        $this->vars = array_add($this->vars,'content',$content);
-        
-         
-        return $this->renderOutput();
+        //
     }
-	public function getEquipments($take = FALSE,$paginate = TRUE) {
-		
-		$equipments = $this->e_rep->get('*',$take,$paginate);
-		
-		
-		return $equipments;
-	}
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-   
-	public function create()
+    public function create()
     {
         //
     }
