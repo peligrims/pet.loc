@@ -29,7 +29,7 @@ class AnimalsController extends SiteController
 		$this->meta_desc = 'animals';
 		
 		$animals = $this->getAnimal();
-
+		//dd($request);
         $content = view(env('THEME').'.animals_content')->with('animals',$animals)->render();
         $this->vars = array_add($this->vars,'content',$content);
         

@@ -79,6 +79,7 @@ Route::resource('animals','AnimalsController',[
 													]
 
 													]);
+Route::get('searchSimple', 'SearchController@index')->name('searchSimple');
 													
 													
 
