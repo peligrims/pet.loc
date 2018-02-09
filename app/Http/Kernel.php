@@ -42,6 +42,9 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+		'admin' => [
+            'isAdmin:1', // 1 - это айдишник админа в users. так передаются параметры
+        ],
     ];
 
     /**
@@ -58,5 +61,6 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \Corp\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+		'isAdmin' => \Corp\Http\Middleware\isAdmin::class,
     ];
 }

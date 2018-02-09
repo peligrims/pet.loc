@@ -3,59 +3,39 @@
 namespace Corp\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use Corp\Http\Requests;
-use Corp\Repositories\AnimalsRepository;
+//use Corp\Repositories\AnimalsRepository;
 use Corp\Animal;
 use Corp\Clinic;
 
-
-class AnimalsController extends SiteController
+class TestController extends Controller
 {
     
-	public function __construct(AnimalsRepository $a_rep) {
-    	
-    	parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
-    	
-    	$this->a_rep = $a_rep;
 
-    	$this->template = env('THEME').'.animals';
-		
-	}
+	
 	
 	
 	
     public function index()
     {
-       
+       //$animals = Animal::find(1)->сlinica;
+	   //$animals = Animal::all();
+	   //$animals->load('сlinica');
+	   //foreach ($animals as $animal)
+	    //{
+         //echo $animal->сlinica->title;
+		//}
+			
+		$animals = Animal::with('clinics')->get();
+
+
+	   
+	   dd($animals->clinic);
+
 		
-		$this->title = 'animals';
-		$this->keywords = 'animals';
-		$this->meta_desc = 'animals';
 		
-		$animals = $this->getAnimal();
-		//dd($request);
-        $content = view(env('THEME').'.animals_content')->with('animals',$animals)->render();
-        $this->vars = array_add($this->vars,'content',$content);
-        
-         
-        return $this->renderOutput();
     }
 	
-	public function getAnimal($take = FALSE,$paginate = TRUE) {
-		
-		$animals = $this->a_rep->get('*',$take,$paginate);
-		
-		//$animals->load('kinds','clinics','breeds');
-		
-		return $animals;
-	}
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+	
     public function create()
     {
         //

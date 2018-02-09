@@ -5,8 +5,9 @@ namespace Corp\Http\Controllers\Auth;
 use Corp\User;
 use Validator;
 use Corp\Http\Controllers\Controller;
+//use Illuminate\Foundation\Auth\ThrottlesLogins;
+//use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
 
 class AuthController extends Controller
 {
@@ -28,13 +29,9 @@ class AuthController extends Controller
      *
      * @var string
      */
-     
-     protected $loginView;
-     
-    // protected $username = 'login';
-     
-     
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/';
+    
+    protected $username = 'login';
 
     /**
      * Create a new authentication controller instance.
@@ -43,24 +40,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware($this->guestMiddleware(), ['except' => 'logout']);
         $this->middleware('guest', ['except' => 'logout']);
-		
-		
-        $this->loginView = env('THEME').'.login';
-    }
-    
-    
-    public function showLoginForm()
-    {
-        $view = property_exists($this, 'loginView')
-                    ? $this->loginView : '';
-
-        if (view()->exists($view)) {
-            return view($view)->with('title', 'Вход на сайт');
-        }
-
-        abort(404);
     }
 
     /**
@@ -73,8 +53,9 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'login' => 'required|max:255|unique:users,login',
+            'email' => 'required|email|max:255',
+            'password' => 'required|confirmed|min:6',
         ]);
     }
 
@@ -88,6 +69,7 @@ class AuthController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'login' => $data['login'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
