@@ -17,17 +17,17 @@
 				                            </div>
 				                            <div class="work-description">
 												<h1>Данные о животном</h1>
-												<p>{{$results->nick }}</p>
-				                                <p>{{$results->chip }}</p>
+												<p>{{$animals->nick }}</p>
+				                                <p>{{$animals->chip }}</p>
 												<p>{{$clinics->title}}</p>
-												<p>{{$kinds->title}}</p>
+												<p>{{$animals->color}}</p>
+												<p>{{$animals->kinds->title}}</p>
+												<p>{{$animals->sex }}</p>
+												<p>{{$animals->img }}</p>
+												<p>{{$animals->o_name }}</p>
 												
-												<p>{{$results->sex }}</p>
-												<p>{{$results->img }}</p>
-												<p>{{$results->o_name }}</p>
-												
-												<p>{{$results->birthday }}</p>
-												<p>{{$results->color }}</p>
+												<p>{{$animals->birthday }}</p>
+												<p>{{$animals->color }}</p>
 											
 				                                <div class="clear"></div>
 				                                <div class="work-skillsdate">
@@ -41,8 +41,7 @@
 				                        
 				                        
 				                        
-				                        <h3>Other Projects</h3>
-				                        
+				                       
 				                        
 				                        
 				                        <div class="portfolio-full-description-related-projects">

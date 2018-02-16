@@ -9,6 +9,8 @@ use Corp\Clinics;
 use Corp\Repositories\AnimalsRepository;
 use Corp\Repositories\ClinicsRepository;
 use DB;
+use Corp\Animal;
+use Corp\Clinic;
 
 class SearchController extends SiteController
 {
@@ -29,43 +31,32 @@ class SearchController extends SiteController
 		$this->title = 'Поиск по номеру чипа';
 		$this->keywords = 'Поиск по номеру чипа';
 		$this->meta_desc = 'Поиск по номеру чипа';	
-
+		
+	
 		
 		$animal = $request->all();
-	    $results = DB::table('animals')
-                    ->where('chip',$animal )
-                    ->first();
+
+		$animals=Animal::where('chip', $animal)->first();
 		
-		$clinic = $results->clinic;
-        $clinics = DB::table('clinics')
-                    ->where('id', $clinic)
-                    ->first();
-		$kind =	$results->kind;
-		$kinds = DB::table('kinds')
-                    ->where('id',$kind)
-                    ->first();		
-		$breed = $results->breed;
-		$breeds = DB::table('breeds')
-                    ->where('id',$breed)
-                    ->first();
+		$clinics=$animals->clinics;
+		$kinds=$animals->kinds;
+		
+		//dd($kinds->title);
 		
 		
 		
 		
 		
-        $content = view(env('THEME').'.animal_content')->with(['results' => $results,'clinics' => $clinics,'kinds' => $kinds])->render();
+	
+        $content = view(env('THEME').'.animal_content')->with(['animals' => $animals,'clinics' => $clinics])->render();
         $this->vars = array_add($this->vars,'content',$content);	
 		
 		
         
 		
 		
-		return $this->renderOutput();
-		
+		return $this->renderOutput();  
     }
-	public function getAnimals() 
-	{
-		
-	}
+	
 
 }
