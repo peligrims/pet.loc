@@ -10,13 +10,15 @@ class AnimalsRepository extends Repository {
 	
 	public function __construct(Animal $animals) {
 		$this->model = $animals;
+	
+	
 	}
 	
 	
 	
-public function addArticle($request) {
+public function addAnimals() {
 
-		
+	$animals->image = json_decode($animals->image);	
 	}
 }
 ?>

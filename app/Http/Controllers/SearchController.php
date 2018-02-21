@@ -8,22 +8,28 @@ use Corp\Http\Requests;
 use Corp\Clinics;
 use Corp\Repositories\AnimalsRepository;
 use Corp\Repositories\ClinicsRepository;
+use Corp\Repositories\OwnersRepository;
 use DB;
 use Corp\Animal;
 use Corp\Clinic;
+use Corp\Owner;
 
 class SearchController extends SiteController
 {
 	
 	
-	public function __construct(AnimalsRepository $a_rep,ClinicsRepository $cl_rep) {
+	public function __construct(AnimalsRepository $a_rep,ClinicsRepository $cl_rep, OwnersRepository $o_rep) {
     	
     	parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
     	
     	$this->a_rep = $a_rep;
 		$this->cl_rep = $cl_rep;
+		$this->o_rep = $o_rep;
+		
+		$this->bar = 'right';
 
     	$this->template = env('THEME').'.animals';
+	
 		
 	}
 	
@@ -40,10 +46,11 @@ class SearchController extends SiteController
 		
 		$clinics=$animals->clinics;
 		$kinds=$animals->kinds;
+		$breeds=$animals->breeds;
+		$owners=$animals->owners;
 		
-		//dd($kinds->title);
-		
-		
+		$animals->image = json_decode($animals->image);
+		//dd($animals);
 		
 		
 		
@@ -52,11 +59,8 @@ class SearchController extends SiteController
         $this->vars = array_add($this->vars,'content',$content);	
 		
 		
-        
-		
-		
+				
 		return $this->renderOutput();  
     }
-	
-
+	  
 }

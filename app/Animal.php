@@ -14,4 +14,12 @@ class Animal extends Model
 	{
 		return $this->hasOne('Corp\Kind', 'id', 'kind');
 	}
+	public function breeds ()
+	{
+		return $this->hasOne('Corp\Breed', 'id', 'breed');
+	}
+	public function owners ()
+	{
+		return $this->hasOne('Corp\Owner', 'id', 'o_id');
+	}
 }

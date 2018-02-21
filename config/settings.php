@@ -8,6 +8,7 @@
 		'paginate' => 2,
 		'recent_comments' => 3,
 		'recent_portfolios' => 3,
+		'recent_animals' => 3,
 		'other_informations' => 8,
 		'articles_img' => [
 						'max' => ['width'=>816,'height'=>282],

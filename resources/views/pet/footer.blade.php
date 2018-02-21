@@ -1,7 +1,8 @@
 <div id="copyright">
                     <div class="inner group">
                         <div class="left">
-                            <a href="http://pet.loc"><strong>Download</strong></a>
+                            <a href="http://pet.loc"><strong>© 2018, Pet.loc 
+Материалы, представленные на сайте. </strong></a>
                         </div>
                         <div class="right">
                             <a href="#" class="socials-small facebook-small" title="Facebook">facebook</a>

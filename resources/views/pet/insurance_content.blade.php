@@ -2,17 +2,37 @@
 				    <div class="inner group">
 				        <!-- START CONTENT -->
 				        <div id="content-page" class="content group">
-				            <h2>Full width</h2>
+				            <h2>Страхование домашних животных</h2>
+								<h3>Защита ваших любимцев</h3>
 				            <div class="hentry group">
-				                <p>This is an example page. It’s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes).</p>
-				                <p>Curabitur nec orci at neque eleifend consequat. <a href="http://yourinspirationweb.com/demo/sheeva/sample-page/#">Vivamus metus eros, consequat</a> eu porttitor nec, pellentesque nec quam. Maecenas interdum odio quis diam iaculis nec accumsan tellus vestibulum. Ut ut velit mauris, eget interdum elit. Curabitur vitae ipsum arcu, a suscipit tellus. Morbi lacinia dapibus quam, ac accumsan nisl vulputate a. Suspendisse eu lectus sed lorem blandit consequat lobortis vel leo.</p>
-				                <p>Curabitur nec eros vel sapien volutpat egestas. Aliquam et diam dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris a odio a turpis blandit consequat in non lorem.</p>
-				                <p style="text-align: center"><a href="images/features/download.jpg"><img class="aligncenter" src="images/features//download.jpg" alt="" /></a></p>
-				                <p><strong>Nam lectus tortor</strong>, varius sit amet varius et, adipiscing sit amet nulla. Vestibulum nisi eros, lobortis at elementum eget, tristique a leo. Etiam laoreet enim ac nisl lacinia at egestas elit viverra. Proin in euismod ligula. Praesent ut erat ipsum, quis cursus nulla. Pellentesque habitant morbi tristique senectus et netus et <em>malesuada fames</em> ac turpis egestas. Nullam congue dui sed ligula laoreet adipiscing.</p>
-				                <p>Most people start with an About page that introduces them to potential site visitors. It might say something like this:</p>
-				                <blockquote>
-				                    <p>Hi there! I’m a bike messenger by day, aspiring actor by night, and this is my blog. I live in Los Angeles, have a great dog named Jack, and I like piña coladas. (And gettin’ caught in the rain.)</p>
-				                </blockquote>
+				                <p>СТРАХОВАНИЕ СОБАК И КОШЕК
+С владельцами собак и кошек заключаются договоры страхования животных и/или гражданской
+ответственности владельцев животных за причинение вреда жизни, здоровью, имуществу третьих
+лиц.
+Договоры страхования животных заключаются с владельцами зарегистрированных в клубе,
+питомнике породистых собак (охотничьих, служебно-спортивных, комнатно-декоративных пород) и
+породистых кошек.
+На страхование принимается здоровые, вакцинированные животные в возрасте от 3 месяцев до 10
+лет.
+Страхование производится на случай гибели, падежа, усыпления, утраты животного в результате
+следующих событий:
+• Болезней (инфекционных, в том числе: чума, парвовирусный энтерит, бешенство, лептоспироз;
+инвазионных, незаразных).
+• Стихийных бедствий: наводнение, буря, ураган, ливень, град, обвал, землетрясение, удар
+молнии, буран.
+• Пожара (в том числе мероприятий по пожаротушению).
+• Несчастных случаев: взрыв, действие электрического тока, солнечный или тепловой удар,
+переохлаждение, удушье (асфиксия), отравление ядовитыми травами и веществами, укус змей
+или ядовитых насекомых, нападение зверей и собак, утопление, попадание под транспортное
+средство, травматические повреждения.
+• Противоправных действий третьих лиц (кража, грабеж, разбой).
+Вам не нужно заполнять заявление, но, тем не менее, мы проводим обязательный осмотр животного
+с оформлением акта осмотра.
+Для заключения договора страхования владельцу животного необходимо предоставить:
+• паспорт владельца животного;
+• родословную (щенячье свидетельство) животного;
+• ветеринарный паспорт животного; </p>
+				               
 				            </div>
 				            <!-- START COMMENTS -->
 				            <div id="comments">

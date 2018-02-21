@@ -17,9 +17,5 @@ class Article extends Model
 		return $this->belongsTo('Corp\Category');
 	}
 	
-	/* public function comments()
-    {
-        return $this->hasMany('Corp\Comment');
-    }	 */
 	
 }

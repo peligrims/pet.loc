@@ -27,7 +27,7 @@
 												</form>							    
 
 
-								<!--<input class="s-chip" name="c-chip" type="text" value="Введите номер микрочипа">-->   
+								
 				             </div>
 							</div>
 				            

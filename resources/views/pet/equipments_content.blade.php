@@ -10,10 +10,24 @@
 				                    	
 				                    });
 				                </script>-->
+								<h2>Оборудование для идентификации животных.</h2>
+				            <div class="hentry group">
+				                <p>Электронное мечение животных заключается в идентификации животных с помощью радиочастотных устройств (микрочипов, болюсов, бирок), содержащих уникальный цифровой код. 
+
+Электронная идентификация способствует обеспечению всестороннего зоотехнического и ветеринарного контроля за поголовьем как внутри страны, так и при экспорте – импорте животных и продуктов животноводства.
+</p>
+				                <p style="text-align: center"><a href="images/features/download.jpg"><img class="aligncenter" src="images/features//download.jpg" alt="" /></a></p>
+				                
+				            </div>
+								
+								
+
+								
+								
 				                
 				                @if($equipments)
 
-				                <div id="portfolio" class="portfolio-big-image">
+				                <div id="portfolio" class="the-content group">
 				                    
 				                   @foreach($equipments as $equipment) 
 				                   

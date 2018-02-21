@@ -10,9 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-DB::listen(function($query) {
+/* DB::listen(function($query) {
     var_dump($query->sql, $query->bindings);
-});
+}); */
 
 
 Route::resource('/','IndexController',[
@@ -76,9 +76,9 @@ Route::resource('сlinics','ClinicsController',[
 													]);
 Route::resource('animals','AnimalsController',[
  
-													'animals' => [
+													'parameters' => [
 
-														'animals' => 'id'
+														'animals' => 'alias'
 
 													]
 
@@ -86,7 +86,7 @@ Route::resource('animals','AnimalsController',[
 Route::get('searchSimple', 'SearchController@index')->name('searchSimple');
 
 
-Route::resource('test','TestController',[
+/* Route::resource('test','TestController',[
  
 													'test' => [
 
@@ -95,7 +95,7 @@ Route::resource('test','TestController',[
 													]
 
 													]);
-													
+													 */
 
 
 

@@ -8,7 +8,10 @@ use Corp\Http\Requests;
 
 use Corp\Repositories\SlidersRepository;
 use Corp\Repositories\PortfoliosRepository;
+use Corp\Repositories\AnimalsRepository;
 use Corp\Repositories\ArticlesRepository;
+use Corp\Animal;
+use DB;
 
 
 use Config;
@@ -16,13 +19,14 @@ use Config;
 class IndexController extends SiteController
 {
     
-    public function __construct(SlidersRepository $s_rep, PortfoliosRepository $p_rep, ArticlesRepository $a_rep) {
+    public function __construct(SlidersRepository $s_rep, PortfoliosRepository $p_rep, ArticlesRepository $a_rep, AnimalsRepository $an_rep) {
     	
     	parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
     	
     	$this->s_rep = $s_rep;
     	$this->p_rep = $p_rep;
     	$this->a_rep = $a_rep;
+		$this->an_rep = $an_rep;
     	
     	$this->bar = 'right';
     	
@@ -49,26 +53,31 @@ class IndexController extends SiteController
         $sliders = view(env('THEME').'.slider')->with('sliders',$sliderItems)->render();
         $this->vars = array_add($this->vars,'sliders',$sliders);
         
-        $this->keywords = 'Home Page';
-		$this->meta_desc = 'Home Page';
-		$this->title = 'Home Page';
+        $this->keywords = 'Чипирование животных';
+		$this->meta_desc = 'Чипирование животных';
+		$this->title = 'Чипирование животных';
 		
+     		
+		$animals = $this->getAnimals();
+		
+		
+		
+		$this->contentRightBar = view(env('THEME').'.indexBar')->with(['animals' => $animals])->render();
         
-        $articles = $this->getArticles();
-        
-       // dd($articles);
-        
-        $this->contentRightBar = view(env('THEME').'.indexBar')->with('articles',$articles)->render();
-        
-        
+		        
         return $this->renderOutput();
     }
     
-    protected function getArticles() {
-    	$articles = $this->a_rep->get(['title','created_at','img','alias'],Config::get('settings.home_articles_count'));
-    	
-    	return $articles;
-    }	
+    protected function getAnimals() {
+		
+		$animals=Animal::select(['id','chip','date_server','nick','clinic','o_name','image'])->limit(3)->get();
+ 		
+    	return $animals;
+    }
+	
+	
+	
+	
     
     protected function getPortfolio() {
 		
@@ -123,10 +132,23 @@ class IndexController extends SiteController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+   public function show() {
+		
+		
+		$animal = $this->a_rep->addAnimals;
+		
+		$animals = $this->getAnimals(config('settings.other_animals'), FALSE);
+		
+
+		
+		
+		
+		$content = view(env('THEME').'.animals_content')->with(['animal' => $animal,'animals' => $animals])->render();
+		$this->vars = array_add($this->vars,'content',$content);
+
+        
+		return $this->renderOutput();
+	}
 
     /**
      * Show the form for editing the specified resource.
