@@ -104,14 +104,32 @@
                         
                         <!-- START LOGO -->
                         <div id="logo" class="group">
-                            <a href="index.html" title="Pets Idetity"><img src="{{ asset(env('THEME')) }}/images/logo1.jpg" title="Pink Rio" alt="Pink Rio" /></a>
+                            <a href="/" title="Pets Idetity"><img src="{{ asset(env('THEME')) }}/images/logo1.jpg" title="Pet loc" alt="Pet loc" /></a>
                         </div>
                         <!-- END LOGO -->
                         
                         <div id="sidebar-header" class="group">
                             <div class="widget-first widget yit_text_quote">
                                 <blockquote class="text-quote-quote">&#8220;Зарегистрируйте своего любимца для жизни&#8221;</blockquote>
-                                <cite class="text-quote-author">Идентификация животных</cite>
+                                <div class="achip">
+												<form action="{{route('searchSimple')}}" method="GET" class="search-simple">
+													<div class="row">
+														<div class="col-xs-10">
+															<div class="form-group">
+																<div class="col-12 col-md-9 mb-2 mb-md-0">
+																<input type="text" class="form-control" name="q" value="{{ old('q') }}" required>
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-2">
+															<div class="form-group">
+																<input class="btn   btn-beetle-bus-goes-jamba-juice-4 btn-more-link"  type="submit" value="Искать по номеру чипа"</a> 
+															</div>
+														</div>
+													</div>
+												</form>							    
+
+											</div>
                             </div>
                         </div>
                         <div class="clearer"></div>

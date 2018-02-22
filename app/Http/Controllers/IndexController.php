@@ -8,6 +8,7 @@ use Corp\Http\Requests;
 
 use Corp\Repositories\SlidersRepository;
 use Corp\Repositories\PortfoliosRepository;
+use Corp\Repositories\PartnersRepository;
 use Corp\Repositories\AnimalsRepository;
 use Corp\Repositories\ArticlesRepository;
 use Corp\Animal;
@@ -19,12 +20,12 @@ use Config;
 class IndexController extends SiteController
 {
     
-    public function __construct(SlidersRepository $s_rep, PortfoliosRepository $p_rep, ArticlesRepository $a_rep, AnimalsRepository $an_rep) {
+    public function __construct(SlidersRepository $s_rep, PartnersRepository $pa_rep, ArticlesRepository $a_rep, AnimalsRepository $an_rep) {
     	
     	parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
     	
     	$this->s_rep = $s_rep;
-    	$this->p_rep = $p_rep;
+    	$this->pa_rep = $pa_rep;
     	$this->a_rep = $a_rep;
 		$this->an_rep = $an_rep;
     	
@@ -43,9 +44,9 @@ class IndexController extends SiteController
     {
         //
         
-        $portfolios = $this->getPortfolio();
+        $partners = $this->getPartner();
         
-        $content = view(env('THEME').'.content')->with('portfolios',$portfolios)->render();
+        $content = view(env('THEME').'.content')->with('partners',$partners)->render();
         $this->vars = array_add($this->vars,'content', $content);
         
         $sliderItems = $this->getSliders();
@@ -75,7 +76,13 @@ class IndexController extends SiteController
     	return $animals;
     }
 	
-	
+	protected function getPartner() {
+		
+		$partner = $this->pa_rep->get('*',Config::get('settings.home_port_count'));
+		
+		return $partner;
+		
+	}
 	
 	
     
