@@ -114,13 +114,15 @@ Route::get('logout','Auth\AuthController@logout');
 
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], function() {
 	Route::get('/',['uses' => 'Admin\IndexController@index','as' => 'adminIndex']);
-	//Route::resource('articles','Admin\ArticlesController');
-	Route::resource('animals','Admin\AnimalsController');
-	/* 
-	Route::resource('/permissions','Admin\AnimalsController');
-	Route::resource('/users','Admin\UsersController');
-	Route::resource('/menus','Admin\MenusController'); */
-
+	
+	Route::resource('/animals','Admin\AnimalsController');
+	Route::resource('/clinics','Admin\ClinicsController');
+	Route::resource('/breeds','Admin\BreedsController');
+	Route::resource('/owners','Admin\OwnersController');
+	Route::resource('/partners','Admin\PartnersController');
+	//Route::resource('/users','Admin\UsersController');
+	
+    //Route::resource('/permissions','Admin\AnimalsController');
 	
 });
 

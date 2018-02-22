@@ -20,5 +20,20 @@ public function addAnimals() {
 
 	$animals->image = json_decode($animals->image);	
 	}
-}
+public function deleteAnimals($animal) {
+		
+		
+		
+		$animal->delete();
+		
+		if($animal->delete()) {
+			return ['status' => 'Животное удалено'];	
+		}
+	}
+	
+	
+	
+	
+	
+	}
 ?>

@@ -71,9 +71,15 @@ class AdminController extends \Corp\Http\Controllers\Controller
 			
 			
 			$menu->add('Животные',  array('route'  => 'admin.animals.index'));
-			/* $menu->add('Меню',  array('route'  => 'admin.menus.index'));
-			$menu->add('Пользователи',  array('route'  => 'admin.users.index'));
-			$menu->add('Привилегии',  array('route'  => 'admin.permissions.index')); */
+			$menu->add('Клиники',  array('route'  => 'admin.clinics.index'));
+			$menu->add('Породы',  array('route'  => 'admin.breeds.index'));
+			$menu->add('Влалельцы',  array('route'  => 'admin.owners.index'));
+			$menu->add('Партеры',  array('route'  => 'admin.partners.index'));
+			//$menu->add('Пользователи',  array('route'  => 'admin.users.index'));
+			
+			
+			
+			//$menu->add('Привилегии',  array('route'  => 'admin.permissions.index')); 
 			
 			
 		});

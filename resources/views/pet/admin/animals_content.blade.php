@@ -19,19 +19,23 @@
 				                        </thead>
 				                        <tbody>
 				                            
-											@foreach($animals as $article)
+											@foreach($animals as $animal)
 											<tr>
-				                                <td class="align-left">{{$article->id}}</td>
-				                                <td class="align-left">{{$article->chip}}</td>
-				                                <td class="align-left">{{$article->nick}}</td>
-												<td class="align-left">{{$article->sex}}</td>
-												<td class="align-left">{{$article->kind}}</td>
-												<td class="align-left">{{$article->breed}}</td>
-												<td class="align-left">{{$article->clinic->title}}</td>
-												<td class="align-left">{{$article->birthday}}</td>
+				                                <td class="align-left">{{$animal->id}}</td>
+				                                <td class="align-left">{{$animal->chip}}</td>
+				                                <td class="align-left">{{$animal->nick}}</td>
+												<td @if ($animal->sex == '1')
+												  <p> Самка</p>
+													@else
+												  <p> Самец</p>
+												@endif</td>
+												<td class="align-left">{{$animal->kinds->title}}</td>
+												<td class="align-left">{{$animal->breeds->title}}</td>
+												<td class="align-left">{{$animal->clinics->title}}</td>
+												<td class="align-left">{{$animal->birthday}}</td>
 												
 				                                <td>
-												{!! Form::open(['url' => route('admin.animals.destroy',['animals'=>$article->alias]),'class'=>'form-horizontal','method'=>'POST']) !!}
+												{!! Form::open(['url' => route('admin.animals.destroy',['animals'=>$animal->id]),'class'=>'form-horizontal','method'=>'POST']) !!}
 												    {{ method_field('DELETE') }}
 												    {!! Form::button('Удалить', ['class' => 'btn btn-french-5','type'=>'submit']) !!}
 												{!! Form::close() !!}
@@ -43,7 +47,7 @@
 				                    </table>
 				                </div>
 								
-								{!! HTML::link(route('admin.animals.create'),'Добавить  материал',['class' => 'btn btn-the-salmon-dance-3']) !!}
+								{!! Html::link(route('admin.animals.create'),'Добавить  материал',['class' => 'btn btn-the-salmon-dance-3']) !!}
                                 
 				                
 				            </div>

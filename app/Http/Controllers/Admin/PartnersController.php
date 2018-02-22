@@ -4,12 +4,12 @@ namespace Corp\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Corp\Http\Controllers\Controller;
-use Corp\Repositories\BreedsRepository;
-use Corp\Breed;
+use Corp\Repositories\PartnersRepository;
+use Corp\Partner;
 
-class BreedsController extends AdminController
+class PartnersController extends AdminController
 {
-     public function __construct(BreedsRepository $b_rep) {
+    public function __construct(PartnersRepository $p_rep) {
 		
 		//parent::__construct();
 		
@@ -17,41 +17,40 @@ class BreedsController extends AdminController
 			//abort(403);
 		} */
 		
-		$this->b_rep = $b_rep;
+		$this->p_rep = $p_rep;
 		
 		
-		$this->template = env('THEME').'.admin.breeds';
+		$this->template = env('THEME').'.admin.partners';
 		
-		}
+	}
+	
+	
+	
     public function index()
     {
-         $this->title = 'Породы животных';
+         $this->title = 'Партнеры проекта';
         
-        $breeds = $this->getBreeds();
+        $partners = $this->getPartners();
 	
-        $this->content = view(env('THEME').'.admin.breeds_content')->with('breeds',$breeds)->render();
+        $this->content = view(env('THEME').'.admin.partners_content')->with('partners',$partners)->render();
      
       
         return $this->renderOutput(); 
     }
-	public function getBreeds($take = FALSE,$paginate = TRUE)
+
+     public function getPartners($take = FALSE,$paginate = TRUE)
     {
        
-		$breeds = $this->b_rep->get('*',$take,$paginate);
+		$partners = $this->p_rep->get('*',$take,$paginate);
 		/* if($animals) {
 			$animals->load('clinics');
 		
 		
 		
 		} */
-		return $breeds;
+		return $partners;
 	}
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+	
     public function create()
     {
         //

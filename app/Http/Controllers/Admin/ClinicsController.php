@@ -4,24 +4,48 @@ namespace Corp\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Corp\Http\Controllers\Controller;
+use Corp\Repositories\ClinicsRepository;
+use Corp\Animal;
+use Corp\Clinic;
 
-class ClinicsController extends Controller
+class ClinicsController extends AdminController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(ClinicsRepository $c_rep) {
+		
+		//parent::__construct();
+		
+		/* if(Gate::denies('VIEW_ADMIN_ARTICLES')) {
+			//abort(403);
+		} */
+		
+		$this->c_rep = $c_rep;
+		
+		
+		$this->template = env('THEME').'.admin.clinics';
+		
+	}
     public function index()
     {
-        //
+        $this->title = 'Клиники для чипирования';
+        
+        $clinics = $this->getClinics();
+	
+        $this->content = view(env('THEME').'.admin.clinics_content')->with('clinics',$clinics)->render();
+     
+      
+        return $this->renderOutput(); 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function getClinics($take = FALSE,$paginate = TRUE)
+	
+	{
+       
+		$clinics = $this->c_rep->get('*',$take,$paginate);
+		
+		return $clinics;
+	}
+	 
+	 
     public function create()
     {
         //

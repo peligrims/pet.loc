@@ -5,7 +5,7 @@
 		'home_port_count' => 5,
 		'theme' => env('THEME','default'),
 		'home_equipments_count' => 1,
-		'paginate' => 2,
+		'paginate' => 10,
 		'recent_comments' => 3,
 		'recent_portfolios' => 3,
 		'recent_animals' => 3,

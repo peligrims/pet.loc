@@ -5,13 +5,14 @@ namespace Corp\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Corp\Http\Controllers\Controller;
 use Corp\Repositories\AnimalsRepository;
+use Corp\Repositories\ClinicsRepository;
 use Corp\Animal;
 use Corp\Clinic;
 
-class AnimalsController extends Controller
+class AnimalsController extends AdminController
 {
     
-     public function __construct(AnimalsRepository $a_rep) {
+     public function __construct(AnimalsRepository $an_rep, ClinicsRepository $cl_rep) {
 		
 		//parent::__construct();
 		
@@ -19,12 +20,14 @@ class AnimalsController extends Controller
 			//abort(403);
 		} */
 		
-		$this->a_rep = $a_rep;
+		$this->an_rep = $an_rep;
+		$this->cl_rep = $cl_rep;
+		
 		
 		
 		$this->template = env('THEME').'.admin.animals';
 		
-	}
+		}
     
     /**
      * Display a listing of the resource.
@@ -34,15 +37,14 @@ class AnimalsController extends Controller
     public function index()
     {
         
-			
-		
 		
         $this->title = 'Зарегистрированные животные';
         
         $animals = $this->getAnimals();
-		  
-        $this->content = view(env('THEME').'.admin.animals_content')->with('animals',$animals)->render();
-       
+        $clinics = $this->getClinics();
+		//$clinics=$animals->clinics;
+        $this->content = view(env('THEME').'.admin.animals_content')->with(['animals' => $animals,'clinics' => $clinics])->render();
+     
       
         return $this->renderOutput(); 
         
@@ -50,25 +52,36 @@ class AnimalsController extends Controller
     }
     
     
-     public function getAnimals()
+     public function getAnimals($take = FALSE,$paginate = TRUE)
     {
        
-        
-        
-      
-		$animals = $this->a_rep->get(['id','clinic','chip','nick','kind','breed','sex','birthday'],$take,$paginate);
-		if($animals) {
-			$animals->load('clinic');
+		$animals = $this->an_rep->get('*',$take,$paginate);
+		 if($animals) {
+			$animals->load('clinics');
+		
+		
+		
 		} 
-		
 		return $animals;
-
-
-
+	}
+	
+	 public function getClinics($take = FALSE,$paginate = TRUE)
+    {
+       
+		$clinics = $this->cl_rep->get('*',$take,$paginate);
+		/* if($animals) {
+			$animals->load('clinics');
 		
-        
-    }
-
+		
+		
+		} */ 
+		return $clinics;
+	}
+	
+	
+	
+	
+	
     /**
      * Show the form for creating a new resource.
      *
@@ -76,28 +89,12 @@ class AnimalsController extends Controller
      */
     public function create()
     {
-		/* if(Gate::denies('save', new \Corp\Article)) {
-			abort(403);
-		}
 		
 		$this->title = "Добавление нового животного";
 		
-		$categories = Category::select(['title','alias','parent_id','id'])->get();
+		$this->content = view(env('THEME').'.admin.animal_create_content')->render();
 		
-		$lists = array();
-		
-		foreach($categories as $category) {
-			if($category->parent_id == 0) {
-				$lists[$category->title] = array();
-			}
-			else {
-				$lists[$categories->where('id',$category->parent_id)->first()->title][$category->id] = $category->title;    
-			}
-		}
-		
-		$this->content = view(env('THEME').'.admin.articles_create_content')->with('categories', $lists)->render();
-		
-		return $this->renderOutput(); */
+		return $this->renderOutput();
     }
 
     /**
@@ -141,7 +138,7 @@ class AnimalsController extends Controller
 		
 		
 		//
-        $article = Article::where('alias', $alias)->first();
+        $animal = Animal::where('id', $id)->first();
 		  // dd($article);
         if(Gate::denies('edit', new Article)) {
 			abort(403);
@@ -200,11 +197,11 @@ class AnimalsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   public function destroy($alias)
+   public function destroy($id)
     {
         //
-        $article = Article::where('alias', $alias)->first();
-        $result = $this->a_rep->deleteArticle($article);
+        $animal = Animal::where('id', $id)->first();
+        $result = $this->an_rep->deleteAnimals($animal);
 		
 		if(is_array($result) && !empty($result['error'])) {
 			return back()->with($result);

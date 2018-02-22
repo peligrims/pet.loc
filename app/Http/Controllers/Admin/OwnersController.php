@@ -4,17 +4,37 @@ namespace Corp\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Corp\Http\Controllers\Controller;
+use Corp\Repositories\OwnersRepository;
+use Corp\Owner;
 
-class OwnersController extends Controller
+
+class OwnersController extends AdminController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+	
+	public function __construct(OwnersRepository $o_rep) {
+		
+		//parent::__construct();
+		
+		/* if(Gate::denies('VIEW_ADMIN_ARTICLES')) {
+			//abort(403);
+		} */
+		
+		$this->o_rep = $o_rep;
+		
+		
+		$this->template = env('THEME').'.admin.owners';
+		
+	}
     public function index()
     {
-        //
+        $this->title = 'Владельцы животных';
+        
+        $owners = $this->getOwners();
+	
+        $this->content = view(env('THEME').'.admin.owners_content')->with('owners',$owners)->render();
+     
+      
+        return $this->renderOutput(); 
     }
 
     /**
@@ -22,7 +42,22 @@ class OwnersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+   
+
+
+	public function getOwners($take = FALSE,$paginate = TRUE)
+    {
+       
+		$owners = $this->o_rep->get('*',$take,$paginate);
+		/* if($animals) {
+			$animals->load('clinics');
+		
+		
+		
+		} */
+		return $owners ;
+	}
+   public function create()
     {
         //
     }
