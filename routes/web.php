@@ -120,7 +120,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 	Route::resource('/breeds','Admin\BreedsController');
 	Route::resource('/owners','Admin\OwnersController');
 	Route::resource('/partners','Admin\PartnersController');
-	//Route::resource('/users','Admin\UsersController');
+	Route::resource('/equipments','Admin\EquipmentsController');
+	Route::resource('/users','Admin\UsersController');
 	
     //Route::resource('/permissions','Admin\AnimalsController');
 	

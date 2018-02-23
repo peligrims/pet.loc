@@ -75,7 +75,8 @@ class AdminController extends \Corp\Http\Controllers\Controller
 			$menu->add('Породы',  array('route'  => 'admin.breeds.index'));
 			$menu->add('Влалельцы',  array('route'  => 'admin.owners.index'));
 			$menu->add('Партеры',  array('route'  => 'admin.partners.index'));
-			//$menu->add('Пользователи',  array('route'  => 'admin.users.index'));
+			$menu->add('Оборудование',  array('route'  => 'admin.equipments.index'));
+			$menu->add('Пользователи',  array('route'  => 'admin.users.index'));
 			
 			
 			

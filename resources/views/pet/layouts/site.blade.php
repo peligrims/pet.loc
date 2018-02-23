@@ -117,7 +117,7 @@
 														<div class="col-xs-10">
 															<div class="form-group">
 																<div class="col-12 col-md-9 mb-2 mb-md-0">
-																<input type="text" class="form-control" name="q" value="{{ old('q') }}" required>
+																<input type="text" placeholder=" введите номер чипа" class="form-control" name="q" value="{{ old('q') }}" required>
 																</div>
 															</div>
 														</div>

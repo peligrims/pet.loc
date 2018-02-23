@@ -22,7 +22,8 @@
 											@foreach($animals as $animal)
 											<tr>
 				                                <td class="align-left">{{$animal->id}}</td>
-				                                <td class="align-left">{{$animal->chip}}</td>
+												<td class="align-left">{!! Html::link(route('admin.animals.edit',['animals'=>$animal->chip]),$animal->chip) !!}</td>
+												
 				                                <td class="align-left">{{$animal->nick}}</td>
 												<td @if ($animal->sex == '1')
 												  <p> Самка</p>

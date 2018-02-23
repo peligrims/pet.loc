@@ -132,36 +132,18 @@ class AnimalsController extends AdminController
      * @param  int  $alias
      * @return \Illuminate\Http\Response
      */
-    public function edit($alias)
+    public function edit($chip)
     {
-        //dd($article);
+       
+        $animal = Animal::where('chip', $chip)->first();
+		  
+		$animal->image = json_decode($animal->image);
 		
 		
-		//
-        $animal = Animal::where('id', $id)->first();
-		  // dd($article);
-        if(Gate::denies('edit', new Article)) {
-			abort(403);
-		}
-			
-		
-		$categories = Category::select(['title','alias','parent_id','id'])->get();
 		
 		
-		$article->img = json_decode($article->img);
-		
-		$lists = array();
-		
-		foreach($categories as $category) {
-			if($category->parent_id == 0) {
-				$lists[$category->title] = array();
-			}
-			else {
-				$lists[$categories->where('id',$category->parent_id)->first()->title][$category->id] = $category->title;    
-				}
-			}
-		$this->title = 'Реадактирование материала - '. $article->title;
-		$this->content = view(env('THEME').'.admin.articles_create_content')->with(['categories' =>$lists, 'article' => $article])->render();
+		$this->title = 'Реадактирование карты животного - '. $animal->title;
+		$this->content = view(env('THEME').'.admin.animal_create_content')->with(['animal' => $animal])->render();
 			
 			return $this->renderOutput();
 		
