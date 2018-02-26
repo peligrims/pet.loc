@@ -108,8 +108,18 @@ class BreedsController extends AdminController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+     public function destroy($id)
     {
         //
+        $breed = Breed::where('id', $id)->first();
+        $result = $this->b_rep->deleteBreeds($breed);
+		
+		if(is_array($result) && !empty($result['error'])) {
+			return back()->with($result);
+		}
+		
+		return redirect('/admin')->with($result);
+        
+        
     }
 }

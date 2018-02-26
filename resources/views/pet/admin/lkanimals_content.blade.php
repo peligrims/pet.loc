@@ -1,6 +1,5 @@
-	
 @if($animals)
-		<div id="content-page" class="content group">
+	<div id="content-page" class="content group">
 				            <div class="hentry group">
 				                <h2>Редактирование таблици Животных</h2>
 				                <div class="short-table white">
@@ -14,7 +13,7 @@
 				                                <th>Пол</th>
 				                                <th>Вид животного</th>
 				                                <th>Порода</th>
-												
+												<th>Клиника</th>
 												<th>Дата рождения</th>
 				                            </tr>
 				                        </thead>
@@ -33,48 +32,29 @@
 												@endif</td>
 												<td class="align-left">{{$animal->kinds->title}}</td>
 												<td class="align-left">{{$animal->breeds->title}}</td>
-											
+												<td class="align-left">{{$animal->clinic}}</td>
 												<td class="align-left">{{$animal->birthday}}</td>
 												
 				                                <td>
-												{!! Form::open(['url' => route('admin.animals.destroy',['animals'=>$animal->id]),'class'=>'form-horizontal','method'=>'POST']) !!}
+												{!! Form::open(['url' => route('admin.lk.destroy',['animals'=>$animal->id]),'class'=>'form-horizontal','method'=>'POST']) !!}
 												    {{ method_field('DELETE') }}
 												    {!! Form::button('Удалить', ['class' => 'btn btn-french-5','type'=>'submit']) !!}
 												{!! Form::close() !!}
 												</td>
 											 </tr>	
 											@endforeach	
-										
-
-										
 				                           
 				                        </tbody>
 				                    </table>
 				                </div>
-								<div class="general-pagination group">
-				            
-											@if($animals->lastPage() > 1) 
-												
-												@if($animals->currentPage() !== 1)
-													<a href="{{ $animals->url(($animals->currentPage() - 1)) }}">{{ Lang::get('pagination.previous') }}</a>
-												@endif
-												
-												
-												
-												@if($animals->currentPage() !== $animals->lastPage())
-													<a href="{{ $animals->url(($animals->currentPage() + 1)) }}">{{ Lang::get('pagination.next') }}</a>
-												@endif
-												
-											
-											@endif
-								</div>
-								{!! Html::link(route('admin.animals.create'),'Добавить  материал',['class' => 'btn btn-the-salmon-dance-3']) !!}
+								
+								{!! Html::link(route('admin.lk.create'),'Добавить  материал',['class' => 'btn btn-the-salmon-dance-3']) !!}
                                 
 				                
 				            </div>
-			@else
-			
-			{!! Lang::get('ru.articles_no') !!}
-			
-		@endif	       	            
-		</div>
+				            <!-- START COMMENTS -->
+				            <div id="comments">
+				            </div>
+				            <!-- END COMMENTS -->
+				        </div>
+@endif

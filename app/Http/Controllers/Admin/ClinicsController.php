@@ -104,6 +104,14 @@ class ClinicsController extends AdminController
      */
     public function destroy($id)
     {
-        //
+       $clinic=Clinic::where('id', $id)->first();
+        //dd($clinic);
+		$result = $this->c_rep->deleteClinics($clinic);
+		
+		if(is_array($result) && !empty($result['error'])) {
+			return back()->with($result);
+		}
+		
+		return redirect('/admin')->with($result);
     }
 }

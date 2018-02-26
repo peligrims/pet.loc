@@ -4,6 +4,7 @@ namespace Corp\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Corp\Http\Controllers\Controller;
+use Corp\Http\Request\AnimalRequest;
 use Corp\Repositories\AnimalsRepository;
 use Corp\Repositories\ClinicsRepository;
 use Corp\Animal;
@@ -36,14 +37,16 @@ class AnimalsController extends AdminController
      */
     public function index()
     {
-        
-		
         $this->title = 'Зарегистрированные животные';
         
         $animals = $this->getAnimals();
-        $clinics = $this->getClinics();
-		//$clinics=$animals->clinics;
-        $this->content = view(env('THEME').'.admin.animals_content')->with(['animals' => $animals,'clinics' => $clinics])->render();
+		
+		//dd($animals);
+		/* foreach($animals as $animal){
+		
+	dd($animal->clin->title);
+		}  */
+        $this->content = view(env('THEME').'.admin.animals_content')->with(['animals' => $animals])->render();
      
       
         return $this->renderOutput(); 
@@ -56,27 +59,13 @@ class AnimalsController extends AdminController
     {
        
 		$animals = $this->an_rep->get('*',$take,$paginate);
-		 if($animals) {
-			$animals->load('clinics');
 		
-		
-		
-		} 
 		return $animals;
+
+	
 	}
 	
-	 public function getClinics($take = FALSE,$paginate = TRUE)
-    {
-       
-		$clinics = $this->cl_rep->get('*',$take,$paginate);
-		/* if($animals) {
-			$animals->load('clinics');
-		
-		
-		
-		} */ 
-		return $clinics;
-	}
+	
 	
 	
 	
@@ -103,10 +92,10 @@ class AnimalsController extends AdminController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ArticleRequest $request)
+    public function store(AnimalRequest $request)
     {
         //
-		$result = $this->a_rep->addArticle($request);
+		$result = $this->an_rep->addAnimal($request);
 		
 		if(is_array($result) && !empty($result['error'])) {
 			return back()->with($result);
@@ -160,10 +149,10 @@ class AnimalsController extends AdminController
      */
      
      //   articles -> Article  
-    public function update(ArticleRequest $request,$alias)
+    public function update(AnimalRequest $request,$chip)
     {
-       $article = Article::where('alias', $alias)->first();
-	   $result = $this->a_rep->updateArticle($request, $article);
+       $animal = Animal::where('chip', $chip)->first();
+	   $result = $this->an_rep->updateAnimal($request, $animal);
 		
 		if(is_array($result) && !empty($result['error'])) {
 			return back()->with($result);

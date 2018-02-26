@@ -108,9 +108,30 @@
                         </div>
                         <!-- END LOGO -->
                         
+						
+						<body>
+						 
+					
+					</body>
+						
+					
+						
                         <div id="sidebar-header" class="group">
                             <div class="widget-first widget yit_text_quote">
-                                <blockquote class="text-quote-quote">&#8220;Зарегистрируйте своего любимца для жизни&#8221;</blockquote>
+                               <div class="text-quote-quote">
+									@if (Route::has('login'))
+									<div class="top-right links">
+									@auth
+									<a href="{{ route('login') }}">Login</a>
+									
+									@endauth
+									</div>
+						@endif
+					</div>
+
+
+
+							   <blockquote class="text-quote-quote">&#8220;Зарегистрируйте своего любимца для жизни&#8221;</blockquote>
                                 <div class="achip">
 												<form action="{{route('searchSimple')}}" method="GET" class="search-simple">
 													<div class="row">

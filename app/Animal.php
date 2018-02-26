@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Animal extends Model
 {
-    public function clinics ()
+    public function clinica ()
 	{
 		return $this->hasOne('Corp\Clinic', 'id', 'clinic');
 	}

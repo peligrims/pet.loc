@@ -52,7 +52,7 @@
 				                    <h1>Данные о животном</h1>									
 												<p><b>Кличка животного: </b> {{$animals->nick }}</p>
 				                                <p><b>Номер чипа: </b> {{$animals->chip }}</p>
-												<p><b>Место чипирования: </b> {{$clinics->title}}</p>
+												<p><b>Место чипирования: </b> {{$animals->clinic}}</p>
 												<p><b>Окрас животного</b> {{$animals->color}}</p>
 												<p><b>Вид животного</b> {{$animals->kinds->title}}</p>
 												<p><b>Порода</b> {{$animals->breeds->title}}</p>

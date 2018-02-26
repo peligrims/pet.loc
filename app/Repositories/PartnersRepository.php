@@ -20,6 +20,32 @@ class PartnersRepository extends Repository {
 		return $partner;
 	}
 	
+	
+	public function addPartner($request) {
+
+	$data = $request->all();
+	
+	
+	$partner = new Partner;
+	$partner->title     = $request['title'];
+	$partner->text      = $request['text'];
+	$partner->url 		= $request['url'];
+	$partner->save();
+	return ['status' => 'Партнер добавлен'];
+	
+	}
+	
+	public function deletePartners($partner) {
+	
+		$partner->delete();
+		
+		if($partner->delete()) {
+				
+		}
+	return ['status' => 'Партнер удален'];
+	}
+
+	
 }
 
 ?>

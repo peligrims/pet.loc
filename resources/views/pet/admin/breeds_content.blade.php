@@ -17,10 +17,11 @@
 											@foreach($breeds as $breed)
 											<tr>
 				                                <td class="align-left">{{$breed->id}}</td>
-				                                <td class="align-left">{{$breed->kind}}</td>
-				                                <td class="align-left">{{$breed->title}}</td>
+				                                <td class="align-left">{{$breed->kinds->title}}</td>
+												<td class="align-left">{!! Html::link(route('admin.breeds.edit',['breeds'=>$breed->title]),$breed->title) !!}</td>
+				                                
 											<td>
-												{!! Form::open(['url' => route('admin.breeds.destroy',['breed'=>$breed->alias]),'class'=>'form-horizontal','method'=>'POST']) !!}
+												{!! Form::open(['url' => route('admin.breeds.destroy',['breed'=>$breed->id]),'class'=>'form-horizontal','method'=>'POST']) !!}
 												    {{ method_field('DELETE') }}
 												    {!! Form::button('Удалить', ['class' => 'btn btn-french-5','type'=>'submit']) !!}
 												{!! Form::close() !!}
@@ -31,8 +32,24 @@
 				                        </tbody>
 				                    </table>
 				                </div>
-								
-								{!! Html::link(route('admin.breeds.create'),'Добавить  материал',['class' => 'btn btn-the-salmon-dance-3']) !!}
+								<div class="general-pagination group">
+				            
+											@if($breeds->lastPage() > 1) 
+												
+												@if($breeds->currentPage() !== 1)
+													<a href="{{ $breeds->url(($breeds->currentPage() - 1)) }}">{{ Lang::get('pagination.previous') }}</a>
+												@endif
+												
+												
+												
+												@if($breeds->currentPage() !== $breeds->lastPage())
+													<a href="{{ $breeds->url(($breeds->currentPage() + 1)) }}">{{ Lang::get('pagination.next') }}</a>
+												@endif
+												
+											
+											@endif
+								</div>
+								{!! Html::link(route('admin.breeds.create'),'Добавить  породу',['class' => 'btn btn-the-salmon-dance-3']) !!}
                                 
 				                
 				            </div>

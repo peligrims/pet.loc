@@ -19,10 +19,20 @@ use Config;
 
 class IndexController extends SiteController
 {
+				
+			
     
-    public function __construct(SlidersRepository $s_rep, PartnersRepository $pa_rep, ArticlesRepository $a_rep, AnimalsRepository $an_rep) {
+	
+	
+	
+	
+	public function __construct(SlidersRepository $s_rep, PartnersRepository $pa_rep, ArticlesRepository $a_rep, AnimalsRepository $an_rep) {
     	
-    	parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
+    	
+			
+		
+		
+		parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
     	
     	$this->s_rep = $s_rep;
     	$this->pa_rep = $pa_rep;

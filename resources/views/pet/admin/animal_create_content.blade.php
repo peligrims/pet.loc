@@ -10,7 +10,7 @@
 			<label for="name-contact-us">
 				<span class="label">Название:</span>
 				<br />
-				<span class="sublabel">Заголовок материала</span><br />
+				
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
 			{!! Form::text('title',isset($animal->title) ? $animal->title  : old('title'), ['placeholder'=>'Введите название страницы']) !!}
@@ -21,7 +21,7 @@
 			<label for="name-contact-us">
 				<span class="label">Ключевые слова:</span>
 				<br />
-				<span class="sublabel">Заголовок материала</span><br />
+				
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
 			{!! Form::text('keywords', isset($animal->keywords) ? $animal->keywords  : old('keywords'), ['placeholder'=>'Введите название страницы']) !!}
@@ -32,7 +32,7 @@
 			<label for="name-contact-us">
 				<span class="label">Мета описание:</span>
 				<br />
-				<span class="sublabel">Заголовок</span><br />
+				
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
 			{!! Form::text('meta_desc', isset($animal->meta_desc) ? $animal->meta_desc  : old('meta_desc'), ['placeholder'=>'Введите название страницы']) !!}
@@ -43,7 +43,7 @@
 			<label for="name-contact-us">
 				<span class="label">Псевдоним:</span>
 				<br />
-				<span class="sublabel">введите псевдоним</span><br />
+				
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
 			{!! Form::text('alias', isset($animal->alias) ? $animal->alias  : old('alias'), ['placeholder'=>'Введите псевдоним страницы']) !!}

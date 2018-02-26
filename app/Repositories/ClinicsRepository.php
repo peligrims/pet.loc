@@ -11,6 +11,20 @@ class ClinicsRepository extends Repository {
 		$this->model = $clinic;
 		
 	}
+	public function addClinics() {
+
+	$clinics->image = json_decode($animals->image);	
+	}
+public function deleteClinics($clinic) {
+		
+		
+		
+		$clinic->delete();
+		
+		if($clinic->delete()) {
+			return ['status' => 'Животное удалено'];	
+		}
+	}
 		
 }
 

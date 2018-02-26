@@ -11,7 +11,7 @@
 				                                <th>Заголовок</th>
 				                                <th>Ссылка</th>
 				                                <th>Текст</th>
-				                                <th>Клиент</th>
+				                              
 				                                <th>Статус</th>
 												<th>Дата создания</th>
 												<th>Изображение</th>
@@ -21,17 +21,23 @@
 				                            
 											@foreach($partners as $partner)
 											<tr>
-				                                <td class="align-left">{{$partner->id}}</td>
+				                                
+												<td class="align-left">{!! Html::link(route('admin.partners.edit',['partners'=>$partner->id]),$partner->id) !!}</td>				                           
 				                                <td class="align-left">{{$partner->title}}</td>
-				                                <td class="align-left">{{$partner->url}}</td>
+												<td class="align-left">{{$partner->url}}</td>
 												<td class="align-left">{{$partner->text}}</td>
-												<td class="align-left">{{$partner->customer}}</td>
+												
 												<td class="align-left">{{$partner->status}}</td>
 												<td class="align-left">{{$partner->created_at}}</td>
+												<td>
+													@if(isset($partner->img->mini))
+													{!! Html::image(asset(env('THEME')).'/images/partners/'.$partner->img->mini) !!}
+													@endif
+												</td>
 												
 												
 				                              <td>
-												{!! Form::open(['url' => route('admin.partners.destroy',['animals'=>$partner->alias]),'class'=>'form-horizontal','method'=>'POST']) !!}
+												{!! Form::open(['url' => route('admin.partners.destroy',['partners'=>$partner->id]),'class'=>'form-horizontal','method'=>'POST']) !!}
 												    {{ method_field('DELETE') }}
 												    {!! Form::button('Удалить', ['class' => 'btn btn-french-5','type'=>'submit']) !!}
 												{!! Form::close() !!}
@@ -42,6 +48,23 @@
 				                        </tbody>
 				                    </table>
 				                </div>
+								<div class="general-pagination group">
+				            
+											@if($partners->lastPage() > 1) 
+												
+												@if($partners->currentPage() !== 1)
+													<a href="{{ $partners->url(($partners->currentPage() - 1)) }}">{{ Lang::get('pagination.previous') }}</a>
+												@endif
+												
+												
+												
+												@if($partners->currentPage() !== $partners->lastPage())
+													<a href="{{ $partners->url(($partners->currentPage() + 1)) }}">{{ Lang::get('pagination.next') }}</a>
+												@endif
+												
+											
+											@endif
+								</div>
 								
 								{!! Html::link(route('admin.partners.create'),'Добавить  материал',['class' => 'btn btn-the-salmon-dance-3']) !!}
                                 

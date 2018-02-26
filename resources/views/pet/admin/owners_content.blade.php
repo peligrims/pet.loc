@@ -21,8 +21,9 @@
 				                            
 											@foreach($owners as $owner)
 											<tr>
-				                                <td class="align-left">{{$owner->id}}</td>
-				                                <td class="align-left">{{$owner->name}}</td>
+				                                
+				                                <td class="align-left">{!! Html::link(route('admin.owners.edit',['owners'=>$owner->id]),$owner->id) !!}</td>
+												<td class="align-left">{{$owner->name}}</td>
 				                                <td class="align-left">{{$owner->nick}}</td>
 												<td class="align-left">{{$owner->phone1}}</td>
 												<td class="align-left">{{$owner->phone2}}</td>
@@ -31,7 +32,7 @@
 												<td class="align-left">{{$owner->city}}</td>
 												
 				                                <td>
-												{!! Form::open(['url' => route('admin.owners.destroy',['animals'=>$owner->alias]),'class'=>'form-horizontal','method'=>'POST']) !!}
+												{!! Form::open(['url' => route('admin.owners.destroy',['owners'=>$owner->id]),'class'=>'form-horizontal','method'=>'POST']) !!}
 												    {{ method_field('DELETE') }}
 												    {!! Form::button('Удалить', ['class' => 'btn btn-french-5','type'=>'submit']) !!}
 												{!! Form::close() !!}
@@ -42,7 +43,23 @@
 				                        </tbody>
 				                    </table>
 				                </div>
-								
+								<div class="general-pagination group">
+				            
+											@if($owners->lastPage() > 1) 
+												
+												@if($owners->currentPage() !== 1)
+													<a href="{{ $owners->url(($owners->currentPage() - 1)) }}">{{ Lang::get('pagination.previous') }}</a>
+												@endif
+												
+												
+												
+												@if($owners->currentPage() !== $owners->lastPage())
+													<a href="{{ $owners->url(($owners->currentPage() + 1)) }}">{{ Lang::get('pagination.next') }}</a>
+												@endif
+												
+											
+											@endif
+								</div>
 								{!! Html::link(route('admin.owners.create'),'Добавить  материал',['class' => 'btn btn-the-salmon-dance-3']) !!}
                                 
 				                

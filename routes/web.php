@@ -103,14 +103,16 @@ Route::match(['get','post'],'/contacts',['uses'=>'ContactsController@index','as'
 
 
 
+Auth::routes();
+
+//Route::get('login','Auth\AuthController@showLoginForm');
+
+//Route::post('login', ['uses'=>'Auth\AuthController@login','as'=>'login']);
+
+//Route::get('logout','Auth\AuthController@logout');
 
 
-Route::get('login','Auth\AuthController@showLoginForm');
 
-Route::post('login', ['uses'=>'Auth\AuthController@login','as'=>'login']);
-
-Route::get('logout','Auth\AuthController@logout');
- 
 
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], function() {
 	Route::get('/',['uses' => 'Admin\IndexController@index','as' => 'adminIndex']);
@@ -122,12 +124,15 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 	Route::resource('/partners','Admin\PartnersController');
 	Route::resource('/equipments','Admin\EquipmentsController');
 	Route::resource('/users','Admin\UsersController');
+	Route::resource('/lk','Admin\LkController');
 	
-    //Route::resource('/permissions','Admin\AnimalsController');
+//Route::resource('/permissions','Admin\AnimalsController');
+
 	
 });
 
 
 
+ 
 
 

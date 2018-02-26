@@ -43,8 +43,8 @@ class SearchController extends SiteController
 		$animal = $request->all();
 
 		$animals=Animal::where('chip', $animal)->first();
-		
-		$clinics=$animals->clinics;
+	
+		$clinics=$animals->clinics->title;
 		$kinds=$animals->kinds;
 		$breeds=$animals->breeds;
 		$owners=$animals->owners;

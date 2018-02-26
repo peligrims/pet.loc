@@ -5,6 +5,7 @@ namespace Corp\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Corp\Http\Controllers\Controller;
 use Corp\Repositories\OwnersRepository;
+use Corp\Http\Requests\OwnerRequest;
 use Corp\Owner;
 
 
@@ -59,7 +60,11 @@ class OwnersController extends AdminController
 	}
    public function create()
     {
-        //
+        $this->title = "Добавление нового владельца";
+		
+		$this->content = view(env('THEME').'.admin.owner_create_content')->render();
+		
+		return $this->renderOutput();
     }
 
     /**
@@ -68,9 +73,15 @@ class OwnersController extends AdminController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OwnerRequest $request)
     {
-        //
+       $result = $this->o_rep->addOwner($request);
+		
+		if(is_array($result) && !empty($result['error'])) {
+			return back()->with($result);
+		}
+		
+		return redirect('/admin')->with($result);
     }
 
     /**
@@ -92,7 +103,15 @@ class OwnersController extends AdminController
      */
     public function edit($id)
     {
-        //
+        $owner = Owner::where('id', $id)->first();
+		  
+		
+		
+		$this->title = 'Реадактирование карты владельца - '. $owner->title;
+		$this->content = view(env('THEME').'.admin.owner_create_content')->with(['owner' => $owner])->render();
+			
+			return $this->renderOutput();
+		
     }
 
     /**
@@ -106,7 +125,18 @@ class OwnersController extends AdminController
     {
         //
     }
-
+    public function update(OwnerRequest $request,$id)
+    {
+       $owner = Owner::where('id', $id)->first();
+	   $result = $this->o_rep->updateOwner($request, $owner);
+		
+		if(is_array($result) && !empty($result['error'])) {
+			return back()->with($result);
+		}
+		
+		return redirect('/admin')->with($result);
+        
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -115,6 +145,13 @@ class OwnersController extends AdminController
      */
     public function destroy($id)
     {
-        //
+		$owner = Owner::where('id', $id)->first();
+        $result = $this->o_rep->deleteOwners($owner);
+		
+		if(is_array($result) && !empty($result['error'])) {
+			return back()->with($result);
+		}
+		
+		return redirect('/admin')->with($result);
     }
 }
