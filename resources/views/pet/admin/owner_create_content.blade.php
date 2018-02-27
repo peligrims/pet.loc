@@ -80,31 +80,7 @@
 			<div class="msg-error"></div>
 		</li>
 		
-		@if(isset($owner->img->path))
-			<li class="textarea-field">
-				
-				<label>
-					 <span class="label">Изображение:</span>
-				</label>
-				
-				{{ Html::image(asset(env('THEME')).'/images/owners/'.$owner->img->path,'',['style'=>'width:400px']) }}
-				{!! Form::hidden('old_image',$owner->img->path) !!}
-			
-				</li>
-		@endif
 		
-		
-		<li class="text-field">
-			<label for="name-contact-us">
-				<span class="label">Изображение:</span>
-				<br />
-				<span class="sublabel">Изображение</span><br />
-			</label>
-			<div class="input-prepend">
-				{!! Form::file('image', ['class' => 'filestyle','data-buttonText'=>'Выберите изображение','data-buttonName'=>"btn-primary",'data-placeholder'=>"Файла нет"]) !!}
-			 </div>
-			 
-		</li>
 		
 		 
 		

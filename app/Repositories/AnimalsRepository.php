@@ -13,22 +13,34 @@ class AnimalsRepository extends Repository {
 	
 	
 	}
-	
-	
-	
-public function addAnimals() {
+	public function addAnimal($request) {
 
-	$animals->image = json_decode($animals->image);	
+		$data = $request->all();
+		
+		$animal = new Animal;
+		$animal->title     = $request['title'];
+		$animal->kind     = $request['kind'];
+	
+		$animal->save();
+		return ['status' => 'Животное добавлено'];
+		
 	}
-public function deleteAnimals($animal) {
+	public function updateAnimal($request,$animals) {
+
+		$data = $request->all();
+		$animal = new Animal;
+	
+		$animal->title     = $data['title'];
 		
+		$animal->save();
+		return ['status' => 'Животное обновлено'];
 		
+	}
+	public function deleteAnimal($animal) {
 		
 		$animal->delete();
+		return ['status' => 'Порода удалена'];
 		
-		if($animal->delete()) {
-			return ['status' => 'Животное удалено'];	
-		}
 	}
 	
 }

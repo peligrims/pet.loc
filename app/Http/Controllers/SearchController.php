@@ -5,7 +5,7 @@ namespace Corp\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Corp\Http\Requests;
-use Corp\Clinics;
+
 use Corp\Repositories\AnimalsRepository;
 use Corp\Repositories\ClinicsRepository;
 use Corp\Repositories\OwnersRepository;
@@ -18,11 +18,11 @@ class SearchController extends SiteController
 {
 	
 	
-	public function __construct(AnimalsRepository $a_rep,ClinicsRepository $cl_rep, OwnersRepository $o_rep) {
+	public function __construct(AnimalsRepository $an_rep,ClinicsRepository $cl_rep, OwnersRepository $o_rep) {
     	
     	parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
     	
-    	$this->a_rep = $a_rep;
+    	$this->an_rep = $an_rep;
 		$this->cl_rep = $cl_rep;
 		$this->o_rep = $o_rep;
 		
@@ -36,21 +36,22 @@ class SearchController extends SiteController
 	public function index(Request $request){
 		$this->title = 'Поиск по номеру чипа';
 		$this->keywords = 'Поиск по номеру чипа';
-		$this->meta_desc = 'Поиск по номеру чипа';	
-		
-	
-		
-		$animal = $request->all();
+		$this->meta_desc = 'Поиск по номеру чипа';
 
-		$animals=Animal::where('chip', $animal)->first();
-	
-		$clinics=$animals->clinics->title;
+		$chip=$request->input('q');
+		//dd($chip);
+		
+	$animals = Animal::where('chip','=',$chip)->first();
+		
+		
+		
+		$clinics=$animals->clinica;
 		$kinds=$animals->kinds;
 		$breeds=$animals->breeds;
 		$owners=$animals->owners;
 		
 		$animals->image = json_decode($animals->image);
-		//dd($animals);
+		
 		
 		
 		

@@ -19,12 +19,7 @@
 				                <p style="text-align: center"><a href="images/features/download.jpg"><img class="aligncenter" src="images/features//download.jpg" alt="" /></a></p>
 				                
 				            </div>
-								
-								
-
-								
-								
-				                
+								  
 				                @if($equipments)
 
 				                <div id="portfolio" class="the-content group">

@@ -73,10 +73,10 @@ class OwnersController extends AdminController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(OwnerRequest $request)
+    public function store(Request $request)
     {
        $result = $this->o_rep->addOwner($request);
-		
+
 		if(is_array($result) && !empty($result['error'])) {
 			return back()->with($result);
 		}
@@ -110,7 +110,7 @@ class OwnersController extends AdminController
 		$this->title = 'Реадактирование карты владельца - '. $owner->title;
 		$this->content = view(env('THEME').'.admin.owner_create_content')->with(['owner' => $owner])->render();
 			
-			return $this->renderOutput();
+		return $this->renderOutput();
 		
     }
 
@@ -121,15 +121,13 @@ class OwnersController extends AdminController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-    public function update(OwnerRequest $request,$id)
+   
+    public function update(Request $request,$id)
     {
        $owner = Owner::where('id', $id)->first();
+	   
 	   $result = $this->o_rep->updateOwner($request, $owner);
-		
+		//dd($result);
 		if(is_array($result) && !empty($result['error'])) {
 			return back()->with($result);
 		}

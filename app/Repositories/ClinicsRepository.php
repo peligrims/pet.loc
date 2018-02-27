@@ -11,19 +11,43 @@ class ClinicsRepository extends Repository {
 		$this->model = $clinic;
 		
 	}
-	public function addClinics() {
+	public function addClinic($request) {
 
-	$clinics->image = json_decode($animals->image);	
+		$data = $request->all();
+		
+		$clinic = new Clinic;
+		$clinic->title     = $request['title'];
+		$clinic->address    = $request['address'];
+		$clinic->phone    = $request['phone'];
+		$clinic->email    = $request['email'];
+		$clinic->leader    = $request['leader'];
+		$clinic->region    = $request['region'];
+		
+		$clinic->save();
+		return ['status' => 'Клиника добавлена'];
+		
 	}
-public function deleteClinics($clinic) {
+	public function updateClinic($request,$clinic) {
+
+		$data = $request->all();
+		$clinic = new Clinic;
+	
+		$clinic->title     = $request['title'];
+		$clinic->address    = $request['address'];
+		$clinic->phone    = $request['phone'];
+		$clinic->email    = $request['email'];
+		$clinic->leader    = $request['leader'];
+		$clinic->region    = $request['region'];
 		
+		$clinic->save();
+		return ['status' => 'Клиника обновлена'];
 		
+	}
+	public function deleteClinic($clinic) {
 		
 		$clinic->delete();
+		return ['status' => 'Клиника удалена'];
 		
-		if($clinic->delete()) {
-			return ['status' => 'Животное удалено'];	
-		}
 	}
 		
 }

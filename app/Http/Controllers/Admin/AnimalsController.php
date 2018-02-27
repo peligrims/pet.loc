@@ -41,11 +41,7 @@ class AnimalsController extends AdminController
         
         $animals = $this->getAnimals();
 		
-		//dd($animals);
-		/* foreach($animals as $animal){
 		
-	dd($animal->clin->title);
-		}  */
         $this->content = view(env('THEME').'.admin.animals_content')->with(['animals' => $animals])->render();
      
       
@@ -66,16 +62,7 @@ class AnimalsController extends AdminController
 	}
 	
 	
-	
-	
-	
-	
-	
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
 		
@@ -123,20 +110,14 @@ class AnimalsController extends AdminController
      */
     public function edit($chip)
     {
-       
         $animal = Animal::where('chip', $chip)->first();
 		  
 		$animal->image = json_decode($animal->image);
-		
-		
-		
 		
 		$this->title = 'Реадактирование карты животного - '. $animal->title;
 		$this->content = view(env('THEME').'.admin.animal_create_content')->with(['animal' => $animal])->render();
 			
 			return $this->renderOutput();
-		
-	
 		
     }
 
@@ -149,7 +130,7 @@ class AnimalsController extends AdminController
      */
      
      //   articles -> Article  
-    public function update(AnimalRequest $request,$chip)
+    public function update(Request $request,$chip)
     {
        $animal = Animal::where('chip', $chip)->first();
 	   $result = $this->an_rep->updateAnimal($request, $animal);
@@ -168,11 +149,11 @@ class AnimalsController extends AdminController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   public function destroy($id)
+   public function destroy($chip)
     {
         //
-        $animal = Animal::where('id', $id)->first();
-        $result = $this->an_rep->deleteAnimals($animal);
+        $animal = Animal::where('chip', $chip)->first();
+        $result = $this->an_rep->deleteAnimal($animal);
 		
 		if(is_array($result) && !empty($result['error'])) {
 			return back()->with($result);

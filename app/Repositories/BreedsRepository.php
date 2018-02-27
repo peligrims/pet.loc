@@ -9,21 +9,36 @@ class BreedsRepository extends Repository {
 	public function __construct(Breed $breeds) {
 		$this->model = $breeds;
 	}
-	public function addBreeds() {
+	
+	public function addBreed($request) {
 
-	$breeds->image = json_decode($breeds->image);	
+		$data = $request->all();
+		
+		$breed = new Breed;
+		$breed->title     = $request['title'];
+		$breed->kind     = $request['kind'];
+	
+		$breed->save();
+		return ['status' => 'Порода добавлена'];
+		
 	}
-public function deleteBreeds($breed) {
+	public function updateBreed($request,$breeds) {
+
+		$data = $request->all();
+		$breed = new Breed;
+	
+		$breed->title     = $data['title'];
 		
+		$breed->save();
+		return ['status' => 'Порода обновлено'];
 		
+	}
+	public function deleteBreed($breed) {
 		
 		$breed->delete();
+		return ['status' => 'Порода удалена'];
 		
-		if($breed->delete()) {
-			return ['status' => 'Порода удалена'];	
-		}
 	}
-
 }
 
 ?>

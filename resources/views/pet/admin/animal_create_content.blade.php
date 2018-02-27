@@ -3,85 +3,72 @@
 {{ csrf_field() }}
 				            <div class="hentry group">
 
-{!! Form::open(['url' => (isset($animal->id)) ? route('admin.animals.update',['animals'=>$animal->alias]) : route('admin.animals.store'),'class'=>'contact-form','method'=>'POST','enctype'=>'multipart/form-data']) !!}
+{!! Form::open(['url' => (isset($animal->chip)) ? route('admin.animals.update',['animals'=>$animal->chip]) : route('admin.animals.store'),'class'=>'contact-form','method'=>'POST','enctype'=>'multipart/form-data']) !!}
     
 	<ul>
 		<li class="text-field">
 			<label for="name-contact-us">
-				<span class="label">Название:</span>
+				<span class="label">Чип:</span>
 				<br />
 				
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
-			{!! Form::text('title',isset($animal->title) ? $animal->title  : old('title'), ['placeholder'=>'Введите название страницы']) !!}
+			{!! Form::text('chip', isset($animal->chip) ? $animal->chip  : old('chip'), ['placeholder'=>'Введите название страницы']) !!}
+			 </div>
+		 </li>
+		<li class="text-field">
+			<label for="name-contact-us">
+				<span class="label">Кличка:</span>
+			</label>
+			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
+			{!! Form::text('title',isset($animal->nick) ? $animal->nick  : old('nick'), ['placeholder'=>'Введите кличку животного']) !!}
 			 </div>
 		 </li>
 		 
 		 <li class="text-field">
 			<label for="name-contact-us">
-				<span class="label">Ключевые слова:</span>
+				<span class="label">Место чипирования:</span>
 				<br />
 				
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
-			{!! Form::text('keywords', isset($animal->keywords) ? $animal->keywords  : old('keywords'), ['placeholder'=>'Введите название страницы']) !!}
+			{!! Form::text('clinica->title', isset($animal->clinica->title) ? $animal->clinica->title  : old('$animal->clinica->title'), ['placeholder'=>'Введите название клиники']) !!}
 			 </div>
 		 </li>
 		 
 		 <li class="text-field">
 			<label for="name-contact-us">
-				<span class="label">Мета описание:</span>
+				<span class="label">Порода:</span>
 				<br />
 				
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
-			{!! Form::text('meta_desc', isset($animal->meta_desc) ? $animal->meta_desc  : old('meta_desc'), ['placeholder'=>'Введите название страницы']) !!}
+			{!! Form::text('kind', isset($animal->kind) ? $animal->kind  : old('kind'), ['placeholder'=>'Введите название породы']) !!}
 			 </div>
 		 </li>
 		 
 		 <li class="text-field">
 			<label for="name-contact-us">
-				<span class="label">Псевдоним:</span>
+				<span class="label">Окрас:</span>
 				<br />
 				
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
-			{!! Form::text('alias', isset($animal->alias) ? $animal->alias  : old('alias'), ['placeholder'=>'Введите псевдоним страницы']) !!}
+			{!! Form::text('color', isset($animal->color) ? $animal->color  : old('color'), ['placeholder'=>'Введите псевдоним страницы']) !!}
 			 </div>
 		 </li>
 		 
 		 <li class="textarea-field">
 			<label for="message-contact-us">
-				 <span class="label">Краткое описание:</span>
+				 <span class="label">Пол:</span>
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-pencil"></i></span>
-			{!! Form::textarea('desc', isset($animal->desc) ? $animal->desc  : old('desc'), ['id'=>'editor','class' => 'form-control','placeholder'=>'Введите текст страницы']) !!}
+			{!! Form::textarea('sex', isset($animal->sex) ? $animal->sex  : old('sex'), ['class' => 'form-control','placeholder'=>'Введите текст страницы']) !!}
 			</div>
 			<div class="msg-error"></div>
 		</li>
 		
-		<li class="textarea-field">
-			<label for="message-contact-us">
-				 <span class="label">Описание:</span>
-			</label>
-			<div class="input-prepend"><span class="add-on"><i class="icon-pencil"></i></span>
-			{!! Form::textarea('text', isset($animal->text) ? $animal->text  : old('text'), ['id'=>'editor2','class' => 'form-control','placeholder'=>'Введите текст страницы']) !!}
-			</div>
-			<div class="msg-error"></div>
-		</li>
 		
-		@if(isset($animal->img->path))
-			<li class="textarea-field">
-				
-				<label>
-					 <span class="label">Изображения материала:</span>
-				</label>
-				
-				{{ Html::image(asset(env('THEME')).'/images/animals/'.$animal->img->path,'',['style'=>'width:400px']) }}
-				{!! Form::hidden('old_image',$animal->img->path) !!}
-			
-				</li>
-		@endif
 		
 		
 		<li class="text-field">
@@ -96,15 +83,7 @@
 			 
 		</li>
 		
-		<li class="text-field">
-			<label for="name-contact-us">
-				<span class="label">Категория:</span>
-				<br />
-				<span class="sublabel">Категория материала</span><br />
-			</label>
-			
-			 
-		</li>	 
+		 
 		
 		@if(isset($animal->id))
 			<input type="hidden" name="_method" value="PUT">		
@@ -124,8 +103,7 @@
 {!! Form::close() !!}
 
  <script>
-	CKEDITOR.replace( 'editor' );
-	CKEDITOR.replace( 'editor2' );
+	
 </script>
 </div>
 </div>

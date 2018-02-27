@@ -54,7 +54,11 @@ class BreedsController extends AdminController
      */
     public function create()
     {
-        //
+       $this->title = "Добавление новой породы";
+		
+		$this->content = view(env('THEME').'.admin.breed_create_content')->render();
+		
+		return $this->renderOutput();
     }
 
     /**
@@ -63,11 +67,18 @@ class BreedsController extends AdminController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+   
+	public function store(Request $request)
     {
         //
+		$result = $this->b_rep->addBreed($request);
+		
+		if(is_array($result) && !empty($result['error'])) {
+			return back()->with($result);
+		}
+		
+		return redirect('/admin')->with($result);
     }
-
     /**
      * Display the specified resource.
      *
@@ -87,7 +98,14 @@ class BreedsController extends AdminController
      */
     public function edit($id)
     {
-        //
+		$breed = Breed::where('id', $id)->first();
+		$kind=$breed->kinds->title;   
+		//dd($kind);
+		
+		$this->title = 'Реадактирование карты животного - '. $breed->title;
+		$this->content = view(env('THEME').'.admin.breed_create_content')->with(['breed' => $breed,'kind' => $kind])->render();
+			
+			return $this->renderOutput();
     }
 
     /**
@@ -99,7 +117,14 @@ class BreedsController extends AdminController
      */
     public function update(Request $request, $id)
     {
-        //
+        $breed = Breed::where('id', $id)->first();
+	    $result = $this->b_rep->updateBreed($request,$breed);
+		
+		if(is_array($result) && !empty($result['error'])) {
+			return back()->with($result);
+		}
+		
+		return redirect('/admin')->with($result);
     }
 
     /**
@@ -112,7 +137,7 @@ class BreedsController extends AdminController
     {
         //
         $breed = Breed::where('id', $id)->first();
-        $result = $this->b_rep->deleteBreeds($breed);
+        $result = $this->b_rep->deleteBreed($breed);
 		
 		if(is_array($result) && !empty($result['error'])) {
 			return back()->with($result);

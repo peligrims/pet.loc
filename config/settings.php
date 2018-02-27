@@ -12,7 +12,7 @@
 		'other_informations' => 8,
 		'articles_img' => [
 						'max' => ['width'=>816,'height'=>282],
-						'mini' => ['width'=>55,'height'=>55]
+						'mini' => ['width'=>150,'height'=>150]
 						
 						],
 		

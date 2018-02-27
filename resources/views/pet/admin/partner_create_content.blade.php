@@ -3,7 +3,7 @@
 {{ csrf_field() }}
 				            <div class="hentry group">
 
-{!! Form::open(['url' => (isset($partner->id)) ? route('admin.partners.update',['partners'=>$partner->alias]) : route('admin.partners.store'),'class'=>'contact-form','method'=>'POST','enctype'=>'multipart/form-data']) !!}
+{!! Form::open(['url' => (isset($partner->id)) ? route('admin.partners.update',['partners'=>$partner->id]) : route('admin.partners.store'),'class'=>'contact-form','method'=>'POST','enctype'=>'multipart/form-data']) !!}
     
 	<ul>
 		<li class="text-field">

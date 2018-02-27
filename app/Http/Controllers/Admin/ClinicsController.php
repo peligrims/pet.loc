@@ -48,7 +48,11 @@ class ClinicsController extends AdminController
 	 
     public function create()
     {
-        //
+        $this->title = "Добавление новой клиники";
+		
+		$this->content = view(env('THEME').'.admin.clinic_create_content')->render();
+		
+		return $this->renderOutput();
     }
 
     /**
@@ -59,7 +63,12 @@ class ClinicsController extends AdminController
      */
     public function store(Request $request)
     {
-        //
+        $result = $this->c_rep->addClinic($request);
+		
+		if(is_array($result) && !empty($result['error'])) {
+			return back()->with($result);
+		}
+		return redirect('/admin')->with($result);
     }
 
     /**
@@ -81,7 +90,12 @@ class ClinicsController extends AdminController
      */
     public function edit($id)
     {
-        //
+		$clinic = Clinic::where('id', $id)->first();
+			
+		$this->title = 'Реадактирование карты клиники - '. $clinic->title;
+		$this->content = view(env('THEME').'.admin.clinic_create_content')->with(['clinic' => $clinic])->render();
+			
+		return $this->renderOutput();
     }
 
     /**
@@ -93,9 +107,15 @@ class ClinicsController extends AdminController
      */
     public function update(Request $request, $id)
     {
-        //
-    }
-
+       $clinic  = Clinic::where('id', $id)->first();
+	    $result = $this->c_rep->updateClinic($request,$clinic);
+		
+		if(is_array($result) && !empty($result['error'])) {
+			return back()->with($result);
+		}
+		
+		return redirect('/admin')->with($result);
+	}
     /**
      * Remove the specified resource from storage.
      *
@@ -105,8 +125,8 @@ class ClinicsController extends AdminController
     public function destroy($id)
     {
        $clinic=Clinic::where('id', $id)->first();
-        //dd($clinic);
-		$result = $this->c_rep->deleteClinics($clinic);
+        
+		$result = $this->c_rep->deleteClinic($clinic);
 		
 		if(is_array($result) && !empty($result['error'])) {
 			return back()->with($result);

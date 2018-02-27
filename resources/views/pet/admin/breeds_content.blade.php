@@ -6,7 +6,6 @@
 				                    <table style="width: 100%" cellspacing="0" cellpadding="0">
 				                        <thead>
 				                            <tr>
-				                                
 				                                <th>N</th>
 				                                <th>Вид</th>
 				                                <th>Порода</th>
@@ -16,9 +15,11 @@
 				                            
 											@foreach($breeds as $breed)
 											<tr>
-				                                <td class="align-left">{{$breed->id}}</td>
-				                                <td class="align-left">{{$breed->kinds->title}}</td>
-												<td class="align-left">{!! Html::link(route('admin.breeds.edit',['breeds'=>$breed->title]),$breed->title) !!}</td>
+				                                <td class="align-left">{!! Html::link(route('admin.breeds.edit',['breeds'=>$breed->id]),$breed->id) !!}</td>
+												<td class="align-left">{{$breed->kinds->title}}</td>
+												<td class="align-left">{{$breed->title}}</td>
+				                               
+												
 				                                
 											<td>
 												{!! Form::open(['url' => route('admin.breeds.destroy',['breed'=>$breed->id]),'class'=>'form-horizontal','method'=>'POST']) !!}

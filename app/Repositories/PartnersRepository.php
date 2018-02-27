@@ -30,19 +30,36 @@ class PartnersRepository extends Repository {
 	$partner->title     = $request['title'];
 	$partner->text      = $request['text'];
 	$partner->url 		= $request['url'];
-	$partner->save();
-	return ['status' => 'Партнер добавлен'];
-	
-	}
-	
-	public function deletePartners($partner) {
-	
-		$partner->delete();
-		
-		if($partner->delete()) {
-				
+	if($request->hasFile('img')) {
+			$img = $request->file('img');
+			
+			if($img->isValid()) {
+			$str = str_random(8); 
+			$obj = new \stdClass;
+			$obj->mini = $str.'_mini.jpg';
+			$obj->max = $str.'_max.jpg';
+			$obj->path = $str.'.jpg';
+			$img = Image::make($img);
+			$img->fit(Config::get('settings.image')['width'],Config::get('settings.image')['height'])->save(public_path().'/'.env('THEME').'/images/partners/'.$obj->path); 
+			$img->fit(Config::get('settings.articles_img')['max']['width'],Config::get('settings.articles_img')['max']['height'])->save(public_path().'/'.env('THEME').'/images/partners/'.$obj->max); 		
+			$img->fit(Config::get('settings.articles_img')['mini']['width'],Config::get('settings.articles_img')['mini']['height'])->save(public_path().'/'.env('THEME').'/images/partners/'.$obj->mini); 		
+			$data['img'] = json_encode($obj);
+			$this->model->fill($data);	
+			$partner->img      = $data['img'];
+			$partner->save();
+			return ['status' => 'Партнер Добавлен'];
+			
+			}
 		}
-	return ['status' => 'Партнер удален'];
+	}
+	public function deletePartners($id) {
+	
+		$id->delete();
+		
+		if($id->delete()) {
+			return ['status' => 'Партнер удален'];	
+		}
+	
 	}
 
 	

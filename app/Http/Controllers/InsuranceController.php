@@ -5,6 +5,7 @@ namespace Corp\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Corp\Http\Requests;
+use Corp\Animal;
 
 use Corp\Repositories\InformationsRepository;
 

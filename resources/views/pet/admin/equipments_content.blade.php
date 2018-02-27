@@ -17,8 +17,8 @@
 				                            
 											@foreach($equipments as $equipment)
 											<tr>
-				                                <td class="align-left">{{$equipment->id}}</td>
-				                                <td class="align-left">{!! Html::link(route('admin.equipments.edit',['equipments'=>$equipment->alias]),$equipment->title) !!}</td>
+												<td class="align-left">{!! Html::link(route('admin.equipments.edit',['equipments'=>$equipment->id]),$equipment->id) !!}</td>
+												<td class="align-left">{{$equipment->title}}</td>
 				                                <td class="align-left">{{str_limit($equipment->text,200)}}</td>
 				                                <td>
 													@if(isset($equipment->img->mini))
@@ -27,7 +27,7 @@
 												</td>
 				                                
 				                                <td>
-												{!! Form::open(['url' => route('admin.equipments.destroy',['equipments'=>$equipment->alias]),'class'=>'form-horizontal','method'=>'POST']) !!}
+												{!! Form::open(['url' => route('admin.equipments.destroy',['equipments'=>$equipment->id]),'class'=>'form-horizontal','method'=>'POST']) !!}
 												    {{ method_field('DELETE') }}
 												    {!! Form::button('Удалить', ['class' => 'btn btn-french-5','type'=>'submit']) !!}
 												{!! Form::close() !!}

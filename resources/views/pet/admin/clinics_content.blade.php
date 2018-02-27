@@ -21,8 +21,8 @@
 				                            
 											@foreach($clinics as $clinic)
 											<tr>
-				                                <td class="align-left">{{$clinic->id}}</td>
-												<td class="align-left">{!! Html::link(route('admin.clinics.edit',['clinic'=>$clinic->title]),$clinic->title) !!}</td>				                               
+				                                <td class="align-left">{!! Html::link(route('admin.clinics.edit',['clinic'=>$clinic->id]),$clinic->id) !!}</td>	
+												<td class="align-left">{{$clinic->title}}</td>
 				                                <td class="align-left">{{$clinic->address}}</td>
 												<td class="align-left">{{$clinic->phone}}</td>
 												<td class="align-left">{{$clinic->email}}</td>
