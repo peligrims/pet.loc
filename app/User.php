@@ -24,7 +24,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     
-    public function articles() {
+    public function animals() {
+		return $this->hasMany('Corp\Animal');
+	}
+	public function articles() {
 		return $this->hasMany('Corp\Article');
 	}
 	

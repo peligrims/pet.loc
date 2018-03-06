@@ -58,8 +58,32 @@
                             <a href="/" title="Pets Idetity"><img src="{{ asset(env('THEME')) }}/images/logo1.jpg" title="Pet loc" alt="Pet loc" /></a>
                         </div>
                         <!-- END LOGO -->
-                                                <div id="sidebar-header" class="group">
+						
+						
+						
+						 <!-- START LOGIN -->
+						<div id="sidebar-header" class="group">
                             <div class="widget-first widget yit_text_quote">
+								<div class="text-quote-quote">
+								@if (Route::has('login'))
+									<div class="top-right links">
+									@auth
+										
+										<a class="btn btn-secondary btn-lg" href="{{ route('logout') }}">Выход</a>
+									@else
+									<a class="btn btn-secondary btn-lg" href="{{ route('login') }}">Вход</a>
+									<a class="btn btn-secondary btn-lg" href="{{ route('register') }}">Регистрация</a>
+									@endauth
+									</div>
+								@endif
+								<!-- END LOGIN -->
+								
+								
+								
+								</div>
+							
+							
+							
                                 <blockquote class="text-quote-quote">&#8220;Зарегистрируйте своего любимца для жизни&#8221;</blockquote>
                                 <div class="achip">
 												<form action="{{route('searchSimple')}}" method="GET" class="search-simple">

@@ -26,7 +26,7 @@ class EquipmentsController extends AdminController
 		}
     public function index()
     {
-       $this->title = 'Оборудование';
+		$this->title = 'Оборудование';
         
         $equipments = $this->getEquipments();
         

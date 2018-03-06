@@ -11,10 +11,11 @@
 				            			<div class="hentry-post group">
 				            							            			
 										
-										<div class="thumb-img"><img src="{{asset(env('THEME'))}}/images/animals/{{ $animal->image }}" alt="001" title="001" /></div>
+
+
 										<div class="text">
-										<a href="{{ route('articles.show',['alias'=>$animal->id]) }}" title="Section shortcodes &amp; sticky posts!" class="title">{{ $animal->chip }}</a>
-										<a href="{{ route('articles.show',['alias'=>$animal->id]) }}" title="Section shortcodes &amp; sticky posts!" class="title">{{ $animal->o_name  }}</a>
+										<a href="{{ route('articles.show',['chip'=>$animal->chip]) }}" title="Section shortcodes &amp; sticky posts!" class="title">{{ $animal->chip }}</a>
+										<a href="{{ route('articles.show',['chip'=>$animal->chip]) }}" title="Section shortcodes &amp; sticky posts!" class="title">{{ $animal->o_name  }}</a>
 
 										
 										<p> {{ $animal->nick }}</p>

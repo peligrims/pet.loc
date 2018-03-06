@@ -34,30 +34,30 @@
 									</style>
 									
 									<div class="image-wrap">
-				                        <img src="{{ asset(env('THEME')) }}/images/animals/{{ $animals->image->path}}"  />        
+				                        <img src="{{ asset(env('THEME')) }}/images/animals/{{ $animal->image->path}}"  />        
 				                    </div>
 				                </div>
 				                <div class="one-third ">
 				                   <h1>Информация о владельце:</h1>
 												
-												<p><b>Имя владельца: </b> {{$animals->owners->name }}</p>
-												<p><b>Псевдоним: </b> {{$animals->owners->nick }}</p>
-												<p><b>Телефон: </b> {{$animals->owners->phone1 }}</p>
-												<p><b>Моб телефон:</b> {{$animals->owners->phone2 }}</p>
-												<p><b>Email: </b> {{$animals->owners->email }}</p>
-												<p><b>Страна: </b> {{$animals->owners->country }}</p>
-												<p><b>Город: </b> {{$animals->owners->city }}</p>
+												<p><b>Имя владельца: </b> {{$owner->name }}</p>
+												<p><b>Псевдоним: </b> {{$owner->nick }}</p>
+												<p><b>Телефон: </b> {{$owner->phone1 }}</p>
+												<p><b>Моб телефон:</b> {{$owner->phone2 }}</p>
+												<p><b>Email: </b> {{$owner->email }}</p>
+												<p><b>Страна: </b> {{$owner->country }}</p>
+												<p><b>Город: </b> {{$owner->city }}</p>
 				                </div>
 				                <div class="one-third last">
 				                    <h1>Данные о животном</h1>									
-												<p><b>Кличка животного: </b> {{$animals->nick }}</p>
-				                                <p><b>Номер чипа: </b> {{$animals->chip }}</p>
-												<p><b>Место чипирования: </b> {{$animals->clinica->title}}</p>
-												<p><b>Окрас животного</b> {{$animals->color}}</p>
-												<p><b>Вид животного</b> {{$animals->kinds->title}}</p>
-												<p><b>Порода</b> {{$animals->breeds->title}}</p>
-												<p><b>Дата рождения</b> {{$animals->birthday }}</p>
-												@if ($animals->sex == '1')
+												<p><b>Кличка животного: </b> {{$animal->nick }}</p>
+				                                <p><b>Номер чипа: </b> {{$animal->chip }}</p>
+												<p><b>Место чипирования: </b> {{$clinic->title}}</p>
+												<p><b>Окрас животного</b> {{$animal->color}}</p>
+												<p><b>Вид животного</b> {{$kind->title}}</p>
+												<p><b>Порода</b> {{$breed->title}}</p>
+												<p><b>Дата рождения</b> {{$animal->birthday }}</p>
+												@if ($animal->sex == '1')
 												  <p><b>Пол животного</b> Самка</p>
 													@else
 												  <p><b>Пол животного</b> Самец</p>

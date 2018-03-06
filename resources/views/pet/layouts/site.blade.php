@@ -31,7 +31,7 @@
 		
 		<meta name="csrf-token" content="{{ csrf_token() }}">
         
-        <title>{{ $title or 'Pink' }}</title>
+        <title>{{ $title or 'Pet.loc' }}</title>
         
         <!-- [favicon] begin -->
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset(env('THEME')) }}/images/favicon.ico" />
@@ -89,7 +89,7 @@
     <!-- END HEAD -->
     
     <!-- START BODY -->
-    <body class="no_js responsive {{ (Route::currentRouteName() ==  'home') || (Route::currentRouteName() == 'portfolios.index') || (Route::currentRouteName() == 'portfolios.show') ? 'page-template-home-php' : ''}} stretched">
+    <body class="no_js responsive {{ (Route::currentRouteName() ==  '/') || (Route::currentRouteName() == 'portfolios.index') || (Route::currentRouteName() == 'portfolios.show') ? 'page-template-home-php' : ''}} stretched">
         
         <!-- START BG SHADOW -->
         <div class="bg-shadow">
@@ -112,22 +112,46 @@
 						<body>
 						 
 					
-					</body>
+						</body>
 						
 					
 						
                         <div id="sidebar-header" class="group">
                             <div class="widget-first widget yit_text_quote">
-                               <div class="text-quote-quote">
-									@if (Route::has('login'))
-									<div class="top-right links">
-									@auth
-									<a href="{{ route('login') }}">Login</a>
-									
-									@endauth
-									</div>
-						@endif
-					</div>
+						    
+							<div class="text-quote-quote">
+							@if (Auth::guard('web_seller')->guest())
+
+                            <!--Seller Login and registration Links -->
+
+                            <a class="btn btn-secondary btn-lg" href="{{ url('/owner_login') }}">  Вход для владельцев     </a>
+                            <a class="btn btn-secondary btn-lg" href="{{ url('/owner_register') }}">Регистрация для владельцев</a>
+                        @else
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::guard('web_seller')->user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a class="btn btn-secondary btn-lg" href="{{ url('/owner_logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ url('/owner_logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+							
+							</div>
+							
+							
+							
 
 
 
@@ -144,7 +168,7 @@
 														</div>
 														<div class="col-xs-2">
 															<div class="form-group">
-																<input class="btn   btn-beetle-bus-goes-jamba-juice-4 btn-more-link"  type="submit" value="Искать по номеру чипа"</a> 
+																<input class="btn btn-secondary btn-lg"  type="submit" value="Искать по номеру чипа"</a> 
 															</div>
 														</div>
 													</div>

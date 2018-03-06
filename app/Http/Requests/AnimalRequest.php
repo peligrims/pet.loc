@@ -13,7 +13,7 @@ class AnimalRequest extends Request
      */
     public function authorize()
     {
-        return \Auth::user()->canDo('ADD_ARTICLES');
+        return \Auth::user();
     }
     
      protected function getValidatorInstance()
@@ -24,18 +24,18 @@ class AnimalRequest extends Request
     	
     	
     	
-    	$validator->sometimes('alias','unique:articles|max:255', function($input) {
+    	$validator->sometimes('chip','unique:animals|max:255', function($input) {
         	
 			$route = \Route::current();
 			
 
-        	if($this->route()->hasParameter('articles')) {
-				$model = $this->route()->parameter('articles');
+        	if($this->route()->hasParameter('animals')) {
+				$model = $this->route()->parameter('animals');
 				
-				return ($model->alias !== $input->alias)  && !empty($input->alias);
+				return ($model->chip !== $input->chip)  && !empty($input->chip);
 			}
         	
-        	return !empty($input->alias);
+        	return !empty($input->chip);
         	
         });
         
@@ -56,7 +56,7 @@ class AnimalRequest extends Request
             //
             'title' => 'required|max:255',
             'text' => 'required',
-            'category_id' => 'required|integer'
+           
         ];
     }
 }

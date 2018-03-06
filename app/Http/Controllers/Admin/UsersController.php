@@ -43,7 +43,9 @@ class UsersController extends AdminController
         //
         $users = $this->us_rep->get();
 
-        $this->content = view(env('THEME').'.admin.users_content')->with(['users'=>$users ])->render();
+		
+		
+		$this->content = view(env('THEME').'.admin.users_content')->with(['users'=>$users ])->render();
         
         return $this->renderOutput();
     }

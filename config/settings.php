@@ -15,6 +15,14 @@
 						'mini' => ['width'=>150,'height'=>150]
 						
 						],
+		'animal_img' => [
+						'max' => ['width'=>816,'height'=>282],
+						'mini' => ['width'=>150,'height'=>150]
+						
+						],
+		
+		
+		
 		
 		'image' => [
 					'width'=>1024,

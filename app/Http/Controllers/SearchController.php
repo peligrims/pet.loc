@@ -13,6 +13,8 @@ use DB;
 use Corp\Animal;
 use Corp\Clinic;
 use Corp\Owner;
+use Corp\Breed;
+
 
 class SearchController extends SiteController
 {
@@ -39,24 +41,21 @@ class SearchController extends SiteController
 		$this->meta_desc = 'Поиск по номеру чипа';
 
 		$chip=$request->input('q');
-		//dd($chip);
-		
-	$animals = Animal::where('chip','=',$chip)->first();
-		
-		
-		
-		$clinics=$animals->clinica;
-		$kinds=$animals->kinds;
-		$breeds=$animals->breeds;
-		$owners=$animals->owners;
-		
-		$animals->image = json_decode($animals->image);
-		
-		
-		
-		
 	
-        $content = view(env('THEME').'.animal_content')->with(['animals' => $animals,'clinics' => $clinics])->render();
+		
+		$animal = Animal::where('chip','=',$chip)->first();
+
+		
+		$clinic=$animal->clinica;
+		//dd($clinic->title);
+		$kind=$animal->kinds;
+		$breed=$animal->breeds;
+		$owner=$animal->owners;
+		$breed=DB::table('breeds')->first();
+		$animal->image = json_decode($animal->image);
+		
+		
+        $content = view(env('THEME').'.animal_content')->with(['animal' => $animal,'clinic' => $clinic,'breed' => $breed,'owner' => $owner,'kind' => $kind])->render();
         $this->vars = array_add($this->vars,'content',$content);	
 		
 		

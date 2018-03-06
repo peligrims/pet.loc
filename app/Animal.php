@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Animal extends Model
 {
-    public function clinica ()
+    
+	protected $fillable = ['chip','nick','clinic','kind','breed','color','sex','birthday','image'];
+	
+	public function clinica ()
 	{
 		return $this->hasOne('Corp\Clinic', 'id', 'clinic');
 	}

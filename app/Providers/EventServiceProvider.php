@@ -16,6 +16,25 @@ class EventServiceProvider extends ServiceProvider
         'Corp\Events\Event' => [
             'Corp\Listeners\EventListener',
         ],
+		/* 'Illuminate\Auth\Events\Attempting' => [
+            'Corp\Listeners\LogAuthenticationAttempt',
+        ],
+
+        'Illuminate\Auth\Events\Authenticated' => [
+            'Corp\Listeners\LogAuthenticated',
+        ],
+
+        'Illuminate\Auth\Events\Login' => [
+            'Corp\Listeners\LogSuccessfulLogin',
+        ],
+
+        'Illuminate\Auth\Events\Logout' => [
+            'Corp\Listeners\LogSuccessfulLogout',
+        ],
+
+        'Illuminate\Auth\Events\Lockout' => [
+            'Corp\Listeners\LogLockout',
+        ], */
     ];
 
     /**

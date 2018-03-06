@@ -33,8 +33,8 @@ class AdminController extends \Corp\Http\Controllers\Controller
 		
 		$this->user = Auth::user();
 		
-		if(!$this->user) {
-			//abort(403);
+		if($this->user) {
+			abort(404);
 		}
 	}
 	
@@ -64,10 +64,7 @@ class AdminController extends \Corp\Http\Controllers\Controller
 		return Menu::make('adminMenu', function($menu) {
 			
 			
-			if(Gate::allows('VIEW_ADMIN_ARTICLES')) {
-				$menu->add('Статьи',array('route' => 'admin.articles.index'));
-			
-			}
+			  
 			
 			
 			$menu->add('Животные',  array('route'  => 'admin.animals.index'));
@@ -77,13 +74,9 @@ class AdminController extends \Corp\Http\Controllers\Controller
 			$menu->add('Партеры',  array('route'  => 'admin.partners.index'));
 			$menu->add('Оборудование',  array('route'  => 'admin.equipments.index'));
 			$menu->add('Пользователи',  array('route'  => 'admin.users.index'));
-			$menu->add('Личный кабинет',  array('route'  => 'admin.lk.index'));
+			$menu->add('Привилегии',  array('route'  => 'admin.permissions.index'));
 			
-			
-			
-			//$menu->add('Привилегии',  array('route'  => 'admin.permissions.index')); 
-			
-			
+						
 		});
 	}
 	

@@ -5,7 +5,9 @@ namespace Corp\Http\Controllers\Auth;
 use Corp\User;
 use Corp\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Corp\Owner;
 
 class RegisterController extends Controller
 {
@@ -27,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -37,8 +39,8 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-    }
-
+    }  
+	
     /**
      * Get a validator for an incoming registration request.
      *
@@ -67,5 +69,13 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-    }
+    } 
+	/* protected function create(array $data)
+    {
+        return Owner::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+    } */
 }

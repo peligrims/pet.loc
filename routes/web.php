@@ -85,36 +85,60 @@ Route::resource('animals','AnimalsController',[
 													]);
 Route::get('searchSimple', 'SearchController@index')->name('searchSimple');
 
-
-/* Route::resource('test','TestController',[
- 
-													'test' => [
-
-														'test' => 'alias'
-
-													]
-
-													]);
-													 */
-
-
-
 Route::match(['get','post'],'/contacts',['uses'=>'ContactsController@index','as'=>'contacts']);	
 
+//Logged in users/seller cannot access or send requests these pages
+Route::group(['middleware' => 'seller_guest'], function() {
+
+Route::get('seller_register', 'SellerAuth\RegisterController@showRegistrationForm');
+Route::post('seller_register', 'SellerAuth\RegisterController@register');
+Route::get('seller_login', 'SellerAuth\LoginController@showLoginForm');
+Route::post('seller_login', 'SellerAuth\LoginController@login');
+
+});
+
+//Only logged in sellers can access or send requests to these pages
+Route::group(['middleware' => 'seller_auth'], function(){
+
+Route::post('seller_logout', 'OwnerAuth\LoginController@logout');
+Route::get('/seller_home', function(){
+  return view('seller.home');
+});
+
+});
 
 
-Auth::routes();
+//Logged in users/owner cannot access or send requests these pages
+Route::group(['middleware' => 'owner_guest'], function() {
 
-//Route::get('login','Auth\AuthController@showLoginForm');
+Route::get('owner_register', 'OwnerAuth\RegisterController@showRegistrationForm');
+Route::post('owner_register', 'OwnerAuth\RegisterController@register');
+Route::get('owner_login', 'OwnerAuth\LoginController@showLoginForm');
+Route::post('owner_login', 'OwnerAuth\LoginController@login');
 
-//Route::post('login', ['uses'=>'Auth\AuthController@login','as'=>'login']);
+});
 
-//Route::get('logout','Auth\AuthController@logout');
+//Only logged in sellers can access or send requests to these pages
+Route::group(['middleware' => 'owner_auth'], function(){
+
+Route::post('owner_logout', 'OwnerAuth\LoginController@logout');
+Route::get('/owner_home', function(){
+  return view('owner.home');
+});
+
+});
 
 
 
+ 
+  
+Route::auth();
 
-Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], function() {
+Route::get('logout','Auth\LoginController@logout');
+
+  Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], function() {
+	
+	
 	Route::get('/',['uses' => 'Admin\IndexController@index','as' => 'adminIndex']);
 	
 	Route::resource('/animals','Admin\AnimalsController');
@@ -124,12 +148,12 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], fu
 	Route::resource('/partners','Admin\PartnersController');
 	Route::resource('/equipments','Admin\EquipmentsController');
 	Route::resource('/users','Admin\UsersController');
-	Route::resource('/lk','Admin\LkController');
-	
-//Route::resource('/permissions','Admin\AnimalsController');
+	Route::resource('/permissions','Admin\PermissionsController');
+}); 
 
-	
-});
+
+
+
 
 
 

@@ -7,20 +7,25 @@ use Illuminate\Http\Request;
 use Corp\Http\Requests;
 use Corp\Http\Controllers\Controller;
 
-
+use Auth;
 use Gate;
 
 class IndexController extends AdminController
 {
-    //
+   //Проверка разрешения для пользователя Правило авторизации в AuthServiceProvider
     
     public function __construct() {
 		
 		parent::__construct();
-		/* //Проверка разрешения для пользователя Правило авторизации в AuthServiceProvider
-		if(Gate::denies('VIEW_ADMIN')) {
-			//abort(403);
-		} */
+		
+		// if (Gate::denies('view')) {
+            // dd('Sorry Bud not allowed');
+        // }
+		
+		
+		// if(Gate::denies('VIEW_ADMIN')) {
+			// abort(403);
+		// } 
 		
 		
 		$this->template = env('THEME').'.admin.index';
@@ -28,6 +33,9 @@ class IndexController extends AdminController
 	}
 	
 	public function index() {
+		
+		
+	
 		$this->title = 'Панель администратора';
 		
 		return $this->renderOutput();

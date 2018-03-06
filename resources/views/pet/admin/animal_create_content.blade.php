@@ -21,10 +21,17 @@
 				<span class="label">Кличка:</span>
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
-			{!! Form::text('title',isset($animal->nick) ? $animal->nick  : old('nick'), ['placeholder'=>'Введите кличку животного']) !!}
+			{!! Form::text('nick',isset($animal->nick) ? $animal->nick  : old('nick'), ['placeholder'=>'Введите кличку животного']) !!}
 			 </div>
 		 </li>
-		 
+		 <li class="text-field">
+			<label for="name-contact-us">
+				<span class="label">Дата Рождения:</span>
+			</label>
+			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
+			{!! Form::text('birthday',isset($animal->birthday) ? $animal->birthday  : old('birthday'), ['placeholder'=>'Дата рождения']) !!}
+			 </div>
+		 </li>
 		 <li class="text-field">
 			<label for="name-contact-us">
 				<span class="label">Место чипирования:</span>
@@ -32,10 +39,20 @@
 				
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
-			{!! Form::text('clinica->title', isset($animal->clinica->title) ? $animal->clinica->title  : old('$animal->clinica->title'), ['placeholder'=>'Введите название клиники']) !!}
-			 </div>
+          {{ Form::select('clinic', [\Corp\Animal::all()->pluck('clinic')->toArray()], null,['class'=>'form-control']) }}			
+			</div>
 		 </li>
 		 
+		 <li class="text-field">
+			<label for="name-contact-us">
+				<span class="label">Вид:</span>
+				<br />
+				
+			</label>
+			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
+			{!! Form::select('kind',    ['1' => 'Собака','2' => 'Кошка','3' => 'Прицы','4' => 'Лошади','5' => 'Земноводные','6' => 'Рептилии','7' => 'Грызуны','8' => 'Рыбы','9' => 'Хорьки','10' => 'СХ Животные'])!!}
+			 </div>
+		 </li>
 		 <li class="text-field">
 			<label for="name-contact-us">
 				<span class="label">Порода:</span>
@@ -43,8 +60,9 @@
 				
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
-			{!! Form::text('kind', isset($animal->kind) ? $animal->kind  : old('kind'), ['placeholder'=>'Введите название породы']) !!}
-			 </div>
+			
+			{{ Form::select('breed', \Corp\Animal::all()->pluck('breed')->toArray(), null,['class'=>'form-control']) }}
+			
 		 </li>
 		 
 		 <li class="text-field">
@@ -58,12 +76,12 @@
 			 </div>
 		 </li>
 		 
-		 <li class="textarea-field">
+		 <li class="text-field">
 			<label for="message-contact-us">
 				 <span class="label">Пол:</span>
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-pencil"></i></span>
-			{!! Form::textarea('sex', isset($animal->sex) ? $animal->sex  : old('sex'), ['class' => 'form-control','placeholder'=>'Введите текст страницы']) !!}
+			{!!  Form::select('sex',    ['1' => 'Самец','2' => 'Самка'])!!}
 			</div>
 			<div class="msg-error"></div>
 		</li>

@@ -2,7 +2,7 @@
 @if($animals)
 		<div id="content-page" class="content group">
 				            <div class="hentry group">
-				                <h2>Редактирование таблици Животных</h2>
+				                <h2>Таблица Животных</h2>
 				                <div class="short-table white">
 				                    <table style="width: 100%" cellspacing="0" cellpadding="0">
 				                        <thead>
@@ -14,8 +14,8 @@
 				                                <th>Пол</th>
 				                                <th>Вид животного</th>
 				                                <th>Порода</th>
-												
 												<th>Дата рождения</th>
+												<th>Изображение</th>
 				                            </tr>
 				                        </thead>
 				                        <tbody>
@@ -32,12 +32,19 @@
 												  <p> Самец</p>
 												@endif</td>
 												<td class="align-left">{{$animal->kinds->title}}</td>
-												<td class="align-left">{{$animal->breeds->title}}</td>
-											
+												<td class="align-left">{{$animal->breed}}</td>
 												<td class="align-left">{{$animal->birthday}}</td>
 												
+												<td>
+													@if(isset($animal->image->mini))
+													{!! Html::image(asset(env('THEME')).'/images/animals/'.$animal->image->mini) !!}
+													@else
+												  <p> Самец</p>
+													@endif
+												</td>
+												
 				                                <td>
-												{!! Form::open(['url' => route('admin.animals.destroy',['animals'=>$animal->id]),'class'=>'form-horizontal','method'=>'POST']) !!}
+												{!! Form::open(['url' => route('admin.animals.destroy',['animals'=>$animal->chip]),'class'=>'form-horizontal','method'=>'POST']) !!}
 												    {{ method_field('DELETE') }}
 												    {!! Form::button('Удалить', ['class' => 'btn btn-french-5','type'=>'submit']) !!}
 												{!! Form::close() !!}
@@ -58,9 +65,13 @@
 												@if($animals->currentPage() !== 1)
 													<a href="{{ $animals->url(($animals->currentPage() - 1)) }}">{{ Lang::get('pagination.previous') }}</a>
 												@endif
-												
-												
-												
+												@for($i = 1; $i <= $animals->lastPage(); $i++)
+													@if($animals->currentPage() == $i)
+														<a class="selected disabled">{{ $i }}</a>
+													@else
+													<a href="{{ $animals->url($i) }}">{{ $i }}</a>
+													@endif		
+												@endfor
 												@if($animals->currentPage() !== $animals->lastPage())
 													<a href="{{ $animals->url(($animals->currentPage() + 1)) }}">{{ Lang::get('pagination.next') }}</a>
 												@endif

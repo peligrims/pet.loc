@@ -34,28 +34,7 @@
 				    @endforeach
 				    </ul>
 				    
-				    <div id="yit-widget-area" class="group">
-				        <div class="yit-widget-content inner group">
-				            <div class="widget-first yit-widget widget col1_4 one-fourth col widget-icon-text group">
-				                <img class="icon-img" src="images/icons/cloud.jpg" alt="" />		
-				                <h3>{{trans('ru.Advice') }}</h3>
-				                <p>{{trans('ru.Advice for professionals')}}</p>
-				            </div>
-				            <div class="yit-widget widget col1_4 one-fourth col widget-last-post group">
-				                <img class="icon-img" src="images/icons/blog1.png" alt="" />        
-				                <div>
-				                    <h3><a class="text-color" href="#" title="">{{trans('ru.Protecting Your Pets') }}</a></h3>
-				                    <p>{{trans('ru.Insurance')}} <a href="http://pet.loc/insurance"> | more ></a></p>
-				                
-								
-								</div>
-				            </div>
-				            <div class="widget-last yit-widget widget col1_4 one-fourth col yit_text_quote">
-				                <blockquote class="text-quote-quote"> {{trans('ru.Global') }}</blockquote>
-				                
-				            </div>
-				        </div>
-				    </div>
+				   
 				</div>
 				<script type="text/javascript">
 				    jQuery(document).ready(function($){

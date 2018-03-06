@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeClinicTable extends Migration
+class ChangeOwnersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class ChangeClinicTable extends Migration
      */
     public function up()
     {
-        Schema::table('clinics', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::table('owners', function (Blueprint $table) {
+            $table->rememberToken();
         });
     }
 
@@ -25,7 +25,7 @@ class ChangeClinicTable extends Migration
      */
     public function down()
     {
-        Schema::table('clinics', function (Blueprint $table) {
+        Schema::table('owners', function (Blueprint $table) {
             //
         });
     }

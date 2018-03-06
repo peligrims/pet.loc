@@ -6,7 +6,10 @@ use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 use Corp\Permission;
+
 use Corp\Policies\ArticlePolicy;
+use Corp\Policies\AnimalPolicy;
+use Corp\Policies\PermissionPolicy;
 
 
 
@@ -19,6 +22,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Article::class => ArticlePolicy::class,
+        Animal::class => AnimalPolicy::class,
 		Permission::class => PermissionPolicy::class,
 		Menu::class => MenusPolicy::class,
     ];
@@ -33,12 +37,15 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
         
-        /* $gate->define('VIEW_ADMIN', function ($user) {
+        $gate->define('VIEW_ADMIN', function ($user) {
         	return $user->canDo('VIEW_ADMIN', FALSE);
-        }); */
+        }); 
         
         $gate->define('VIEW_ADMIN_ARTICLES', function ($user) {
         	return $user->canDo('VIEW_ADMIN_ARTICLES', FALSE);
+        });
+		$gate->define('VIEW_ADMIN_ANIMALS', function ($user) {
+        	return $user->canDo('VIEW_ADMIN_ANIMALS', FALSE);
         });
 		 $gate->define('EDIT_USERS', function ($user) {
         	return $user->canDo('EDIT_USERS', FALSE);

@@ -9,17 +9,19 @@ use Corp\Repositories\AnimalsRepository;
 use Corp\Repositories\ClinicsRepository;
 use Corp\Animal;
 use Corp\Clinic;
+use Corp\Breed;
+use Gate;
 
 class AnimalsController extends AdminController
 {
     
      public function __construct(AnimalsRepository $an_rep, ClinicsRepository $cl_rep) {
 		
-		//parent::__construct();
+		parent::__construct();
 		
-		/* if(Gate::denies('VIEW_ADMIN_ARTICLES')) {
-			//abort(403);
-		} */
+		// if(Gate::denies('VIEW_ADMIN_ARTICLES')) {
+			// abort(404);
+		// } 
 		
 		$this->an_rep = $an_rep;
 		$this->cl_rep = $cl_rep;
@@ -27,7 +29,7 @@ class AnimalsController extends AdminController
 		
 		
 		$this->template = env('THEME').'.admin.animals';
-		
+	
 		}
     
     /**
@@ -35,21 +37,19 @@ class AnimalsController extends AdminController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    
+	public function index()
     {
         $this->title = 'Зарегистрированные животные';
         
         $animals = $this->getAnimals();
 		
-		
         $this->content = view(env('THEME').'.admin.animals_content')->with(['animals' => $animals])->render();
      
       
-        return $this->renderOutput(); 
-        
+        return $this->renderOutput();     
         
     }
-    
     
      public function getAnimals($take = FALSE,$paginate = TRUE)
     {
@@ -65,11 +65,11 @@ class AnimalsController extends AdminController
     
     public function create()
     {
-		
+		$animals = $this->getAnimals();
 		$this->title = "Добавление нового животного";
 		
 		$this->content = view(env('THEME').'.admin.animal_create_content')->render();
-		
+			
 		return $this->renderOutput();
     }
 
@@ -79,7 +79,7 @@ class AnimalsController extends AdminController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AnimalRequest $request)
+    public function store(Request $request)
     {
         //
 		$result = $this->an_rep->addAnimal($request);
@@ -113,7 +113,7 @@ class AnimalsController extends AdminController
         $animal = Animal::where('chip', $chip)->first();
 		  
 		$animal->image = json_decode($animal->image);
-		
+	
 		$this->title = 'Реадактирование карты животного - '. $animal->title;
 		$this->content = view(env('THEME').'.admin.animal_create_content')->with(['animal' => $animal])->render();
 			

@@ -42,9 +42,7 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
-		'admin' => [
-            'isAdmin:1', // 1 - это айдишник админа в users. так передаются параметры
-        ],
+		
     ];
 
     /**
@@ -55,12 +53,17 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+        'isowner' => \Corp\Http\Middleware\IsOwner::class,
+		'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \Corp\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-		'isAdmin' => \Corp\Http\Middleware\isAdmin::class,
+		'seller_auth' => \Corp\Http\Middleware\AuthenticateSeller::class,
+        'seller_guest' => \Corp\Http\Middleware\RedirectIfSellerAuthenticated::class,
+		'owner_auth' => \Corp\Http\Middleware\AuthenticateOwner::class,
+        'owner_guest' => \Corp\Http\Middleware\RedirectIfOwnerAuthenticated::class,
+		
     ];
 }

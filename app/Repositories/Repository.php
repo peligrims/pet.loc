@@ -34,13 +34,15 @@ abstract class Repository {
 		if($result->isEmpty()) {
 			return FALSE;
 		}
-		
+		//Декадирование Json картинок
 		$result->transform(function($item,$key) {
 			
+			if(is_string($item->image) && is_object(json_decode($item->image)) && (json_last_error() == JSON_ERROR_NONE)) {
+				$item->image = json_decode($item->image);
+			}
 			if(is_string($item->img) && is_object(json_decode($item->img)) && (json_last_error() == JSON_ERROR_NONE)) {
 				$item->img = json_decode($item->img);
 			}
-			
 			
 
 			return $item;

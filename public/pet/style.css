@@ -1,10 +1,10 @@
 /*  
-Theme Name: 
-Theme URI: 
+Theme Name: Pink Rio
+Theme URI: http://www.yourinspirationtheme.com/
 Version: 1.0.0
-Description: 
+Description: Pink Rio is a strong and powerful theme with a clean, corporate and responsive layout. This theme is really suitable for users with no programming background, so you can set any color to elements such as backgrounds, links, text, menu links, etc. and completely change the look and feel of your site in few seconds. Designed by <a href="http://www.yourinspirationthemes.com">Your Inspiration Themes</a>.
 Author: YIT
-Author URI: 
+Author URI: http://www.yourinspirationtheme.com
 Tags: white, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, flexible-width, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, front-page-post-form, full-width-template, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
 
 
@@ -213,7 +213,7 @@ html { min-height:101% }
 }
 
 #header .menu ul li a:hover {
-    color: #000;
+    color: #09ba32;
 }
 
 #header .menu > ul {
@@ -459,7 +459,7 @@ body.no_js .classic #nav ul li ul.submenu li:hover > ul, body.no_js .classic #na
 /* ===== PAGINATION ===== */
 .general-pagination { height:29px; margin: 20px auto; text-align:center; clear:both; }
 .general-pagination span { display:none; }
-.general-pagination a { display:inline-block; font-weight:bold; margin-right:5px; line-height:28px; width:529px; height:29px; text-align:center; background:url('images/bg-pagination.png') top repeat-x; font-family:Arial, Helvetica, sans-serif; color:#999999; font-size:11px; text-align:center; }
+.general-pagination a { display:inline-block; font-weight:bold; margin-right:5px; line-height:28px; width:29px; height:29px; text-align:center; background:url('images/bg-pagination.png') top repeat-x; font-family:Arial, Helvetica, sans-serif; color:#999999; font-size:11px; text-align:center; }
 .general-pagination a.selected { background-position:0 -58px; color:#ffffff; }
 .general-pagination a:hover { background-position:0 -29px; color:#999999; text-decoration:none; }
 .general-pagination a, .general-pagination span { border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; }
@@ -868,3 +868,5 @@ form input[type="text"], form textarea { border: 1px solid #CFCFCF; -webkit-tran
 .borGreen {
 	border: 2px solid green !important;
 }
+
+

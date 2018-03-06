@@ -20,6 +20,7 @@
 												<td class="align-left">{!! Html::link(route('admin.equipments.edit',['equipments'=>$equipment->id]),$equipment->id) !!}</td>
 												<td class="align-left">{{$equipment->title}}</td>
 				                                <td class="align-left">{{str_limit($equipment->text,200)}}</td>
+				                                
 				                                <td>
 													@if(isset($equipment->img->mini))
 													{!! Html::image(asset(env('THEME')).'/images/equipment/'.$equipment->img->mini) !!}
