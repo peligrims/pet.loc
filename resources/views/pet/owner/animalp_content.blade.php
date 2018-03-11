@@ -2,10 +2,11 @@
 @if($animals)
 		<div id="content-page" class="content group">
 				            <div class="hentry group">
-				                <h2>Таблица Животных</h2>
+				                <h1>Личный кабинет владельц:{{$persons->name}}</h1>
+								<h2>Зарегистрированные животные владельца {{$persons->name}}</h2>
 				                <div class="short-table white">
 				                    <table style="width: 100%" cellspacing="0" cellpadding="0">
-				                        <thead>
+				                       <thead>
 				                            <tr>
 				                                
 				                                <th>N</th>
@@ -23,24 +24,20 @@
 											@foreach($animals as $animal)
 											<tr>
 				                                <td class="align-left">{{$animal->id}}</td>
-												<td class="align-left">{!! Html::link(route('admin.animals.edit',['animals'=>$animal->chip]),$animal->chip) !!}</td>
-												
+				                               <td class="align-left">{!! Html::link(route('admin.animals.edit',['owner'=>$animal->chip]),$animal->chip) !!}</td>										
 				                                <td class="align-left">{{$animal->nick}}</td>
 												<td @if ($animal->sex == '1')
 												  <p> Самка</p>
 													@else
 												  <p> Самец</p>
-												@endif
-												</td>
-												<td class="align-left">{{$animal->kinds->title}}</td>
+												@endif</td>
+												<td class="align-left">{{$animal->kind}}</td>
 												<td class="align-left">{{$animal->breed}}</td>
-												<td class="align-left">{{$animal->birthday}}</td>
-												
+												<td class="align-left">{!! Form::date('name', \Carbon\Carbon::now());!!}</td>
 												<td>
 													@if(isset($animal->image->mini))
 													{!! Html::image(asset(env('THEME')).'/images/animals/'.$animal->image->mini) !!}
 													
-												  
 													@endif
 												</td>
 												
@@ -51,37 +48,10 @@
 												{!! Form::close() !!}
 												</td>
 											 </tr>	
-											@endforeach	
-										
-
-										
-				                           
+											@endforeach										   
 				                        </tbody>
 				                    </table>
 				                </div>
-								<div class="general-pagination group">
-				            
-											@if($animals->lastPage() > 1) 
-												
-												@if($animals->currentPage() !== 1)
-													<a href="{{ $animals->url(($animals->currentPage() - 1)) }}">{{ Lang::get('pagination.previous') }}</a>
-												@endif
-												@for($i = 1; $i <= $animals->lastPage(); $i++)
-													@if($animals->currentPage() == $i)
-														<a class="selected disabled">{{ $i }}</a>
-													@else
-													<a href="{{ $animals->url($i) }}">{{ $i }}</a>
-													@endif		
-												@endfor
-												@if($animals->currentPage() !== $animals->lastPage())
-													<a href="{{ $animals->url(($animals->currentPage() + 1)) }}">{{ Lang::get('pagination.next') }}</a>
-												@endif
-												
-											
-											@endif
-								</div>
-								{!! Html::link(route('admin.animals.create'),'Добавить  материал',['class' => 'btn btn-the-salmon-dance-3']) !!}
-                                
 				                
 				            </div>
 			@else

@@ -14,7 +14,7 @@ use Auth;
 class LoginController extends Controller
 {
     //Where to redirect owner after login.
-    protected $redirectTo = '/owner_home';
+    protected $redirectTo = '/home';
 
     //Trait
     use AuthenticatesUsers;

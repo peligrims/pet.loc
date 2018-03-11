@@ -18,14 +18,7 @@ class IndexController extends AdminController
 		
 		parent::__construct();
 		
-		// if (Gate::denies('view')) {
-            // dd('Sorry Bud not allowed');
-        // }
 		
-		
-		// if(Gate::denies('VIEW_ADMIN')) {
-			// abort(403);
-		// } 
 		
 		
 		$this->template = env('THEME').'.admin.index';

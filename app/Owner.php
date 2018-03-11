@@ -8,15 +8,18 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Owner extends Authenticatable
 {
-  //Mass assignable attributes
+	//Mass назначенный атрибутов
   protected $fillable = [
       'name', 'email', 'password',
   ];
 
-  //hidden attributes
-   protected $hidden = [
+	//Скрытый атрибут
+	protected $hidden = [
        'password', 'remember_token',
-   ];
-   
+	];
+   public function getId()
+	{
+	  return $this->id;
+	}
 
 }
