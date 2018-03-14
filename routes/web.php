@@ -8,18 +8,19 @@ Route::resource('equipment','EquipmentController',['equipment' => ['equipment' =
 Route::resource('portfolios','PortfolioController',['parameters' => ['portfolios' => 'alias']]);
 //Route::resource('articles','ArticlesController',['parameters'=>['articles' => 'alias']]);	
 Route::resource('сlinics','ClinicsController',['сlinics' => ['сlinics' => 'alias']]);
-Route::resource('animals','AnimalsController',['parameters' => ['animals' => 'alias']]);
+Route::resource('animals','AnimalsController',['parameters' => ['animals' => 'chip']]);
 Route::get('searchSimple', 'SearchController@index')->name('searchSimple');
 Route::match(['get','post'],'/contacts',['uses'=>'ContactsController@index','as'=>'contacts']);	
 
 
 //Не пользователи  не могут получать или отправлять запросы на эти страницы
+Route::post('owner_logout', 'OwnerAuth\LoginController@logout');
 Route::group(['middleware' => 'owner_guest'], function() {
 Route::get('owner_register', 'OwnerAuth\RegisterController@showRegistrationForm');
 Route::post('owner_register', 'OwnerAuth\RegisterController@register');
 Route::get('owner_login', 'OwnerAuth\LoginController@showLoginForm');
 Route::post('owner_login', 'OwnerAuth\LoginController@login');
-Route::post('owner_logout', 'OwnerAuth\LoginController@logout');
+
 });
 
 //Только зарегистрированные Владельцы могут получить доступ  на эти страниц

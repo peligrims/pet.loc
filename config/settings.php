@@ -7,8 +7,10 @@
 		'home_equipments_count' => 1,
 		'paginate' => 10,
 		'recent_comments' => 3,
+		'recent_owner' => 1,
+		
 		'recent_portfolios' => 3,
-		'recent_animals' => 3,
+		'recent_animals' => 4,
 		'other_informations' => 8,
 		'articles_img' => [
 						'max' => ['width'=>816,'height'=>282],

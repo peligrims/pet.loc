@@ -53,9 +53,13 @@ abstract class Repository {
 		
 	}
 	
-	public function one($alias,$attr = array()) {
-		$result = $this->model->where('alias',$alias)->first();
+	public function one($chip) {
+		$result = $this->model->where('chip',$chip)->first();
 		
+		return $result;
+	}
+	public function oneowner($id){
+		$result = $this->model->where('id',$id)->first();
 		return $result;
 	}
 	

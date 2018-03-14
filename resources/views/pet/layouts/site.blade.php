@@ -115,40 +115,40 @@
 						</body>
 						
 					
-						
+						<!-- START LOGIN -->
                         <div id="sidebar-header" class="group">
                             <div class="widget-first widget yit_text_quote">
-						    
-							<div class="text-quote-quote">
-							@if (Auth::guard('web_seller')->guest())
-
-                            <!--Seller Login and registration Links -->
-
-                            <a class="btn btn-secondary btn-lg" href="{{ url('/owner_login') }}">  Вход для владельцев     </a>
-                            <a class="btn btn-secondary btn-lg" href="{{ url('/owner_register') }}">Регистрация для владельцев</a>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::guard('web_seller')->user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a class="btn btn-secondary btn-lg" href="{{ url('/owner_logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ url('/owner_logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
+								<div class="text-quote-quote">
+									@if (Auth::guard('web_owner')->guest()) 
+									<a class="btn btn-secondary btn-lg" href="{{ url('/owner_login') }}">  Вход для владельцев     </a>
+									<a class="btn btn-secondary btn-lg" href="{{ url('/owner_register') }}">Регистрация для владельцев</a>	
+									
+									@else
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+											{{ Auth::guard('web_owner')->user()->name }} <span class="caret"></span>
+											</a>
+											<ul class="dropdown-menu" role="menu">
+												<li>
+													<a class="btn btn-secondary btn-lg" href="{{ url('/owner_logout') }}"
+														onclick="event.preventDefault();
+																 document.getElementById('logout-form').submit();">
+														Logout
+													</a>
+														<form id="logout-form" action="{{ url('/owner_logout') }}" method="POST" style="display: none;">
+															{{ csrf_field() }}
+														</form>
+												</li>
+											</ul>
+										</li>
+									@endif
+								</div>
 							
-							</div>
+								<!-- END LOGIN -->
+								
+								
+								
+								</div>
 							
 							
 							

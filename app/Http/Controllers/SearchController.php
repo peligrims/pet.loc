@@ -39,24 +39,20 @@ class SearchController extends SiteController
 		$this->title = 'Поиск по номеру чипа';
 		$this->keywords = 'Поиск по номеру чипа';
 		$this->meta_desc = 'Поиск по номеру чипа';
-
-		$chip=$request->input('q');
-	
-		
-		$animal = Animal::where('chip','=',$chip)->first();
-
-		
-		$clinic=$animal->clinica;
-		//dd($clinic->title);
-		$kind=$animal->kinds;
-		$breed=$animal->breeds;
-		$owner=$animal->owner;
-		//dd($clinic);
+		$chip=$request->input('q');		
+		 $animal = DB::table('animals')->first();
+		//$animal = Animal::where('chip','=',$chip)->first();
+		//dd($animal);
+		//$clinic=$animal->clinica;
+		//$kind=$animal->kinds;
+		//$breed=$animal->breeds;
+		$ownerid =$animal->o_id;
+		$owner = DB::table('owners')->where('id',$ownerid)->first();
 		$breed=DB::table('breeds')->first();
 		$animal->image = json_decode($animal->image);
 		
 		
-        $content = view(env('THEME').'.animal_content')->with(['animal' => $animal,'clinic' => $clinic,'breed' => $breed,'owner' => $owner,'kind' => $kind])->render();
+        $content = view(env('THEME').'.animal_content')->with(['animal' => $animal,'owner' => $owner])->render();
         $this->vars = array_add($this->vars,'content',$content);	
 		
 		

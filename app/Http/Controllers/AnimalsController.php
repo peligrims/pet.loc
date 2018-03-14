@@ -9,19 +9,26 @@ use Corp\Repositories\AnimalsRepository;
 use Corp\Repositories\PortfoliosRepository;
 use Corp\Repositories\ArticlesRepository;
 use Corp\Repositories\CommentsRepository;
+use Corp\Repositories\OwnersRepository;
+
 
 use Corp\Animal;
 use Corp\Clinic;
 use Corp\Category;
+use Corp\Owner;
+
+use Config;
+use DB;
 
 
 class AnimalsController extends SiteController
 {
     
-	public function __construct(AnimalsRepository $an_rep,PortfoliosRepository $p_rep, ArticlesRepository $a_rep, CommentsRepository $c_rep) {
+	public function __construct(OwnersRepository $o_rep, AnimalsRepository $an_rep,PortfoliosRepository $p_rep, ArticlesRepository $a_rep, CommentsRepository $c_rep) {
     	
     	parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
     	
+    	$this->o_rep = $o_rep;
     	$this->p_rep = $p_rep;
     	$this->a_rep = $a_rep;
     	$this->an_rep = $an_rep;
@@ -46,9 +53,9 @@ class AnimalsController extends SiteController
         $content = view(env('THEME').'.animals_content')->with('animals',$animals)->render();
         $this->vars = array_add($this->vars,'content',$content);
         
-		$comments = $this->getComments(config('settings.recent_comments'));
-        $portfolios = $this->getPortfolios(config('settings.recent_portfolios'));
-		$this->contentRightBar = view(env('THEME').'.animalsBar'));
+		//$comments = $this->getComments(config('settings.recent_comments'));
+       // $portfolios = $this->getPortfolios(config('settings.recent_portfolios'));
+		$this->contentRightBar = view(env('THEME').'.animalsBar');
          
         return $this->renderOutput();
     }
@@ -105,9 +112,36 @@ class AnimalsController extends SiteController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($chip)
     {
-        //
+        $animal = $this->an_rep->one($chip);
+		//$owner = $this->o_rep->get(['id','name','nick','email','phone1'],Config::get('settings.recent_owner'));
+		$ownerid =$animal->o_id;
+		$owner = DB::table('owners')->where('id',$ownerid)->first();
+		
+		
+		if($animal) {
+			$animal->image = json_decode($animal->image);
+		}
+		/* if(isset($animals->id)) {
+			$this->title = $article->title;
+			$this->keywords = $article->keywords;
+			$this->meta_desc = $article->meta_desc;
+		} */
+		
+		$content = view(env('THEME').'.animal_content')->with(['animal'=> $animal,'owner' => $owner])->render();
+		$this->vars = array_add($this->vars,'content',$content);
+		
+		
+		//$comments = $this->getComments(config('settings.recent_comments'));
+        //$portfolios = $this->getPortfolios(config('settings.recent_portfolios'));
+
+        
+        $this->contentRightBar = view(env('THEME').'.animalsBar');
+		
+		
+		return $this->renderOutput();
+		
     }
 
     /**

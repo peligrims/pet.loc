@@ -21,7 +21,7 @@ class RedirectIfOwnerAuthenticated
       //If request comes from logged in seller, he will
       //be redirected to seller's home page.
       if (Auth::guard('web_owner')->check()) {
-          return redirect('/owner_home');
+          return redirect('/');
       }
       return $next($request);
   }

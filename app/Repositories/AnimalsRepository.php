@@ -6,14 +6,23 @@ use Corp\Animal;
 use Image;
 use Config;
 
-
 class AnimalsRepository extends Repository {
+
 	
 	
 	 public function __construct(Animal $animals) {
 		$this->model = $animals;
+	}
 	
-	
+	public function one($chip) {
+		$animal = parent::one($chip, $attr = array());
+		
+		/* if($animal && !empty($attr)) {
+			//$article->load('comments');
+			//$article->comments->load('user');
+		} */
+		
+		return $animal;
 	}
 	
 	public function addAnimal($request) {

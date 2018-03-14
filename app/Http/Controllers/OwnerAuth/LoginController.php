@@ -30,4 +30,13 @@ class LoginController extends Controller
    {
        return view('owner.auth.login');
    }
+   public function logout(Request $request)
+    {
+      		
+		$this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return redirect('/');
+    }
 }

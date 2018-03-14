@@ -13,19 +13,14 @@
 										
 										
 
-										<div class="thumb-img"><img src="{{asset(env('THEME'))}}/images/animals/{{ $animal->image->max}}"  />
-										<a href="{{ route('animals.show',['chip'=>$animal->chip]) }}" title="Section shortcodes &amp; sticky posts!" class="title">{{ $animal->chip }}</a>
-										<a href="{{ route('animals.show',['chip'=>$animal->chip]) }}" title="Section shortcodes &amp; sticky posts!" class="title">{{ $animal->o_name  }}</a>
+										<div class="thumb-img"><img src="{{asset(env('THEME'))}}/images/animals/{{ $animal->image->mini}}"  /><br />
+										<a href="{{ route('animals.show',['chip'=>$animal->chip]) }}" title="Section shortcodes &amp; sticky posts!" class="title">Чип: {{ $animal->chip }}</a><br />
+										<a href="{{ route('animals.show',['chip'=>$animal->chip]) }}" title="Section shortcodes &amp; sticky posts!" class="title">Кличка:{{ $animal->nick }}</a>
 										
 										</div>
 										
 										<br />
-										
-										
-
-										
-										<p> {{ $animal->nick }}</p>
-										
+																				
 										<div class="text">
 					                    </div>
 										
