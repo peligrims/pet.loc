@@ -11,17 +11,23 @@
 				            			<div class="hentry-post group">
 				            							            			
 										
+										
 
-
-										<div class="text">
-										<a href="{{ route('articles.show',['chip'=>$animal->chip]) }}" title="Section shortcodes &amp; sticky posts!" class="title">{{ $animal->chip }}</a>
-										<a href="{{ route('articles.show',['chip'=>$animal->chip]) }}" title="Section shortcodes &amp; sticky posts!" class="title">{{ $animal->o_name  }}</a>
+										<div class="thumb-img"><img src="{{asset(env('THEME'))}}/images/animals/{{ $animal->image->max}}"  />
+										<a href="{{ route('animals.show',['chip'=>$animal->chip]) }}" title="Section shortcodes &amp; sticky posts!" class="title">{{ $animal->chip }}</a>
+										<a href="{{ route('animals.show',['chip'=>$animal->chip]) }}" title="Section shortcodes &amp; sticky posts!" class="title">{{ $animal->o_name  }}</a>
+										
+										</div>
+										
+										<br />
+										
+										
 
 										
 										<p> {{ $animal->nick }}</p>
 										
-										
-					                             </div>
+										<div class="text">
+					                    </div>
 										
 
 

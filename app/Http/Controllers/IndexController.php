@@ -18,20 +18,9 @@ use DB;
 use Config;
 
 class IndexController extends SiteController
-{
-				
-			
-    
-	
-	
-	
-	
+{	
 	public function __construct(SlidersRepository $s_rep, PartnersRepository $pa_rep, ArticlesRepository $a_rep, AnimalsRepository $an_rep) {
-    	
-    	
-			
-		
-		
+    	    	
 		parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
     	
     	$this->s_rep = $s_rep;
@@ -55,7 +44,6 @@ class IndexController extends SiteController
         //
         
         $partners = $this->getPartner();
-        
         $content = view(env('THEME').'.content')->with('partners',$partners)->render();
         $this->vars = array_add($this->vars,'content', $content);
         
@@ -71,8 +59,6 @@ class IndexController extends SiteController
      		
 		$animals = $this->getAnimals();
 		
-		
-		
 		$this->contentRightBar = view(env('THEME').'.indexBar')->with(['animals' => $animals])->render();
         
 		        
@@ -81,12 +67,14 @@ class IndexController extends SiteController
     
     protected function getAnimals() {
 		
-		$animals=Animal::select(['id','chip','date_server','nick','clinic','o_name','image'])->limit(3)->get();
- 		
+		$animals = $this->an_rep->get(['id','chip','date_server','nick','clinic','o_name','image'],Config::get('settings.recent_animals'));
+	
     	return $animals;
     }
 	
 	protected function getPartner() {
+		
+		
 		
 		$partner = $this->pa_rep->get('*',Config::get('settings.home_port_count'));
 		

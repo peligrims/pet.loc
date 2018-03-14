@@ -50,7 +50,8 @@ class SearchController extends SiteController
 		//dd($clinic->title);
 		$kind=$animal->kinds;
 		$breed=$animal->breeds;
-		$owner=$animal->owners;
+		$owner=$animal->owner;
+		//dd($clinic);
 		$breed=DB::table('breeds')->first();
 		$animal->image = json_decode($animal->image);
 		

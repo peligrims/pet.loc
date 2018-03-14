@@ -6,7 +6,7 @@ Route::resource('information','InformationController',['information' => ['inform
 Route::resource('insurance','InsuranceController',['insurance' => ['insurance' => 'alias']]);
 Route::resource('equipment','EquipmentController',['equipment' => ['equipment' => 'alias']]);
 Route::resource('portfolios','PortfolioController',['parameters' => ['portfolios' => 'alias']]);
-Route::resource('articles','ArticlesController',['parameters'=>['articles' => 'alias']]);	
+//Route::resource('articles','ArticlesController',['parameters'=>['articles' => 'alias']]);	
 Route::resource('сlinics','ClinicsController',['сlinics' => ['сlinics' => 'alias']]);
 Route::resource('animals','AnimalsController',['parameters' => ['animals' => 'alias']]);
 Route::get('searchSimple', 'SearchController@index')->name('searchSimple');
@@ -24,24 +24,12 @@ Route::post('owner_logout', 'OwnerAuth\LoginController@logout');
 
 //Только зарегистрированные Владельцы могут получить доступ  на эти страниц
 Route::group(['as' => 'home.', 'prefix' => 'home', 'middleware' => 'owner_auth'], function(){
-
 Route::get('/',['uses' => 'Owner\PersonalController@index','as' => 'ownerIndex']);
 Route::get('ownerp', 'Owner\OwnerpController@index');
-//Route::post('/animalp', 'Owner\AnimalpController@create');
 Route::resource('animalp', 'Owner\AnimalpController', ['only' => [
     'index', 'show', 'create', 'edit'
 ]]); 
-/* Route::resource('animalpcreate', 'Owner\AnimalpController', [
-		'names' => [
-					'index' => 'animalpcreate']
-]);
- */
-//Route::resource('/animalp','Owner\AnimalpController');
-
-
 Route::post('owner_logout', 'OwnerAuth\LoginController@logout');
-//Route::get('/owner_show',['uses' => 'LkController@index','as' => 'ownerShow']);
-
 });
 
 //Только зарегистрированные  Администраторы могут получать или отправлять запросы на эти страницы 
