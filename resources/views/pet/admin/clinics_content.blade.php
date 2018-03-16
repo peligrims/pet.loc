@@ -27,7 +27,7 @@
 												<td class="align-left">{{$clinic->phone}}</td>
 												<td class="align-left">{{$clinic->email}}</td>
 												<td class="align-left">{{$clinic->leader}}</td>
-												<td class="align-left">{{$clinic->regions->title}}</td>
+												<td class="align-left">{{$clinic->region}}</td>
 												
 												
 				                                <td>

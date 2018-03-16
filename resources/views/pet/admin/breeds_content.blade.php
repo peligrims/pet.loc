@@ -16,7 +16,7 @@
 											@foreach($breeds as $breed)
 											<tr>
 				                                <td class="align-left">{!! Html::link(route('admin.breeds.edit',['breeds'=>$breed->id]),$breed->id) !!}</td>
-												<td class="align-left">{{$breed->kinds->title}}</td>
+												<td class="align-left">{{$breed->kind}}</td>
 												<td class="align-left">{{$breed->title}}</td>
 				                               
 												

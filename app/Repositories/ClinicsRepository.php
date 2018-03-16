@@ -27,7 +27,7 @@ class ClinicsRepository extends Repository {
 		return ['status' => 'Клиника добавлена'];
 		
 	}
-	public function updateClinic($request,$clinic) {
+	public function updateClinic($request,$id) {
 
 		$data = $request->all();
 		$clinic = new Clinic;
@@ -38,7 +38,7 @@ class ClinicsRepository extends Repository {
 		$clinic->email    = $request['email'];
 		$clinic->leader    = $request['leader'];
 		$clinic->region    = $request['region'];
-		
+		$id->delete();
 		$clinic->save();
 		return ['status' => 'Клиника обновлена'];
 		

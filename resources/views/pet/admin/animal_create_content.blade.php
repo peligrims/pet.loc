@@ -91,9 +91,9 @@
 		
 		<li class="text-field">
 			<label for="name-contact-us">
-				<span class="label">Изображение:</span>
+				<span class="label">Фотография питомца:</span>
 				<br />
-				<span class="sublabel">Изображение материала</span><br />
+				
 			</label>
 			<div class="input-prepend">
 				{!! Form::file('image', ['class' => 'filestyle','data-buttonText'=>'Выберите изображение','data-buttonName'=>"btn-primary",'data-placeholder'=>"Файла нет"]) !!}

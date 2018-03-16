@@ -63,18 +63,16 @@ class AdminController extends \Corp\Http\Controllers\Controller
 	public function getMenu() {
 		return Menu::make('adminMenu', function($menu) {
 			
-			
-			  
-			
-			
+						
 			$menu->add('Животные',  array('route'  => 'admin.animals.index'));
 			$menu->add('Клиники',  array('route'  => 'admin.clinics.index'));
 			$menu->add('Породы',  array('route'  => 'admin.breeds.index'));
-			$menu->add('Влалельцы',  array('route'  => 'admin.owners.index'));
+			$menu->add('Клиенты',  array('route'  => 'admin.owners.index'));
 			$menu->add('Партеры',  array('route'  => 'admin.partners.index'));
 			$menu->add('Оборудование',  array('route'  => 'admin.equipments.index'));
-			$menu->add('Пользователи',  array('route'  => 'admin.users.index'));
-			$menu->add('Привилегии',  array('route'  => 'admin.permissions.index'));
+			$menu->add('Юзеры',  array('route'  => 'admin.users.index'));
+			$menu->add('Новости     ',  array('route'  => 'admin.informations.index'));
+			$menu->add('Доступ',  array('route'  => 'admin.permissions.index'));
 			
 						
 		});

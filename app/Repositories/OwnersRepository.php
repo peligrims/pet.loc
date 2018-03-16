@@ -12,9 +12,12 @@ class OwnersRepository extends Repository {
 
 
 	
-	public function updateOwner($request) {
+	public function updateOwner($request,$id) {
 
-		$data = $request->all();
+		$data = $request->except('_token');
+		if(isset($data['password'])) {
+			$data['password'] = bcrypt($data['password']);
+		}
 	
 	
 		$owner = new Owner;
@@ -25,8 +28,9 @@ class OwnersRepository extends Repository {
 		$owner->email 		= $data['email'];
 		$owner->country 	= $data['country'];
 		$owner->city 		= $data['city'];
+		$owner->password	= $data['password'];
+		$id->delete();
 		$owner->save();
-		//dd($owner);
 		
 		return ['status' => 'Карта владельца обновлена'];
 		
@@ -46,6 +50,7 @@ class OwnersRepository extends Repository {
 		$owner->email 		= $data['email'];
 		$owner->country 	= $data['country'];
 		$owner->city 		= $data['city'];
+		
 		$owner->save();
 		return ['status' => 'Оборудован владелец'];
 

@@ -17,18 +17,18 @@ class BreedsRepository extends Repository {
 		$breed = new Breed;
 		$breed->title     = $request['title'];
 		$breed->kind     = $request['kind'];
-	
+		
 		$breed->save();
 		return ['status' => 'Порода добавлена'];
 		
 	}
-	public function updateBreed($request,$breeds) {
+	public function updateBreed($request,$id) {
 
 		$data = $request->all();
 		$breed = new Breed;
 	
 		$breed->title     = $data['title'];
-		
+		$id->delete();
 		$breed->save();
 		return ['status' => 'Порода обновлено'];
 		

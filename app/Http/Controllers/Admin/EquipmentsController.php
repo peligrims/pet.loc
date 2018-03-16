@@ -103,7 +103,7 @@ class EquipmentsController extends AdminController
 		$this->title = 'Реадактирование карточки оборудования - '. $equipment->title;
 		$this->content = view(env('THEME').'.admin.equipment_create_content')->with(['equipment' => $equipment])->render();
 			
-			return $this->renderOutput();
+		return $this->renderOutput();
     }
 
     /**
@@ -119,13 +119,10 @@ class EquipmentsController extends AdminController
        
 	   $equipment = Equipment::where('id', $id)->first();
 	   $result = $this->e_rep->updateEquipment($request,$equipment);
-		
+	
 		if(is_array($result) && !empty($result['error'])) {
 			return back()->with($result);
 		}
-		
-		
-		
 		
 		return redirect('/admin')->with($result);
         

@@ -1,4 +1,3 @@
-	
 @if($animals)
 		<div id="content-page" class="content group">
 				            <div class="hentry group">

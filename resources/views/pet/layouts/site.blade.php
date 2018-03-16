@@ -18,7 +18,7 @@
 <html dir="ltr" lang="en-US">
 <![endif]-->
     
-    <!-- START HEAD -->
+<!-- START HEAD -->
     <head>
         
         <meta charset="UTF-8" />
@@ -82,7 +82,8 @@
         <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/shortcodes.js"></script>
 		<script type="text/javascript" src="{{ asset(env('THEME')) }}/js/jquery.colorbox-min.js"></script> <!-- nav -->
 		<script type="text/javascript" src="{{ asset(env('THEME')) }}/js/jquery.tweetable.js"></script>
-		
+		 <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/ckeditor/ckeditor.js"></script>
+		 <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/jquery-ui.js"></script>
 		<script type="text/javascript" src="{{ asset(env('THEME')) }}/js/myscripts.js"></script>
 
     </head>
@@ -124,12 +125,12 @@
 									<a class="btn btn-secondary btn-lg" href="{{ url('/owner_register') }}">Регистрация для владельцев</a>	
 									
 									@else
-										<li class="dropdown">
+										<div class="dropdown">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 											{{ Auth::guard('web_owner')->user()->name }} <span class="caret"></span>
 											</a>
 											<ul class="dropdown-menu" role="menu">
-												<li>
+												<div>
 													<a class="btn btn-secondary btn-lg" href="{{ url('/owner_logout') }}"
 														onclick="event.preventDefault();
 																 document.getElementById('logout-form').submit();">
@@ -138,44 +139,39 @@
 														<form id="logout-form" action="{{ url('/owner_logout') }}" method="POST" style="display: none;">
 															{{ csrf_field() }}
 														</form>
-												</li>
+												</div>
 											</ul>
-										</li>
+										</div>
 									@endif
 								</div>
 							
 								<!-- END LOGIN -->
-								
-								
-								
-								</div>
+																
 							
-							
-							
-
-
-
-							   <blockquote class="text-quote-quote">&#8220;Зарегистрируйте своего любимца для жизни&#8221;</blockquote>
-                                <div class="achip">
-												<form action="{{route('searchSimple')}}" method="GET" class="search-simple">
-													<div class="row">
-														<div class="col-xs-10">
-															<div class="form-group">
-																<div class="col-12 col-md-9 mb-2 mb-md-0">
-																<input type="text" placeholder=" введите номер чипа" class="form-control" name="q" value="{{ old('q') }}" required>
+									   <blockquote class="text-quote-quote">&#8220;Зарегистрируйте своего любимца для жизни&#8221;</blockquote>
+										<div class="achip">
+														<form action="{{route('searchSimple')}}" method="GET" class="search-simple">
+															<div class="row">
+																
+																
+																
+																<div class="col-xs-10">
+																	<div class="form-group">
+																		<div class="col-12 col-md-9 mb-2 mb-md-0">
+																		<input type="text" placeholder="            введите номер чипа         " class="form-control" name="q" value="{{ old('q') }}" required>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-xs-2">
+																	<div class="form-group">
+																		<input class="btn btn-secondary btn-lg"  type="submit" value="          Искать по номеру чипа        "</a> 
+																	</div>
 																</div>
 															</div>
-														</div>
-														<div class="col-xs-2">
-															<div class="form-group">
-																<input class="btn btn-secondary btn-lg"  type="submit" value="Искать по номеру чипа"</a> 
-															</div>
-														</div>
-													</div>
-												</form>							    
-
-											</div>
-                            </div>
+														</form>							    
+										</div>
+								</div>
+							</div>
                         </div>
                         <div class="clearer"></div>
                         
@@ -189,8 +185,7 @@
                     </div>
                     
                 </div>
-                <!-- END HEADER -->
-                
+                <!-- END HEADER -->                
                 <!-- START SLIDER -->
 					
 					@yield('slider')

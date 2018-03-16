@@ -104,9 +104,7 @@ class OwnersController extends AdminController
     public function edit($id)
     {
         $owner = Owner::where('id', $id)->first();
-		  
-		
-		
+		 
 		$this->title = 'Реадактирование карты владельца - '. $owner->title;
 		$this->content = view(env('THEME').'.admin.owner_create_content')->with(['owner' => $owner])->render();
 			

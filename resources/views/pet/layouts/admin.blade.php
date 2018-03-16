@@ -112,7 +112,7 @@
                         <hr />
                         
                         <!-- START MAIN NAVIGATION -->
-							@yield('navigation')
+						@yield('navigation')
                         <!-- END MAIN NAVIGATION -->
                        
                         <div id="menu-shadow"></div>

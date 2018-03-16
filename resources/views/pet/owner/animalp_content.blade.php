@@ -1,9 +1,9 @@
 	
-@if($animals)
+@if($animalp)
 		<div id="content-page" class="content group">
 				            <div class="hentry group">
-				                <h1>Личный кабинет владельц:{{$persons->name}}</h1>
-								<h2>Зарегистрированные животные владельца {{$persons->name}}</h2>
+				                <h1>Личный кабинет владельц</h1>
+								<h2>Зарегистрированные животные владельца</h2>
 				                <div class="short-table white">
 				                    <table style="width: 100%" cellspacing="0" cellpadding="0">
 				                       <thead>
@@ -21,7 +21,7 @@
 				                        </thead>
 				                        <tbody>
 				                            
-											@foreach($animals as $animal)
+											@foreach($animalp as $animal)
 											<tr>
 				                                <td class="align-left">{{$animal->id}}</td>
 				                               <td class="align-left">{!! Html::link(route('admin.animals.edit',['owner'=>$animal->chip]),$animal->chip) !!}</td>										
@@ -52,7 +52,7 @@
 				                        </tbody>
 				                    </table>
 				                </div>
-				                
+				                {!! Html::link(route('home.animalp.create'),'Добавить  питомца',['class' => 'btn btn-the-salmon-dance-3']) !!}
 				            </div>
 			@else
 			

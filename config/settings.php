@@ -12,14 +12,19 @@
 		'recent_portfolios' => 3,
 		'recent_animals' => 4,
 		'other_informations' => 8,
+		'informations_image' => [
+						'max' => ['width'=>816,'height'=>282],
+						'mini' => ['width'=>100,'height'=>50]
+		
+						],
 		'articles_img' => [
 						'max' => ['width'=>816,'height'=>282],
-						'mini' => ['width'=>150,'height'=>150]
+						'mini' => ['width'=>50,'height'=>50]
 						
 						],
 		'animal_img' => [
 						'max' => ['width'=>816,'height'=>282],
-						'mini' => ['width'=>150,'height'=>150]
+						'mini' => ['width'=>50,'height'=>50]
 						
 						],
 		

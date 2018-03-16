@@ -5,7 +5,7 @@
 @endsection
 
 
- @section('content')
+@section('content')
 	{!! $content !!}
 @endsection
 

@@ -23,17 +23,15 @@ class OwnerpController extends LkController
     public function index()
 		{
 			$this->title = 'Персональные данные';
-			$persons = $this->getOwners();
-		
-			$owner=$persons->id;
-			
-			$this->content = view(env('THEME').'.owner.person_content')->with(['persons' => $persons,'owner' => $owner])->render();
+			$ownerp = $this->getOwners();
+
+			$this->content = view(env('THEME').'.owner.ownerp_content')->with(['ownerp' => $ownerp])->render();
 			return $this->renderOutput();     
 		}
 	public function getOwners()
 		{
-			$person = Auth::guard('web_owner')->user();		
-			return $person;
+			$ownerp = Auth::guard('web_owner')->user();		
+			return $ownerp;
 		}
 	public function getAnimals($take = FALSE,$paginate = TRUE)
 		{       
@@ -43,7 +41,12 @@ class OwnerpController extends LkController
 		
     public function create()
 		{
+		$owner = $this->getOwners();
+		$this->title = "Добавление персональных данных";
+		
+		$this->content = view(env('THEME').'.owner.ownerp_create_content')->render();
 			
+		return $this->renderOutput();
 		}
 
     /**
@@ -54,7 +57,13 @@ class OwnerpController extends LkController
      */
     public function store(Request $request)
     {
-        //
+       $result = $this->o_rep->addOwner($request);
+
+		if(is_array($result) && !empty($result['error'])) {
+			return back()->with($result);
+		}
+		
+		return redirect('/admin')->with($result);
     }
 
     /**
@@ -76,7 +85,14 @@ class OwnerpController extends LkController
      */
     public function edit($id)
     {
-        //
+        $ownerp = Owner::where('id', $id)->first();
+		  
+		$ownerp->image = json_decode($ownerp->image);
+	
+		$this->title = 'Редактирование личных даных - '. $ownerp->title;
+		$this->content = view(env('THEME').'.owner.ownerp_create_content')->with(['ownerp' => $ownerp])->render();
+			
+		return $this->renderOutput();
     }
 
     /**
@@ -88,7 +104,15 @@ class OwnerpController extends LkController
      */
     public function update(Request $request, $id)
     {
-        //
+        $owner = Owner::where('id', $id)->first();
+	   
+	   $result = $this->o_rep->updateOwner($request, $owner);
+	
+		if(is_array($result) && !empty($result['error'])) {
+			return back()->with($result);
+		}
+		
+		return redirect('/admin')->with($result);
     }
 
     /**

@@ -14,15 +14,13 @@
 												
 						                            <a class="thumb"><img src="{{ asset(env('THEME')) }}/images/partners/{{ $item->img->path }}" alt="0061" title="0061" /></a>
 						                            <div class="work-overlay">
-						                                  <h3><a href="{{ route('portfolios.show',['alias' => $item->alias])}}">{{ $item->title }}</a></h3>
-						                               
+													<div class="overlay">
+													<a class="work-overlay" href="{{ $item->url }}"></a>
+													</div>		
+													
 						                            </div>
 						                        </div>
-						                        <div class="work-description">
-						                            <h2><a href="{{ route('portfolios.show',['alias' => $item->alias])}}">{{ $item->title }}</a></h2>
-						                            <p>{{ str_limit($item->text,100) }}</p>
-						                                <!-- <a href="{{ route('portfolios.show',['alias' => $item->alias])}}" class="read-more">|| Read more</a>-->
-						                        </div>
+						                        
 						                    </div>
 						                    
 						                    <div class="clear"></div>
@@ -43,7 +41,7 @@
 				                                    <img src="{{ asset(env('THEME')) }}/images/partners/{{ $item->img->mini }}" alt="0061" title="0061" />						
 				                                    <div class="overlay">
 				                                        <a class="overlay_img" href="{{ asset(env('THEME')) }}/images/partners/{{ $item->img->path}}" rel="lightbox" title=""></a>
-				                                        <!--<a class="overlay_project" href="{{ route('portfolios.show',['alias' => $item->alias]) }}"></a>-->
+				                                        <a class="overlay_project" href="{{ $item->url }}"></a>
 				                                        <span class="overlay_title">{{ $item->title }}</span>
 				                                    </div>
 				                                </div>

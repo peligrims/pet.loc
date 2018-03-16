@@ -29,20 +29,19 @@ class InformationController extends SiteController
 		$this->meta_desc = 'Новости';
 		
 		$informations = $this->getInformations();
-
+		
         $content = view(env('THEME').'.informations_content')->with('informations',$informations)->render();
         $this->vars = array_add($this->vars,'content',$content);
         
-        //dd($informations); 
+      
         return $this->renderOutput();
     }
 	
 	public function getInformations($take = FALSE,$paginate = TRUE) {
 		
 		$informations = $this->i_rep->get('*',$take,$paginate);
-		if($informations) {
-			$informations->load('filter');
-		}
+		
+		
 		
 		return $informations;
 	}

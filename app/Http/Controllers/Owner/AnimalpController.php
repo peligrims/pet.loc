@@ -23,10 +23,10 @@ class AnimalpController extends LkController
 			$this->title = 'Данные о питомцах';
 			$persons = $this->getOwners();
 		
-			$owner=$persons->id;
+			$ownerp=$persons->id;
 			$collection = $this->getAnimals();
-			$animals = $collection->where('o_id','=',$owner);
-			$this->content = view(env('THEME').'.owner.animalp_content')->with(['persons' => $persons,'animals' => $animals,'owner' => $owner])->render();
+			$animalp = $collection->where('o_id','=',$ownerp);
+			$this->content = view(env('THEME').'.owner.animalp_content')->with(['animalp' => $animalp,'ownerp' => $ownerp])->render();
 			return $this->renderOutput();     
 		}
 	public function getOwners()

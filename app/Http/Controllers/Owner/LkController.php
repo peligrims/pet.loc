@@ -31,7 +31,7 @@ class LkController extends \Corp\Http\Controllers\Controller
 		
 		
 		$menu = $this->getMenu();
-		//dd($menu);
+	
 		
 		$navigation = view(env('THEME').'.owner.navigation')->with('menu',$menu)->render();
 		$this->vars = array_add($this->vars,'navigation',$navigation);
@@ -44,8 +44,10 @@ class LkController extends \Corp\Http\Controllers\Controller
 	}
 	public function getMenu() {
 		return Menu::make('ownerMenu', function($menu) {		    
-		$menu->add('Данные о владельце',['action'  => 'Owner\OwnerpController@index']);
-        $menu->add('Данные о питомцах',['action'  => 'Owner\AnimalpController@index']);     				
+		//$menu->add('Данные о владельце',['action'  => 'Owner\OwnerpController@index']);
+        //$menu->add('Данные о питомцах',['action'  => 'Owner\AnimalpController@index']);     				
+		$menu->add('Данные о владельце',  array('route'  => 'home.ownerp.index')); 
+		$menu->add('Данные о питомцах',  array('route'  => 'home.animalp.index'));
 		});
 	}
 }

@@ -15,10 +15,10 @@ class PersonalController extends LkController
 		$this->template = env('THEME').'.owner.index';		
 	}
 
-   public function index()
+	public function index()
     {
 		$this->title = 'Личный кабинет';
 		return $this->renderOutput();
     }
-    
+	
 }

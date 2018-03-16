@@ -1,3 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Datepicker - Display month &amp; year menus</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  } );
+  </script>
+</head>
+
+</html>
 <div id="content-page" class="content group">
 
 {{ csrf_field() }}
@@ -46,17 +67,17 @@
 				 <span class="label">Дата создания:</span>
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-pencil"></i></span>
-			{!! Form::textarea('text', isset($partner->text) ? $partner->text  : old('text'), ['id'=>'editor','class' => 'form-control','placeholder'=>'Введите описание']) !!}
+				<p>Date: <input type="text" id="datepicker"></p>  
 			</div>
 			<div class="msg-error"></div>
 		</li>
 		
 		<li class="textarea-field">
 			<label for="message-contact-us">
-				 <span class="label">Описание:</span>
+				 <span class="label">Описание партнерской программы:</span>
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-pencil"></i></span>
-			{!! Form::textarea('text', isset($partner->text) ? $partner->text  : old('text'), ['id'=>'editor2','class' => 'form-control','placeholder'=>'Введите текст страницы']) !!}
+			{!! Form::textarea('text', isset($partner->text) ? $partner->text  : old('text'), ['id'=>'editor','class' => 'form-control','placeholder'=>'Введите текст страницы']) !!}
 			</div>
 			<div class="msg-error"></div>
 		</li>

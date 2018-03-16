@@ -1,7 +1,6 @@
 <div id="content-page" class="content group">
-
 {{ csrf_field() }}
-				            <div class="hentry group">
+<div class="hentry group">
 
 {!! Form::open(['url' => (isset($equipment->id)) ? route('admin.equipments.update',['equipments'=>$equipment->id]) : route('admin.equipments.store'),'class'=>'contact-form','method'=>'POST','enctype'=>'multipart/form-data']) !!}
     
@@ -13,7 +12,7 @@
 				
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
-			{!! Form::text('title',isset($equipment->title) ? $equipment->title  : old('title'), ['placeholder'=>'Введите название страницы']) !!}
+			{!! Form::text('title',isset($equipment->title) ? $equipment->title  : old('title'), ['placeholder'=>'Введите название оборудования']) !!}
 			 </div>
 		</li>
 		
@@ -52,6 +51,7 @@
 			 </div>
 			 
 		</li>
+		
 		
 		
 		

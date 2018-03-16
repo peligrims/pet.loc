@@ -41,7 +41,7 @@
 			<label for="name-contact-us">
 				<span class="label">Пароль:</span>
 				<br />
-				<span class="sublabel">Пароль</span><br />
+				
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
 			{!! Form::password('password') !!}
@@ -52,7 +52,7 @@
 			<label for="name-contact-us">
 				<span class="label">Повтор пароля:</span>
 				<br />
-				<span class="sublabel">Повтор пароля</span><br />
+				
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>
 			{!! Form::password('password_confirmation') !!}

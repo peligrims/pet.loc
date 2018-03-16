@@ -22,7 +22,7 @@ public function deleteEquipment($id) {
 			return ['status' => 'Оборудование удалено'];	
 		}
 	}
-public function updateEquipment($request,$equipment) 
+public function updateEquipment($request,$id) 
 		
 		
 		{
@@ -52,9 +52,15 @@ public function updateEquipment($request,$equipment)
 		$img->fit(Config::get('settings.articles_img')['max']['width'],Config::get('settings.articles_img')['max']['height'])->save(public_path().'/'.env('THEME').'/images/equipment/'.$obj->max); 		
 		$img->fit(Config::get('settings.articles_img')['mini']['width'],Config::get('settings.articles_img')['mini']['height'])->save(public_path().'/'.env('THEME').'/images/equipment/'.$obj->mini); 		
 		$data['img'] = json_encode($obj);
-		$this->model->fill($data);	
+			
 		$equipment->img      = $data['img'];
+		$id->delete();
 		$equipment->save();
+		
+		
+		
+		
+		
 		return ['status' => 'Оборудование обновлено'];
 		
 			}

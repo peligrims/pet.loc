@@ -20,10 +20,10 @@
 				                   	<div class="hentry work group">
 				                        <div class="work-thumbnail">
 				                            <div class="nozoom">
-				                                <img src="{{ asset(env('THEME')) }}/images/projects/{{ $information->img->max }}" alt="0061" title="0061" />							
+				                                <img src="{{ asset(env('THEME')) }}/images/projects/{{ $information->image->max }}" alt="0061" title="0061" />							
 				                                <div class="overlay">
-				                                    <a class="overlay_img" href="{{ asset(env('THEME')) }}/images/projects/{{ $information->img->path }}" rel="lightbox" title="{{ $information->title }}"></a>
-				                                    <a class="overlay_project" href=""></a>
+				                                    <a class="overlay_img" href="{{ asset(env('THEME')) }}/images/projects/{{ $information->image->path }}" rel="lightbox" title="{{ $information->title }}"></a>
+				                                    <a class="overlay_project" href="{{ $information->alias }}"></a>
 				                                    <span class="overlay_title">{{ $information->title }}</span>
 				                                </div>
 				                            </div>
@@ -42,7 +42,7 @@
 												@endif
 												
 				                            </div>
-				                          <a class="read-more" href="">View Project</a>        
+				                               
 				                        </div>
 				                        <div class="clear"></div>
 				                    </div>
