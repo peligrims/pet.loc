@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
     
-    <!-- START HEAD -->
+     <!-- START HEAD -->
     <head>
         
         <meta charset="UTF-8" />
@@ -172,7 +172,7 @@
         </div>
         <!-- END BG SHADOW -->
         
-        
+    <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/jquery.mobilemenu.js"></script>     
     </body>
     <!-- END BODY -->
 </html>

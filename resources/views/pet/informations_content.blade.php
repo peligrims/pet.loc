@@ -23,7 +23,7 @@
 				                                <img src="{{ asset(env('THEME')) }}/images/projects/{{ $information->image->max }}" alt="0061" title="0061" />							
 				                                <div class="overlay">
 				                                    <a class="overlay_img" href="{{ asset(env('THEME')) }}/images/projects/{{ $information->image->path }}" rel="lightbox" title="{{ $information->title }}"></a>
-				                                    <a class="overlay_project" href="{{ $information->alias }}"></a>
+				                                   	<a class="overlay_project" href="{{ $information->url }}"></a>
 				                                    <span class="overlay_title">{{ $information->title }}</span>
 				                                </div>
 				                            </div>

@@ -21,34 +21,34 @@
 				                        </thead>
 				                        <tbody>
 				                            
-											@foreach($animalp as $animal)
+											
 											<tr>
-				                                <td class="align-left">{{$animal->id}}</td>
-				                               <td class="align-left">{!! Html::link(route('admin.animals.edit',['owner'=>$animal->chip]),$animal->chip) !!}</td>										
-				                                <td class="align-left">{{$animal->nick}}</td>
-												<td @if ($animal->sex == '1')
+				                                <td class="align-left">{{$animalp->id}}</td>
+				                               <td class="align-left">{!! Html::link(route('home.animalp.edit',['owner'=>$animalp->chip]),$animalp->chip) !!}</td>										
+				                                <td class="align-left">{{$animalp->nick}}</td>
+												<td @if ($animalp->sex == '1')
 												  <p> Самка</p>
 													@else
 												  <p> Самец</p>
 												@endif</td>
-												<td class="align-left">{{$animal->kind}}</td>
-												<td class="align-left">{{$animal->breed}}</td>
+												<td class="align-left">{{$animalp->kind}}</td>
+												<td class="align-left">{{$animalp->breed}}</td>
 												<td class="align-left">{!! Form::date('name', \Carbon\Carbon::now());!!}</td>
 												<td>
-													@if(isset($animal->image->mini))
-													{!! Html::image(asset(env('THEME')).'/images/animals/'.$animal->image->mini) !!}
+													@if(isset($animalp->image->mini))
+													{!! Html::image(asset(env('THEME')).'/images/animals/'.$animalp->image->mini) !!}
 													
 													@endif
 												</td>
 												
 				                                <td>
-												{!! Form::open(['url' => route('admin.animals.destroy',['animals'=>$animal->chip]),'class'=>'form-horizontal','method'=>'POST']) !!}
+												{!! Form::open(['url' => route('home.animalp.destroy',['animals'=>$animalp->chip]),'class'=>'form-horizontal','method'=>'POST']) !!}
 												    {{ method_field('DELETE') }}
 												    {!! Form::button('Удалить', ['class' => 'btn btn-french-5','type'=>'submit']) !!}
 												{!! Form::close() !!}
 												</td>
 											 </tr>	
-											@endforeach										   
+																			   
 				                        </tbody>
 				                    </table>
 				                </div>

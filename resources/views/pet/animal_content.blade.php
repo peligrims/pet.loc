@@ -38,9 +38,9 @@
 				                    </div>
 				                </div>
 				                <div class="one-third ">
-				                   <h1>Информация о владельце:</h1>
+				                   <h1>Инфо о владельце:</h1>
 												
-												<p><b>Имя владельца: </b> {{$owner->name }}</p>
+												<p><b>Имя владельца1: </b> {{$owner->name }}</p>
 												<p><b>Псевдоним: </b> {{$owner->nick }}</p>
 												<p><b>Телефон: </b> {{$owner->phone1 }}</p>
 												<p><b>Моб телефон:</b> {{$owner->phone2 }}</p>
@@ -49,7 +49,7 @@
 												<p><b>Город: </b> {{$owner->city }}</p>
 				                </div>
 				                <div class="one-third last">
-				                    <h1>Данные о животном</h1>									
+				                    <h1>О животном</h1>									
 												<p><b>Кличка животного: </b> {{$animal->nick }}</p>
 				                                <p><b>Номер чипа: </b> {{$animal->chip }}</p>
 											

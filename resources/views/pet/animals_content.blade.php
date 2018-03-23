@@ -1,38 +1,91 @@
-	<div id="primary" class="sidebar-no">  
-				    <div class="inner group">
-				        <!-- START CONTENT -->
-				        <div id="content-page" class="content group">
-				            <h2>Поиск по номеру чипа</h2>
+@if($animals)
+		<div id="content-page" class="content group">
 				            <div class="hentry group">
-				                <p>Зарегистрируйтесь на сайте, зарегистрируйте карту принадлежащего Вам идентифицированного животного.
-Теперь Вы имеете возможность дополнить учетные сведения дополнительной информацией: особые приметы, контактные данные, фотографии. Также имеется возможность открепления учетной карты, в случае продажи животного или смены владельца. Учетные данные карты, вносимые в клинике при регистрации, остаются неизменными.
+				                <h2>Таблица Животных</h2>
+				                <div class="short-table white">
+				                    <table style="width: 100%" cellspacing="0" cellpadding="0">
+				                        <thead>
+				                            <tr>
+				                                
+				                                <th>N</th>
+				                                <th>N чипа</th>
+				                                <th>Кличка</th>
+				                                <th>Пол</th>
+				                                <th>Вид животного</th>
+				                                <th>Порода</th>
+												<th>Дата рождения</th>
+												<th>Изображение</th>
+				                            </tr>
+				                        </thead>
+				                        <tbody>
+				                            
+											@foreach($animals as $animal)
+											<tr>
+				                                <td class="align-left">{{$animal->id}}</td>
+												<td class="align-left">{!! Html::link(route('admin.animals.edit',['animals'=>$animal->chip]),$animal->chip) !!}</td>
+												
+				                                <td class="align-left">{{$animal->nick}}</td>
+												<td @if ($animal->sex == '1')
+												  <p> Самка</p>
+													@else
+												  <p> Самец</p>
+												@endif
+												</td>
+												<td class="align-left">{{$animal->kinds->title}}</td>
+												<td class="align-left">{{$animal->breed}}</td>
+												<td class="align-left">{{$animal->birthday}}</td>
+												
+												<td>
+													@if(isset($animal->image->mini))
+													{!! Html::image(asset(env('THEME')).'/images/animals/'.$animal->image->mini) !!}
+													
+												  
+													@endif
+												</td>
+												
+				                                <td>
+												{!! Form::open(['url' => route('admin.animals.destroy',['animals'=>$animal->chip]),'class'=>'form-horizontal','method'=>'POST']) !!}
+												    {{ method_field('DELETE') }}
+												    {!! Form::button('Удалить', ['class' => 'btn btn-french-5','type'=>'submit']) !!}
+												{!! Form::close() !!}
+												</td>
+											 </tr>	
+											@endforeach	
+										
 
-О всех пожеланиях по улучшению работы Базы Данных Pet.loc просим сообщать на электронный адрес: info@pet.loc</p>
-				             <div class="achip">
-												<form action="{{route('searchSimple')}}" method="GET" class="search-simple">
-													<div class="row">
-														<div class="col-xs-10">
-															<div class="form-group">
-																<div class="col-12 col-md-9 mb-2 mb-md-0">
-																<input type="text" class="form-control" name="q" value="{{ old('q') }}" required>
-																</div>
-															</div>
-														</div>
-														<div class="col-xs-2">
-															<div class="form-group">
-																<input class="btn   btn-beetle-bus-goes-jamba-juice-4 btn-more-link"  type="submit" value="Искать по номеру чипа"</a> 
-															</div>
-														</div>
-													</div>
-												</form>							    
-
-
-								
-				             </div>
-							</div>
+										
+				                           
+				                        </tbody>
+				                    </table>
+				                </div>
+								<div class="general-pagination group">
 				            
-				        </div>
-				        <!-- END CONTENT -->
-				        
-				    </div>
-	</div>
+											@if($animals->lastPage() > 1) 
+												
+												@if($animals->currentPage() !== 1)
+													<a href="{{ $animals->url(($animals->currentPage() - 1)) }}">{{ Lang::get('pagination.previous') }}</a>
+												@endif
+												@for($i = 1; $i <= $animals->lastPage(); $i++)
+													@if($animals->currentPage() == $i)
+														<a class="selected disabled">{{ $i }}</a>
+													@else
+													<a href="{{ $animals->url($i) }}">{{ $i }}</a>
+													@endif		
+												@endfor
+												@if($animals->currentPage() !== $animals->lastPage())
+													<a href="{{ $animals->url(($animals->currentPage() + 1)) }}">{{ Lang::get('pagination.next') }}</a>
+												@endif
+												
+											
+											@endif
+								</div>
+								{!! Html::link(route('admin.animals.create'),'Добавить  материал',['class' => 'btn btn-the-salmon-dance-3']) !!}
+                                
+				                
+				            </div>
+			@else
+			
+			{!! Lang::get('ru.articles_no') !!}
+			
+		@endif	       	            
+		</div>

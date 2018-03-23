@@ -24,8 +24,9 @@ class AnimalpController extends LkController
 			$persons = $this->getOwners();
 		
 			$ownerp=$persons->id;
-			$collection = $this->getAnimals();
-			$animalp = $collection->where('o_id','=',$ownerp);
+			
+			$animalp = Animal::where('o_id',$ownerp)->first();
+		
 			$this->content = view(env('THEME').'.owner.animalp_content')->with(['animalp' => $animalp,'ownerp' => $ownerp])->render();
 			return $this->renderOutput();     
 		}
@@ -67,18 +68,17 @@ class AnimalpController extends LkController
     }
 
     
-    public function show($id)
+    public function show($chip)
     {
         //
     }
 
     
-    public function edit($id)
+    public function edit($chip)
     {
        $animal = Animal::where('chip', $chip)->first();
 		  
-		$animal->image = json_decode($animal->image);
-	
+		
 		$this->title = 'Реадактирование карты животного - '. $animal->title;
 		$this->content = view(env('THEME').'.owner.animalp_create_content')->with(['animal' => $animal])->render();
 			
@@ -86,13 +86,13 @@ class AnimalpController extends LkController
     }
 
     
-    public function update(Request $request, $id)
+    public function update(Request $request, $chip)
     {
         //
     }
 
     
-    public function destroy($id)
+    public function destroy($chip)
     {
         //
     }

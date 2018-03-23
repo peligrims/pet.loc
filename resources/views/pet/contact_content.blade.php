@@ -23,23 +23,23 @@
 				                        <ul>
 				                            <li class="text-field">
 				                                <label for="name-contact-us">
-				                                <span class="label">Name</span>
-				                                <br />					<span class="sublabel">This is the name</span><br />
+				                                <span class="label">Имя</span>
+				                                <br />					<br />
 				                                </label>
 				                                <div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span><input type="text" name="name" id="name-contact-us" class="required" value="" /></div>
 				                                <div class="msg-error"></div>
 				                            </li>
 				                            <li class="text-field">
 				                                <label for="email-contact-us">
-				                                <span class="label">Email</span>
-				                                <br />					<span class="sublabel">This is a field email</span><br />
+				                                <span class="label">Электронный адрес</span>
+				                                <br />					<span class="sublabel"> email</span><br />
 				                                </label>
 				                                <div class="input-prepend"><span class="add-on"><i class="icon-envelope"></i></span><input type="text" name="email" id="email-contact-us" class="required email-validate" value="" /></div>
 				                                <div class="msg-error"></div>
 				                            </li>
 				                            <li class="textarea-field">
 				                                <label for="message-contact-us">
-				                                <span class="label">Message</span>
+				                                <span class="label">Сообщение</span>
 				                                </label>
 				                                <div class="input-prepend"><span class="add-on"><i class="icon-pencil"></i></span><textarea name="text" id="message-contact-us" rows="8" cols="30" class="required"></textarea></div>
 				                                <div class="msg-error"></div>

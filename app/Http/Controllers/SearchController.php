@@ -40,8 +40,8 @@ class SearchController extends SiteController
 		$this->keywords = 'Поиск по номеру чипа';
 		$this->meta_desc = 'Поиск по номеру чипа';
 		$chip=$request->input('q');		
-		 $animal = DB::table('animals')->first();
-		//$animal = Animal::where('chip','=',$chip)->first();
+		 //$animal = DB::table('animals')->first();
+		$animal = Animal::where('chip','=',$chip)->first();
 		//dd($animal);
 		//$clinic=$animal->clinica;
 		//$kind=$animal->kinds;

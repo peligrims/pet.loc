@@ -9,7 +9,7 @@
 		<li class="text-field">
 			<label for="name-contact-us">
 				<span class="label">Ваше имя:</span>
-				<br />
+				
 				
 			</label>
 			<div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span>

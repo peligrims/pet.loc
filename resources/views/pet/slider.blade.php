@@ -90,6 +90,6 @@
 				    });
 				</script>
 				<div class="mobile-slider">
-				    <div class="slider fixed-image inner"><img src="{{ asset(env('THEME'))}}/images/slider-cycle/cycle-fixed.jpg" alt="" /></div>
+				    <div class="slider fixed-image inner"><img src="{{ asset(env('THEME'))}}/images/slider-cycle/slider4.jpg" alt="" /></div>
 				</div>
 @endif				
