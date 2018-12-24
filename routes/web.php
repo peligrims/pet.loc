@@ -26,8 +26,14 @@ Route::post('owner_login', 'OwnerAuth\LoginController@login');
 //Только зарегистрированные Владельцы могут получить доступ  на эти страниц
 Route::group(['as' => 'home.', 'prefix' => 'home', 'middleware' => 'owner_auth'], function(){
 Route::get('/',['uses' => 'Owner\PersonalController@index','as' => 'ownerIndex']);
+//Route::resource('/',['uses' => 'Owner\PersonalController','as' => 'ownerIndex']); 
 Route::resource('/ownerp', 'Owner\OwnerpController'); 
 Route::resource('/animalp', 'Owner\AnimalpController'); 
+Route::resource('/equipmentp', 'Owner\EquipmentpController'); 
+Route::resource('/clinicsp', 'Owner\ClinicspController'); 
+Route::resource('/informationp', 'Owner\InformationpController'); 
+
+Route::resource('/searchp', 'Owner\SearchpController'); 
 Route::post('owner_logout', 'OwnerAuth\LoginController@logout');
 });
 

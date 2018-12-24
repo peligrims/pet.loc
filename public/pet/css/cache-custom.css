@@ -45,10 +45,10 @@ code, pre, body hr, #copyright .inner, #footer .inner, .gallery img, .gallery im
 #footer a { color: #b77a2b; }
 #footer a:hover { color: #030303; }
 #footer h3 { font-size: 20px; font-family: 'Rokkitt', sans-serif; color: #030303; font-style: normal; font-weight: normal; }
-#copyright, #copyright p, #copyright a { font-size: 12px; font-family: 'Droid Sans', sans-serif; color: #585555; font-style: normal; font-weight: normal; }
+#copyright, #copyright p, #copyright a { font-size: 20px; font-family: 'Droid Sans', sans-serif; color: #585555; font-style: normal; font-weight: normal; }
 #copyright a { color: #b77a2b; }
 #copyright a:hover { color: #030303; }
-p, li, address, dd, blockquote, td, th, a.text-color { font-size: 12px; font-family: 'Droid Sans', sans-serif; color: #585555; font-style: normal; font-weight: normal; }
+p, li, address, dd, blockquote, td, th, a.text-color { font-size: 20px; font-family: 'Droid Sans', sans-serif; color: #585555; font-style: normal; font-weight: normal; }
 a, a.text-color:hover { color: #b77a2b; }
 a:hover { color: #030303; }
 #yit-breadcrumb a { font-size: 14px; font-family: 'Damion', sans-serif; color: #838383; font-style: italic; font-weight: normal; }
@@ -58,7 +58,7 @@ h2, h2 a { font-size: 22px; font-family: 'Rokkitt', sans-serif; color: #030303; 
 h3, h3 a { font-size: 20px; font-family: 'Rokkitt', sans-serif; color: #030303; font-style: normal; font-weight: normal; }
 h4, h4 a { font-size: 18px; font-family: 'Rokkitt', sans-serif; color: #030303; font-style: normal; font-weight: normal; }
 h5, h5 a { font-size: 15px; font-family: 'Rokkitt', sans-serif; color: #030303; font-style: normal; font-weight: normal; }
-h6, h6 a { font-size: 12px; font-family: 'Rokkitt', sans-serif; color: #030303; font-style: normal; font-weight: normal; }
+h6, h6 a { font-size: 20px; font-family: 'Rokkitt', sans-serif; color: #030303; font-style: normal; font-weight: normal; }
 #page-meta h3 { font-size: 28px; font-family: 'Rokkitt', sans-serif; color: #030303; font-style: normal; font-weight: normal; }
 #page-meta h4 { font-size: 24px; font-family: 'Rokkitt', sans-serif; color: #C86F06; font-style: normal; font-weight: normal; }
 .special-font { font-size: 12px; font-family: 'Shadows Into Light', sans-serif; color: #030303; font-style: normal; font-weight: normal; }

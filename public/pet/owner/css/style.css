@@ -1,0 +1,269 @@
+body{
+	background: #ececec;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 11px;
+	color: #000;
+	min-width: 120px;
+
+}
+li {
+	list-style-type: none;
+}
+
+.sidebar {
+	text-align: center;
+	width: 200px;
+}
+.about>h3 {
+	text-align: center;
+	width: 200px;
+}
+
+.widget ul{
+	padding: 0 0;
+}
+.news >h3{
+	text-align: center;
+}
+.person{
+	text-align: center;
+}
+
+
+.widget ul li a {
+    color: #007bff;
+    font-size: 25px;
+	text-align: left;
+    line-height: 30px;
+    display: block;
+
+    
+}
+
+.p{ 
+	font-size: 10px;
+	margin-bottom: 0rem;
+}
+
+.content.h3 {
+	text-align: center;
+}
+
+.h3{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 8px;
+	color: #979b8c;
+	
+}
+#domInput {
+	width: 80px;
+}
+#kvInput{
+	width: 80px;
+}
+.widget.ul.li {
+	list-style-type: none;
+}
+.person-desc {
+	text-align: center; 
+}
+.about {
+	text-align: center; 
+}
+
+.main-content.container.row.col-md-6.table.table-personal >tbody >tr >td.input {
+	width: 120px;
+}
+
+.table-personal.p{ 
+	font-size: 10px;
+	margin-bottom: 0rem;
+}
+
+
+.btn-secondary.btn-lg  {
+	background: #fff;
+	color: #979b8c;
+	
+	font-size: 12px;
+	border-radius: 3px;
+	padding: 3px 10px;
+	border-color:#d8dce2;
+	font-weight: bold;
+	
+}
+.navbar.navbar-expand-lg.navbar-light.bg-light{
+	border-bottom: 3px solid #dadada;
+}
+
+
+.menu-top .navbar-expand-lg .navbar-collapse .navbar-nav .dropdown >a.dropdown-toggle {
+	font-size: 12px;
+	font-weight: bold;
+	color: #9B8D8C;
+
+}
+.menu-top .navbar-expand-lg .navbar-nav > li > a.btn-outline-success{
+	color: #070101;
+	text-transform: uppercase;
+	border-color:#d8dce2;
+	
+}
+
+
+.menu-top .navbar-expand-lg .navbar-nav > li > a.btn-outline-success:hover{
+
+	background: #939191;
+	text-decoration: none;
+	border-color:#d8dce2;
+
+}
+.menu-top.navbar-expand-lg.navbar-collapse.input.form-control {
+	color: #fff;	
+	border-radius: 3px;
+	padding: 4px 30px; 
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	border-color:#d8dce2;
+	margin:0;
+}
+.form-control::placeholder{
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	color: #979b8c;
+	text-transform: uppercase;
+}
+.form-control{
+	padding: 0px 30px; 
+}
+
+
+.btn-outline-success:hover{
+	background: #9B8D8C;;
+	color: #5b5b5b;	
+	padding: 0px 0px;
+	font-size: 12px;
+	border-radius: 3px;
+	padding: 0px 10px;
+	border-color:#5b5b5b;
+	font-weight: bold;
+	border-color: #fff;
+}
+.btn-outline-success{
+	
+	border-color:#585858;
+}
+
+
+.menu-top .navbar-expand-lg .navbar-nav > li > a.btn-outline-success{
+	color: #fff;
+	border-radius: 3px;
+	padding: 0px 0px;
+	font-size: 14px;
+	
+}
+.menu-top .navbar-expand-lg .navbar-brand img {
+	max-height: 35px;
+}
+.person-desc.text-center{
+
+}
+.menu-top .navbar-expand-lg .navbar-collapse .navbar-nav .dropdown >a.dropdown-toggle{
+	position: relative;
+	left: 250px;
+
+}
+.btn.btn-secondary.btn-lg>a{
+	position: relative;
+	left: 250px;
+}
+
+
+.main-content .container .row .col-md-3 .row .content {
+	border-right: 3px solid #dadada;
+	
+}
+
+.main-content .container .row .col-md-3 .row .news {
+	border-left:  3px solid #dadada;
+	
+} 
+.main-content .container .row .col-md-3 .row .news > p {
+    max-height: 60px;
+    overflow: hidden;
+}
+.footer-copyright {
+	border-top: 3px solid #dadada;
+}
+.news{
+	padding: 10px ;
+}
+
+
+
+/*font-family: 'Open Sans', sans-serif;*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+	
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+.menu-top .navbar-expand-lg .navbar-collapse .navbar-right .widget-first .text-quote-quote .btn-secondary{
+	position: relative;
+	left: 0px;
+	
+}
+	
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+.menu-top .navbar-expand-lg .navbar-collapse .navbar-right .widget-first .text-quote-quote .btn-secondary{
+	position: relative;
+	left: 0px;
+	
+}
+.button.btn.btn-secondary.btn-lg{
+
+margin-top: 5px;
+}	
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+.menu-top .navbar-expand-lg .navbar-collapse .navbar-right .widget-first .text-quote-quote .btn-secondary{
+	position: relative;
+	left: 0px;
+	}
+
+.button{
+
+margin-top: 1px;
+	}
+.sidebar {
+	text-align: center;
+	}
+.navbar.navbar-expand-lg.navbar-light.bg-light {
+	width:375px;
+
+	}
+.dropdown-toggle{
+	
+
+}	
+
+img {
+	margin: 40px;
+	}	
+.widget ul li a {
+    margin: 10px;
+    
+}	
+
+}

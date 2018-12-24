@@ -32,7 +32,6 @@ class SearchController extends SiteController
 
     	$this->template = env('THEME').'.animals';
 	
-		
 	}
 	
 	public function index(Request $request){
@@ -40,14 +39,19 @@ class SearchController extends SiteController
 		$this->keywords = 'Поиск по номеру чипа';
 		$this->meta_desc = 'Поиск по номеру чипа';
 		$chip=$request->input('q');		
+		
+		 
 		 //$animal = DB::table('animals')->first();
 		$animal = Animal::where('chip','=',$chip)->first();
+		
 		//dd($animal);
 		//$clinic=$animal->clinica;
 		//$kind=$animal->kinds;
 		//$breed=$animal->breeds;
 		$ownerid =$animal->o_id;
+		
 		$owner = DB::table('owners')->where('id',$ownerid)->first();
+		// dd($owner);
 		$breed=DB::table('breeds')->first();
 		$animal->image = json_decode($animal->image);
 		

@@ -1,7 +1,7 @@
 @if($menu)
 	<div class="menu classic">
 		
-		{!! $menu->asUl(['class'=>'menu']) !!}
+		{!! $menu->asUl(['class' => 'awesome-ul']) !!}
 		
 	</div>
 @endif

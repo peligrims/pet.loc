@@ -8,11 +8,9 @@
 	{!! $sliders !!}
 @endsection
 
-
 @section('content')
 	{!! $content !!}
 @endsection
-
 
 @section('bar')
 	{!! $rightBar !!}

@@ -18,16 +18,18 @@ class OwnerpController extends LkController
 		{		
 			$this->an_rep = $an_rep;	
 			$this->o_rep = $o_rep;		
-			$this->template = env('THEME').'.owner.animalp';	
+			$this->template = env('THEME').'.owner.ownerp';	
 		}
     public function index()
 		{
-			$this->title = 'Персональные данные';
+
+			$this->title = 'Мои данные';
 			$ownerp = $this->getOwners();
 
 			$this->content = view(env('THEME').'.owner.ownerp_content')->with(['ownerp' => $ownerp])->render();
 			return $this->renderOutput();     
-		}
+
+			}
 	public function getOwners()
 		{
 			$ownerp = Auth::guard('web_owner')->user();		

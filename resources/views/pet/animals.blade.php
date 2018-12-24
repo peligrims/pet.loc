@@ -9,8 +9,6 @@
 	{!! $content !!}
 @endsection
 
-
-
 @section('footer')
 	{!! $footer !!}
 @endsection

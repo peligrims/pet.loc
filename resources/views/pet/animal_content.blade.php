@@ -30,7 +30,7 @@
 												<h2> Поиск по номеру идентификационного чипа</h2>
 				                <div class="one-third ">
 				                    <style>
-									img {border: 3px solid #00a8e1;}
+										img {border: 3px solid #00a8e1;}
 									</style>
 									
 									<div class="image-wrap">

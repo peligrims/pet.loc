@@ -1,6 +1,0 @@
-
-[33mIn web.php line 96:[39m
-[37;41m                                                                                     [39;49m
-[37;41m  Parse error: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')'  [39;49m
-[37;41m                                                                                     [39;49m
-
